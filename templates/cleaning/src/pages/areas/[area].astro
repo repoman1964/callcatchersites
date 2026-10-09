@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import CategoryCards from '../../components/sections/CategoryCards.astro';
+import Reviews from '../../components/sections/Reviews.astro';
+import Faq from '../../components/sections/Faq.astro';
+import FindUs from '../../components/sections/FindUs.astro';
+import { site, biz, telHref, areas, areaHref, type Area, cta } from '../../lib/site';
+import { service, faqPage, breadcrumbs } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return areas.map((a) => ({ params: { area: a.slug }, props: { area: a } }));
+}
+const { area } = Astro.props as { area: Area };
+const path = areaHref(area);
+const others = areas.filter((a) => a.slug !== area.slug);
+const heading = `${biz.trade} in ${area.name}`;
+const schema = [
+  service(heading, `${biz.name} provides expert ${biz.trade.toLowerCase()} and related services throughout ${area.name}.`, path),
+  faqPage(area.faq),
+  breadcrumbs([{ name: area.name, path }]),
+];
+const glance = area.glance;
+---
+
+<BaseLayout title={area.meta.title} description={area.meta.description} schema={schema} heading={heading}>
+  <section class="bg-dark-bg pt-[max(6rem,_clamp(3.5rem,_7vw,_6rem))] pb-[clamp(3.5rem,_7vw,_6rem)] relative overflow-hidden" aria-label={`${area.name} service page header`}>
+    <div class="absolute inset-0 bg-cover bg-center opacity-[0.22] [filter:saturate(0.7)] hero-bg-zoom" role="presentation" style={`background-image: url('${area.hero_image}')`}></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(from_var(--color-accent)_l_c_h/0.18)_0%,transparent_60%)] pointer-events-none" aria-hidden="true"></div>
+    <div class="container-site relative z-10">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] mb-8 hero-fade-up" style="animation-delay: 0ms">
+        <a href="/" class="text-text-on-dark-dim hover:text-text-on-dark-muted transition-colors duration-150 shrink-0">Home</a>
+        <Icon n="40df6f" />
+        <a href="/#service-areas" class="text-text-on-dark-dim hover:text-text-on-dark-muted transition-colors duration-150 shrink-0">Service Areas</a>
+        <Icon n="40df6f" />
+        <span aria-current="page" class="text-text-on-dark-muted capitalize min-w-0 truncate">{area.name}</span>
+      </nav>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-16 items-start">
+        <!-- Left: heading + description + CTAs -->
+        <div>
+          <span class="section-label section-label-dark hero-fade-up" style="animation-delay: 80ms">Service Area</span>
+          <h1 class="font-heading text-[clamp(2rem,_5vw,_3.5rem)] font-bold text-text-on-dark leading-[1.1] mb-5 hero-fade-up" style="animation-delay: 150ms">
+            <span class="capitalize">{biz.trade}</span> in <span class="capitalize">{area.name}</span>
+          </h1>
+          <p class="text-[1.0625rem] text-text-on-dark leading-[1.65] max-w-[56ch] mb-8 hero-fade-up" style="animation-delay: 270ms">{area.hero_text}</p>
+          <div class="flex flex-col sm:flex-row gap-3 mb-8 hero-fade-up" style="animation-delay: 370ms">
+            <button type="button" data-open-quote-modal class="btn-primary py-3.5 px-7 justify-center">{cta.book}</button>
+            <a href={telHref} class="btn-ghost-light py-3.5 px-6 inline-flex items-center justify-center gap-2"><Icon n="59fca0" /> Call {biz.phone}</a>
+          </div>
+        </div>
+        <!-- Right: trust panel — always populated -->
+        <div class="lg:pt-1 flex flex-col gap-4 hero-fade-right" style="animation-delay: 180ms">
+          <div class="bg-dark-surface border border-border-on-dark rounded-xl overflow-hidden">
+            <div class="px-5 pt-5 pb-4 border-b border-border-on-dark/60">
+              <div class="flex items-center gap-2 mb-3">
+                <Icon n="294fb4" />
+                <span class="text-[0.6875rem] font-semibold tracking-[0.1em] uppercase text-text-on-dark-dim">Service Location</span>
+              </div>
+              <p class="font-heading text-[2rem] font-bold text-text-on-dark leading-[1.1] m-0 max-w-none capitalize">{area.name}</p>
+              <p class="text-[0.8125rem] text-text-on-dark-muted mt-1.5 m-0 max-w-none">{area.state} Service Area</p>
+            </div>
+            <div class="px-5 py-3.5 flex items-center gap-2.5">
+              <Icon n="516603" />
+              <span class="text-[0.8125rem] text-text-on-dark-muted">{area.location_note}</span>
+            </div>
+          </div>
+          <div class="bg-dark-surface border border-border-on-dark rounded-xl px-5 py-4">
+            <p class="text-[0.6875rem] font-semibold tracking-[0.1em] uppercase text-text-on-dark-dim mb-3 max-w-none">Communities we serve</p>
+            <div class="flex flex-wrap gap-2">
+              {area.towns.map((t) => <span class="py-[0.3rem] px-3 bg-surface-footer border border-border-on-dark rounded-full text-[0.8125rem] text-text-on-dark-muted">{t}</span>)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-dark-bg border-t border-border-on-dark" aria-label="Key credentials">
+    <div class="container-site py-4">
+      <ul class="list-none m-0 p-0 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 reveal" role="list">
+        {site.home.trust_bar.map((t) => (
+          <li class="flex items-center gap-2"><Icon n="75a763" /> <span class="text-[0.8125rem] font-semibold text-text-on-dark-muted">{t}</span></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <section class="bg-bg-warm section-pad" aria-labelledby="area-about-heading">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-16 items-center reveal">
+        <div class="relative overflow-hidden rounded-xl aspect-[4/5] lg:min-h-[520px] lg:aspect-auto">
+          <img src={area.image.src} alt={area.image.alt} title={area.image.alt} width="560" height="700" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover object-center" />
+          <div class="absolute inset-0 bg-[linear-gradient(to_top,oklch(from_var(--color-overlay)_l_c_h/0.32)_0%,transparent_55%)]"></div>
+          <div class="absolute bottom-0 left-0 right-0 px-6 py-5">
+            <p class="font-heading text-[1.0625rem] font-bold text-text-on-dark leading-tight capitalize m-0 max-w-none">{area.name}</p>
+            <p class="text-[0.75rem] text-text-on-dark-muted mt-1 m-0 max-w-none">{biz.trade}</p>
+          </div>
+        </div>
+        <div>
+          <span class="section-label">{biz.name} in {area.name}</span>
+          <h2 id="area-about-heading" class="font-heading text-[clamp(1.75rem,_4vw,_2.5rem)] font-bold mb-3">{area.about_heading}</h2>
+          <span class="accent-bar"></span>
+          <div class="mt-6 flex flex-col gap-4 mb-8">
+            {area.about_paragraphs.map((p) => <p class="text-base text-text-secondary leading-[1.75]">{p}</p>)}
+          </div>
+          <!-- Quick proof points -->
+          <div class="flex flex-col gap-3 mb-8 p-5 bg-surface-raised border border-border rounded-xl">
+            <p class="text-[0.6875rem] font-semibold tracking-[0.1em] uppercase text-text-muted m-0 max-w-none">At a glance</p>
+            <ul class="list-none m-0 p-0 flex flex-col gap-2.5" role="list">
+              {glance.map((g, i) => <li class="flex items-start gap-3 text-[0.9375rem] text-text-secondary"><Icon n={i < 2 ? '4cfb22' : 'ea921c'} /> {g}</li>)}
+            </ul>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button type="button" data-open-quote-modal class="btn-primary justify-center">{cta.book} in {area.name}</button>
+            <a href={telHref} class="btn-ghost py-3 px-5 text-sm inline-flex items-center justify-center gap-2"><Icon n="c76b15" /> Call {biz.phone}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" aria-labelledby="area-services-heading">
+    <div class="container-site">
+      <div class="reveal mb-10">
+        <span class="section-label">Our Services in {area.name}</span>
+        <h2 id="area-services-heading" class="font-heading text-[clamp(1.75rem,_4vw,_2.5rem)] font-bold mb-4">Every service, available in <span class="capitalize">{area.name}</span></h2>
+        <p class="text-[1.0625rem] text-text-secondary leading-[1.65] max-w-[65ch]">{area.services_intro}</p>
+      </div>
+      <CategoryCards />
+    </div>
+  </section>
+
+  <Reviews location={area.name} />
+
+  <section class="bg-dark-bg py-[clamp(3rem,_6vw,_5rem)]" aria-label={cta.quote}>
+    <div class="container-site grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 items-center">
+      <div class="reveal">
+        <p class="text-[0.6875rem] font-semibold tracking-[0.12em] uppercase text-accent-on-dark mb-3 max-w-none">Serving {area.name}</p>
+        <h2 class="font-heading text-[clamp(1.75rem,_4vw,_2.75rem)] font-bold text-text-on-dark leading-[1.15] mb-4 max-w-none">{cta.bandHeading}</h2>
+        <p class="text-base text-text-on-dark-muted leading-[1.65] max-w-[52ch]">{area.cta_body}</p>
+      </div>
+      <div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 reveal" style="transition-delay: 120ms">
+        <button type="button" data-open-quote-modal class="btn-primary py-3.5 px-7 whitespace-nowrap">{cta.book}</button>
+        <a href={telHref} class="btn-ghost-light py-3.5 px-6 whitespace-nowrap text-center">Call {biz.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 border-t border-border bg-bg" aria-label="Other service areas">
+    <div class="container-site">
+      <div class="flex flex-col sm:flex-row sm:items-start gap-5">
+        <div class="shrink-0">
+          <p class="text-[0.8125rem] font-semibold text-text-secondary m-0 max-w-none">Also serving across {biz.region}:</p>
+        </div>
+        <ul class="list-none m-0 p-0 flex flex-wrap gap-2" role="list">
+          {others.map((a) => (
+            <li>
+              <a href={areaHref(a)} class="inline-flex items-center gap-1.5 py-[0.35rem] px-3 text-[0.8125rem] font-medium text-text-secondary bg-surface border border-border rounded-full no-underline hover:border-accent hover:text-accent transition-colors duration-150 capitalize"><Icon n="331877" /> {a.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Faq faq={area.faq} />
+  <FindUs />
+</BaseLayout>

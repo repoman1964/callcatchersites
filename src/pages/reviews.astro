@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TrustBar from "../components/TrustBar.astro";
+import ReviewCard from "../components/ReviewCard.astro";
+import { business, reviews } from "../data/site";
+const reviewJsonLd = {
+  "@type": "ItemList",
+  itemListElement: reviews.map((r, i) => ({
+    "@type": "Review",
+    position: i + 1,
+    reviewBody: r.quote,
+    author: { "@type": "Person", name: r.name },
+  })),
+};
+---
+<BaseLayout
+  title="Atlanta Cleaning Reviews | Read Them On-Site | [Business Name]"
+  description="Reviews from Atlanta cleaning clients, shown on-site with name, neighborhood, and service. [RATING] from [REVIEW COUNT] Google reviews today!"
+  jsonLd={reviewJsonLd}
+>
+  <div class="hero">
+    <div class="container">
+      <span class="eyebrow">Reviews</span>
+      <h1>Reviews from Atlanta clients.</h1>
+      <p class="lead">These reviews live on this site so you don&#39;t have to leave to read them. They come from our Google profile and are shown with first name, area, and service.</p>
+      <p><span class="avail">★ {business.rating} on Google · {business.reviewCount} reviews</span></p>
+    </div>
+  </div>
+  <TrustBar />
+  <section>
+    <div class="container">
+      <div class="chips" style="margin-bottom:24px" role="group" aria-label="Filter reviews">
+        <span class="chip">All</span><span class="chip">Recurring</span><span class="chip">Deep</span><span class="chip">Move-out</span><span class="chip">Airbnb</span><span class="chip">Office</span>
+      </div>
+      <div class="grid-3">
+        {reviews.map((r) => <ReviewCard quote={r.quote} name={r.name} area={r.area} service={r.service} />)}
+      </div>
+      <p style="margin-top:24px"><a href="https://google.com" rel="noopener">See all reviews on Google →</a></p>
+      <p><a class="btn btn-primary" href="/book">Book a Clean →</a></p>
+    </div>
+  </section>
+</BaseLayout>

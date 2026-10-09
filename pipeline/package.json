@@ -1,0 +1,18 @@
+{
+  "name": "callcatcher-pipeline",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "leads": "node leads.mjs",
+    "content": "node content.mjs",
+    "build": "node build.mjs",
+    "deploy": "node deploy.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.132.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

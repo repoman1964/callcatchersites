@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TrustBar from "../../components/TrustBar.astro";
+import HeroArt from "../../components/HeroArt.astro";
+import ReviewCard from "../../components/ReviewCard.astro";
+import { business, areas, services, reviews } from "../../data/site";
+
+export function getStaticPaths() {
+  return areas.map((a) => ({ params: { slug: a.slug } }));
+}
+const { slug } = Astro.params;
+const area = areas.find((a) => a.slug === slug);
+if (!area) throw new Error(`Unknown area ${slug}`);
+const others = areas.filter((a) => a.slug !== slug);
+const localReviews = reviews.filter((r) => r.area.toLowerCase().includes(area.name.toLowerCase())).slice(0, 3);
+const artVariant: Record<string, string> = {
+  buckhead: "bedroom", midtown: "rental", "sandy-springs": "living",
+  decatur: "porch", brookhaven: "kitchen", "old-fourth-ward": "rental",
+};
+const localJsonLd = {
+  "@type": "HouseCleaningService",
+  name: `${business.name} — ${area.name}`,
+  telephone: business.phoneE164,
+  areaServed: area.name,
+};
+---
+<BaseLayout
+  title={`House Cleaning ${area.name} Atlanta | Flat Prices, Book Now.`}
+  description={`${area.name} house cleaning with flat pricing, same team every visit, and written checklist. 24-hour re-clean guarantee included on every clean today.`}
+  jsonLd={localJsonLd}
+>
+  <div class="hero">
+    <div class="container hero-split">
+      <div>
+        <span class="eyebrow">{area.name} · Atlanta</span>
+        <h1>House cleaning in {area.name}, Atlanta.</h1>
+        <p class="lead">{area.body}</p>
+        <p><span class="avail">CLEANS MON–SAT</span></p>
+        <div class="cta-row" style="justify-content:flex-start">
+          <a class="btn btn-primary" href="/book">Book a Clean →</a>
+          <a class="btn btn-outline" href={business.phoneTel}>Call {business.phoneDisplay}</a>
+        </div>
+        <p style="font-size:14px">Prefer to text? <a href={business.phoneSms}>Text us →</a></p>
+      </div>
+      <div><HeroArt variant={artVariant[area.slug] ?? "porch"} label={`Homes in ${area.name}`} /></div>
+    </div>
+  </div>
+  <TrustBar />
+
+  <section aria-label="Local homes and access">
+    <div class="container prose">
+      <div class="smallcaps">Local homes &amp; access</div>
+      <h2>How {area.name} cleans work.</h2>
+      <ul>
+        <li><strong>Homes:</strong> {area.housing}</li>
+        <li><strong>Typical size:</strong> {area.size}</li>
+        <li><strong>Parking &amp; entry:</strong> {area.access}</li>
+        <li><strong>Most booked:</strong> {area.jobs}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band-light" aria-label="Most booked services">
+    <div class="container">
+      <div class="smallcaps">Most booked in {area.name}</div>
+      <h2>Four services, local context.</h2>
+      <div class="grid-2" style="margin-top:24px">
+        {services.slice(0, 4).map((s) => (
+          <a class="card" href={`/services/${s.slug}`}>
+            <h3>{s.name} in {area.name}</h3>
+            <p>{s.short}</p>
+            <div class="from">{s.priceFrom}</div>
+            <div class="more">See full details →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Reviews">
+    <div class="container">
+      <div class="smallcaps">Reviews from {area.name}</div>
+      <h2>What neighbors say.</h2>
+      {localReviews.length > 0 ? (
+        <div class="grid-3" style="margin-top:24px">
+          {localReviews.map((r) => <ReviewCard quote={r.quote} name={r.name} area={r.area} service={r.service} />)}
+        </div>
+      ) : (
+        <p style="margin-top:16px">Reviews for {area.name} are collected from our Google profile and shown here with first name, area, and service. <a href="/reviews">Read all on-site reviews →</a></p>
+      )}
+      {localReviews.length > 0 && localReviews.length < 3 && (
+        <p style="margin-top:16px"><a href="/reviews">Read all on-site reviews →</a></p>
+      )}
+    </div>
+  </section>
+
+  <section class="band-dark on-dark" aria-label="Typical prices">
+    <div class="container">
+      <div class="smallcaps">Typical prices in {area.name}</div>
+      <h2>Based on the common home size here.</h2>
+      <div class="chips" style="margin:24px 0">
+        {area.prices.map((p) => <span class="chip chip-dark">{p}</span>)}
+      </div>
+      <p><a href="/pricing" style="color:var(--mint);font-weight:700">See full pricing →</a></p>
+    </div>
+  </section>
+
+  <section aria-label="Services available">
+    <div class="container">
+      <div class="smallcaps">Services available in {area.name}</div>
+      <h2>All six, same team.</h2>
+      <ul class="check-list" style="margin-top:20px">
+        {services.map((s) => <li><span class="check">✓</span><a href={`/services/${s.slug}`}>{s.name} in {area.name}</a></li>)}
+      </ul>
+      <div class="smallcaps" style="margin-top:32px">Nearby areas</div>
+      <div class="chips" style="margin-top:12px">
+        {others.map((o) => <a class="chip" href={`/service-areas/${o.slug}`}>{o.name}</a>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

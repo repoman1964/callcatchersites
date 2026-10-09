@@ -1,0 +1,45 @@
+---
+import Icon from '../Icon.astro';
+import { biz, telHref, type Faq } from '../../lib/site';
+
+interface Props {
+  faq: Faq;
+}
+const { faq } = Astro.props;
+---
+
+<section class="section-pad" id="faq" aria-labelledby="faq-heading">
+  <div class="container-site md:grid md:grid-cols-[320px_1fr] md:gap-16 md:items-start">
+    <div class="mb-10 md:mb-0 md:sticky md:top-[100px] reveal">
+      <span class="section-label">FAQ</span>
+      <h2 id="faq-heading" class="text-[clamp(1.75rem,3.5vw,2.25rem)] font-bold mb-4 leading-tight">{faq.heading}</h2>
+      <p class="text-[0.9375rem] text-text-secondary leading-[1.65]">{faq.intro}</p>
+    </div>
+    <div class="md:col-start-2 border-t border-border reveal" style="transition-delay: 100ms;">
+      {faq.items.map((item, i) => (
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls={`faq-${i}`}>
+            <span>{item.q}</span>
+            <Icon n="b9bbd3" />
+          </button>
+          <div class="faq-content" id={`faq-${i}`} role="region" aria-labelledby={`faq-${i}`}>
+            <p>{item.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    <!-- Still have questions -->
+    <div class="mt-4 md:col-start-2 reveal" style="transition-delay: 200ms;">
+      <div class="flex flex-wrap items-center gap-5 py-6 px-8 bg-surface-raised border border-border rounded-xl">
+        <div class="w-[52px] h-[52px] bg-secondary-light rounded-lg flex items-center justify-center text-secondary shrink-0" aria-hidden="true">
+          <Icon n="92afea" />
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-text mb-1">Still have questions?</h3>
+          <p class="text-sm text-text-secondary m-0">Call us directly. Real answers, no scripts.</p>
+        </div>
+        <a href={telHref} class="btn-primary w-full justify-center md:w-auto md:ml-auto">Call {biz.phone}</a>
+      </div>
+    </div>
+  </div>
+</section>

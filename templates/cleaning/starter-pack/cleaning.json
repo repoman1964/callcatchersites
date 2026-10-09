@@ -1,0 +1,345 @@
+{
+  "_readme": "House-cleaning starter pack: the floor every lead's content JSON is built from (6 services, process, FAQ, trust defaults, area-essay conditions). Tokens: {brand} business name, {city} primary city (e.g. Atlanta), {state} (GA), {region} (e.g. Metro Atlanta), {hq} (e.g. Decatur, GA), {nearby1}/{nearby2} two other area cities. Personalize from the Maps listing: listing services and review details first, pack text as the fallback. RULES: never invent prices, years in business, insurance/bonding, background checks, guarantees or staff counts unless the listing or reviews say so. Owner names only if reviews name them.",
+
+  "trade": "House Cleaning",
+  "schema_types": ["LocalBusiness", "HouseCleaningService"],
+  "price_range": "$$",
+  "owner_pronoun_line": "Replies from the owner's phone",
+
+  "trust_defaults": {
+    "trust_points": ["Locally owned in {hq}", "Free, no-pressure quotes", "Fast replies by call or text", "{rating}★ rating on Google"],
+    "trust_bar": ["Locally Owned & Operated", "Free Quotes, No Contracts", "Call or Text — Fast Replies", "{rating}★ on Google"],
+    "glance": ["Locally owned and operated", "Free quotes before any work starts", "Recurring and one-time cleans", "Fast replies by call or text"],
+    "listing_attribute_upgrades": {
+      "is_owned_by_women": "Women-owned business",
+      "is_owned_by_veterans": "Veteran-owned business",
+      "is_black_owned": "Black-owned business",
+      "is_owned_by_latinx": "Latino-owned business",
+      "offers_online_estimates": "Online quotes available",
+      "has_onsite_services": "We come to you"
+    }
+  },
+
+  "categories": [
+    {
+      "slug": "house-cleaning",
+      "name": "House Cleaning",
+      "description": "Recurring, deep and move-in/move-out cleaning for homes and apartments across {region}.",
+      "image": { "src": "/images/categories/house-cleaning.webp", "alt": "Bright, freshly cleaned living room in a {city}, {state} home" },
+      "hub": {
+        "meta": { "title": "House Cleaning Services in {city}, {state} | {brand}", "description": "Recurring, deep and move-in/move-out house cleaning in {city}, {state}. {brand} brings the supplies and follows a checklist. Free quotes." },
+        "hero_sub": "{brand} keeps {city} homes clean on your schedule: a standing recurring clean, a top-to-bottom deep clean, or an empty-home clean before or after a move.",
+        "services_intro": "Pick the clean that fits where your home is right now. Not sure which one? Tell us about the house and we will recommend one.",
+        "why_points": ["Locally owned and operated", "A written checklist for every clean", "We bring our own supplies and equipment", "Free quotes before any work starts", "Fast replies by call or text", "Flexible scheduling, no long-term contracts"],
+        "band_label": "Ready when you are",
+        "band_heading": "Tell us about your home. We'll send a clear quote.",
+        "faq": {
+          "heading": "House Cleaning Questions in {city}, {state}",
+          "intro": "Straight answers to what {city} homeowners ask before booking a cleaner.",
+          "items": [
+            { "q": "What is the difference between a regular clean and a deep clean?", "a": "A regular clean keeps kitchens, bathrooms, floors and surfaces at baseline. A deep clean adds the detail work a regular clean skips, like baseboards, inside appliances, grout and blinds." },
+            { "q": "Do I need a deep clean before recurring service starts?", "a": "Usually, yes. If it has been a couple of months since a professional clean, a first deep clean resets the home so recurring visits stay quick and consistent." },
+            { "q": "Do you bring your own supplies?", "a": "Yes. We bring supplies and equipment to every clean. If you prefer your own products or fragrance-free options, tell us when you book." },
+            { "q": "Do I need to be home during the cleaning?", "a": "No. Many clients leave a key, lockbox or door code. We go over entry, alarms and pets before the first visit." }
+          ]
+        }
+      },
+      "services": [
+        {
+          "slug": "recurring-cleaning",
+          "name": "Recurring Cleaning",
+          "meta": { "title": "Recurring House Cleaning in {city}, {state} | {brand}", "description": "Weekly, every-two-weeks or monthly house cleaning in {city}, {state}. {brand} follows the same checklist every visit. Get a free quote." },
+          "summary": "Weekly, every-two-weeks or monthly cleaning on a set schedule, so your {city} home stays at baseline without you thinking about it.",
+          "hero_image": "/images/services/recurring-cleaning.webp",
+          "image": { "src": "/images/services/recurring-cleaning.webp", "alt": "Gloved hand with a spray bottle during a recurring house cleaning in {city}, {state}" },
+          "body": [
+            "Most {city} households don't need a cleaner because the house is a disaster. They need one because the week fills up and the bathrooms, floors and kitchen slide a little further every few days. Recurring cleaning fixes that by putting your home on a schedule. Weekly, every two weeks or monthly, {brand} comes in, works through the same checklist and leaves the house reset.",
+            "Every visit covers kitchens, bathrooms, dusting, floors and trash, and we rotate one detail task each time, like baseboards, the inside of the microwave or blinds, so the small stuff never piles up. Pets, entry codes and the rooms you care about most are noted once and followed every visit.",
+            "Recurring service is also the easiest clean to plan around. You know when we are coming, and you can skip or move a visit when life changes. Ask about a first-time deep clean if it has been a while, so regular visits can focus on upkeep instead of catch-up."
+          ],
+          "benefits": [
+            "Kitchen counters, sink, stovetop and appliance fronts wiped and shined",
+            "Bathrooms scrubbed: toilets, tubs, showers, sinks and mirrors",
+            "Floors vacuumed and mopped throughout",
+            "Reachable surfaces dusted, and trash emptied and relined",
+            "A rotating detail task each visit so nothing builds up",
+            "Your preferences noted once and followed every visit"
+          ],
+          "sidebar_heading": "Put your home on a cleaning schedule.",
+          "faq": {
+            "heading": "Recurring Cleaning FAQ",
+            "intro": "Common questions about recurring house cleaning in {city}, {state}.",
+            "items": [
+              { "q": "Do you offer recurring house cleaning near me in {city}, {state}?", "a": "Yes. {brand} provides weekly, every-two-weeks and monthly cleaning throughout {city}, {nearby1} and {nearby2}. Call or text to check your street and available days." },
+              { "q": "What does a recurring cleaning include?", "a": "Kitchens, bathrooms, dusting, floors and trash every visit, plus one rotating detail task. We follow a written checklist so every visit is consistent." },
+              { "q": "How do I know which frequency is right for my home?", "a": "Homes with kids, pets or heavy cooking usually do best weekly or every two weeks. Smaller or quieter homes often stay on top of things with a monthly clean." },
+              { "q": "Can I add extra tasks to a recurring visit?", "a": "Yes. Inside the oven, inside the fridge, interior windows and laundry can be added to a visit. Ask when you book or text us before your next clean." },
+              { "q": "Can I skip or reschedule a visit?", "a": "Yes. Give us notice and we will move or skip the visit. There are no long-term contracts." },
+              { "q": "Is {brand} a local company?", "a": "Yes. We are a locally owned cleaning company based in {hq}, serving homes across {region}." }
+            ]
+          }
+        },
+        {
+          "slug": "deep-cleaning",
+          "name": "Deep Cleaning",
+          "meta": { "title": "Deep House Cleaning in {city}, {state} | {brand}", "description": "Top-to-bottom deep cleaning in {city}, {state}: baseboards, inside appliances, grout and blinds. {brand} gives free quotes. Call or text today." },
+          "summary": "A top-to-bottom reset for the places a regular clean skips: baseboards, inside appliances, grout, blinds and fixtures.",
+          "hero_image": "/images/services/deep-cleaning.webp",
+          "image": { "src": "/images/services/deep-cleaning.webp", "alt": "Spotless glass shower and vanity after a deep cleaning in a {city}, {state} bathroom" },
+          "body": [
+            "A deep clean is for the house that needs more than upkeep: the first clean with a new cleaner, a seasonal reset, getting ready to host, or catching up after a busy few months. In {city} homes that usually means pollen film on sills and fans, red clay ground into entry floors, and soap scum and mildew in bathrooms that run humid most of the year.",
+            "{brand} works top to bottom, room by room. We start high with fans, vents and light fixtures, work down through cabinet fronts, baseboards and door frames, and finish with floors so nothing falls onto a surface that is already clean. Bathrooms get scrubbed tile and grout and descaled glass. Kitchens get degreased fronts and the inside of the oven and fridge.",
+            "Deep cleans take longer than regular visits, so we confirm the size and condition of the home up front and give you a clear quote before we start. Many clients follow a deep clean with recurring service, because the hard part is already done."
+          ],
+          "benefits": [
+            "Baseboards, door frames and light switches wiped by hand",
+            "Inside the oven and refrigerator cleaned",
+            "Tile and grout scrubbed and shower glass descaled",
+            "Ceiling fans, vents, blinds and light fixtures dusted",
+            "Cabinet fronts degreased and window sills and tracks cleaned",
+            "Floors cleaned edge to edge, including behind light furniture"
+          ],
+          "sidebar_heading": "Reset the whole house in one visit.",
+          "faq": {
+            "heading": "Deep Cleaning FAQ",
+            "intro": "Common questions about deep house cleaning in {city}, {state}.",
+            "items": [
+              { "q": "Do you offer deep cleaning near me in {city}, {state}?", "a": "Yes. {brand} handles deep cleans across {city}, {nearby1} and {nearby2}. Call or text with your address and the size of your home for a quote." },
+              { "q": "What does a deep clean include that a regular clean doesn't?", "a": "Baseboards, inside the oven and fridge, grout and tile, blinds, fans, vents and cabinet fronts. It is the detail work that builds up between regular cleans." },
+              { "q": "How do I know if my {city} home needs a deep clean?", "a": "If it has been two months or more since a professional clean, you are starting service with a new cleaner, or you are getting ready for guests, a deep clean is the right start." },
+              { "q": "Can you deep clean just the kitchen and bathrooms?", "a": "Yes. We can focus a deep clean on the rooms that need it most. Tell us which rooms when you ask for a quote." },
+              { "q": "How long does a deep clean take?", "a": "It depends on the size and condition of the home. We confirm the expected time when we quote, so you can plan your day." },
+              { "q": "Should I switch to recurring cleaning after a deep clean?", "a": "Many clients do. Once the home is reset, regular visits keep it there with less time and effort each visit." }
+            ]
+          }
+        },
+        {
+          "slug": "move-in-move-out-cleaning",
+          "name": "Move-In & Move-Out Cleaning",
+          "meta": { "title": "Move-In & Move-Out Cleaning in {city}, {state} | {brand}", "description": "Empty-home move-in and move-out cleaning in {city}, {state}: inside cabinets, appliances and closets. {brand} works from your checklist." },
+          "summary": "An empty-home clean before you move in or after you move out: inside cabinets, closets and appliances, top to bottom.",
+          "hero_image": "/images/services/move-in-move-out-cleaning.webp",
+          "image": { "src": "/images/services/move-in-move-out-cleaning.webp", "alt": "Empty, freshly cleaned kitchen ready for move-in in {city}, {state}" },
+          "body": [
+            "Moving in {region} is stressful enough without scrubbing out an apartment at midnight before the walkthrough. A move-out clean gets the place ready for your landlord, property manager or buyer. A move-in clean means you unpack into a home that's actually clean, not one that was \"broom swept\" by the last owner.",
+            "Empty homes let us reach everything, so we go inside every cabinet, drawer and closet, inside the oven, fridge, dishwasher and microwave, and along every baseboard and window track. If your landlord or property manager gave you a checklist, send it with your quote request and we will work from it line by line.",
+            "Timing matters on moving day, so we schedule around your movers and your lease date. Let us know your deadline when you reach out, and we will tell you which days we can cover. If you are buying, a move-in clean before your furniture arrives is the one chance to clean inside every cabinet and closet while they are empty."
+          ],
+          "benefits": [
+            "Inside every cabinet, drawer and closet wiped out",
+            "Inside the oven, fridge, dishwasher and microwave cleaned",
+            "Baseboards, doors, frames and switch plates wiped",
+            "Bathrooms scrubbed and descaled top to bottom",
+            "Window sills and tracks cleaned and floors done edge to edge",
+            "Your landlord or property-manager checklist followed"
+          ],
+          "sidebar_heading": "Hand over the keys with a clean home.",
+          "faq": {
+            "heading": "Move-In & Move-Out Cleaning FAQ",
+            "intro": "Common questions about moving cleans in {city}, {state}.",
+            "items": [
+              { "q": "Do you offer move-out cleaning near me in {city}, {state}?", "a": "Yes. {brand} cleans apartments, condos and houses for moves throughout {city}, {nearby1} and {nearby2}. Tell us your move date for availability." },
+              { "q": "What is included in a move-out clean?", "a": "Inside cabinets, drawers and closets, inside appliances, bathrooms, baseboards, sills and floors. It is a full empty-home clean, not a quick wipe-down." },
+              { "q": "Does the home need to be empty?", "a": "Empty or close to it works best. Furniture and boxes block the places a move-out inspection checks." },
+              { "q": "Can you work from my landlord's checklist?", "a": "Yes. Send it with your quote request and we will follow it line by line." },
+              { "q": "Can you clean on the same day as my move?", "a": "Often, yes. We schedule around your movers so every surface is reachable. Tell us the timing when you ask for a quote." },
+              { "q": "Do you clean carpets?", "a": "We vacuum carpets thoroughly. If your lease requires steam cleaning, ask us and we will tell you what we offer or who we recommend." }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "specialty-cleaning",
+      "name": "Specialty Cleaning",
+      "description": "Short-term rental turnovers, post-construction cleanup and small-office cleaning across {region}.",
+      "image": { "src": "/images/categories/specialty-cleaning.webp", "alt": "Hotel-style made bed in a short-term rental cleaned in {city}, {state}" },
+      "hub": {
+        "meta": { "title": "Specialty Cleaning in {city}, {state} | {brand}", "description": "Airbnb turnovers, post-construction cleanup and office cleaning in {city}, {state}. {brand} schedules around your guests, crews and hours." },
+        "hero_sub": "Beyond homes, {brand} handles cleans that run on someone else's clock: guest turnovers, the dust after a remodel, and offices after hours.",
+        "services_intro": "Each of these is built around a deadline: a check-in time, a move-in date or a Monday morning. Tell us yours.",
+        "why_points": ["Locally owned and operated", "Scheduled around your deadlines", "A written checklist for every job", "We bring our own supplies and equipment", "Free quotes before any work starts", "Fast replies by call or text"],
+        "band_label": "On your schedule",
+        "band_heading": "Tell us the deadline. We'll plan the clean around it.",
+        "faq": {
+          "heading": "Specialty Cleaning Questions in {city}, {state}",
+          "intro": "What property hosts, homeowners and office managers ask us most.",
+          "items": [
+            { "q": "Do you clean short-term rentals between guests?", "a": "Yes. We do turnovers between check-out and check-in, including linens, restocking from your supplies and photos when we finish." },
+            { "q": "When should I book a post-construction clean?", "a": "After the trades are finished and before furniture goes in. That order keeps fine dust from settling on clean surfaces again." },
+            { "q": "Can you clean our office after hours?", "a": "Yes. Evenings and weekends are standard for office cleaning, on a weekly or more frequent schedule." },
+            { "q": "How do you quote specialty cleans?", "a": "Send photos or a short description of the space and the deadline. We confirm the scope and give you a clear quote before scheduling." }
+          ]
+        }
+      },
+      "services": [
+        {
+          "slug": "airbnb-cleaning",
+          "name": "Airbnb & Rental Turnovers",
+          "meta": { "title": "Airbnb Cleaning in {city}, {state} | {brand}", "description": "Short-term rental turnovers in {city}, {state}: linens, restocking and photos after every clean. {brand} works between check-out and check-in." },
+          "summary": "Guest-ready turnovers between check-out and check-in, with linens changed, supplies restocked and photos when we finish.",
+          "hero_image": "/images/services/airbnb-cleaning.webp",
+          "image": { "src": "/images/services/airbnb-cleaning.webp", "alt": "Short-term rental bedroom with fresh linens after a turnover clean in {city}, {state}" },
+          "body": [
+            "Short-term rentals in {city} live and die by reviews, and cleanliness is the review guests are quickest to complain about. A turnover clean has a few hours between check-out and check-in to get the place back to the photos: fresh linens, a clean kitchen, spotless bathrooms and nothing left behind by the last guest.",
+            "{brand} works from your listing's checklist. We strip and make beds, clean the kitchen and bathrooms, take out the trash, restock supplies from what you keep on site, and walk the unit for anything that needs your attention. You get photos when we finish, plus a note about any damage, missing items or low supplies.",
+            "Same-day turnovers need dependable timing, so we plan around your booking calendar. Tell us how many units you manage and how often they turn over, and we will set up a schedule that fits. Between stays, we can also handle deeper periodic cleans, like inside appliances and baseboards, so the unit keeps matching its listing photos."
+          ],
+          "benefits": [
+            "Beds stripped and remade with fresh linens",
+            "Kitchen, dishes and appliances reset for the next guest",
+            "Bathrooms cleaned and towels replaced",
+            "Supplies restocked from your on-site inventory",
+            "Damage, missing items and low supplies reported to you",
+            "Photos sent after every turnover"
+          ],
+          "sidebar_heading": "Keep every check-in guest-ready.",
+          "faq": {
+            "heading": "Airbnb & Rental Cleaning FAQ",
+            "intro": "Common questions about short-term rental turnovers in {city}, {state}.",
+            "items": [
+              { "q": "Do you offer Airbnb cleaning near me in {city}, {state}?", "a": "Yes. {brand} turns over short-term rentals across {city}, {nearby1} and {nearby2}. Tell us where your units are and how often they book." },
+              { "q": "What does a turnover clean include?", "a": "Linens, beds, kitchen, bathrooms, trash, restocking from your supplies and a walkthrough for damage. We send photos when the unit is ready." },
+              { "q": "How do you know when to clean?", "a": "We schedule from your booking calendar, so each turnover lands between check-out and the next check-in." },
+              { "q": "Do you supply linens and toiletries?", "a": "We restock from the supplies you keep on site. If you need linen service or supplies sourced, ask us about it when you get a quote." },
+              { "q": "What happens if a guest checks out late?", "a": "We adjust within the turnover window and message you if timing gets tight, so you are never surprised at check-in." },
+              { "q": "Can you handle more than one property?", "a": "Yes. Tell us how many units you manage and we will set up a schedule that covers them." }
+            ]
+          }
+        },
+        {
+          "slug": "post-construction-cleaning",
+          "name": "Post-Construction Cleaning",
+          "meta": { "title": "Post-Construction Cleaning in {city}, {state} | {brand}", "description": "Post-construction and renovation cleanup in {city}, {state}: fine dust, paint flecks and sticker residue removed. {brand} gives free quotes." },
+          "summary": "After a remodel or new build: fine dust, paint flecks, sticker residue and grime cleared so the space is ready to live in.",
+          "hero_image": "/images/services/post-construction-cleaning.webp",
+          "image": { "src": "/images/services/post-construction-cleaning.webp", "alt": "Newly renovated open living space cleaned after construction in {city}, {state}" },
+          "body": [
+            "Renovation dust is different from everyday dust. It is fine enough to sit on top of cabinets, inside drawers, along every ledge and in the air for days, and a normal clean just moves it around. In {region}, where a lot of older homes are being opened up and updated, post-construction cleaning is the step that turns a job site back into a home.",
+            "{brand} cleans from the top down: light fixtures, fans and vents first, then cabinets inside and out, counters, windows, sills and tracks, and finally floors. We remove paint flecks, sticker residue and adhesive from new fixtures and glass, and vacuum and damp-wipe so fine dust is picked up instead of pushed around.",
+            "Most projects need the clean after the trades finish and before furniture moves in. Some benefit from a rough clean followed by a final touch-up. Send us photos or a description of the job and your move-in date, and we will quote the scope that fits."
+          ],
+          "benefits": [
+            "Fine construction dust removed from every surface and ledge",
+            "Inside new cabinets and drawers wiped out",
+            "Paint flecks, sticker residue and adhesive removed",
+            "Windows, sills and tracks cleaned",
+            "Light fixtures, fans and vents dusted",
+            "Floors vacuumed and cleaned for move-in"
+          ],
+          "sidebar_heading": "Turn the job site back into a home.",
+          "faq": {
+            "heading": "Post-Construction Cleaning FAQ",
+            "intro": "Common questions about cleaning after a remodel or build in {city}, {state}.",
+            "items": [
+              { "q": "Do you offer post-construction cleaning near me in {city}, {state}?", "a": "Yes. {brand} cleans after remodels and new builds in {city}, {nearby1} and {nearby2}. Send photos or a description of the job for a quote." },
+              { "q": "What does post-construction cleaning include?", "a": "Dust removal from every surface, vent and fixture, inside cabinets, windows and tracks, paint and sticker residue removal and a full floor clean." },
+              { "q": "When should I schedule the clean?", "a": "After all trades are done and before furniture goes in. Booking earlier usually means re-cleaning dust that settles later." },
+              { "q": "Do you haul away construction debris?", "a": "No. We clean; bulk debris and haul-away stay with your contractor. We handle everything that's left after the trash is out." },
+              { "q": "Do you work with contractors and builders?", "a": "Yes. We can coordinate directly with your contractor on timing and access." },
+              { "q": "Is one visit enough?", "a": "Smaller jobs often take one visit. Larger remodels may need a rough clean plus a final touch-up. We will tell you which when we quote." }
+            ]
+          }
+        },
+        {
+          "slug": "office-cleaning",
+          "name": "Office Cleaning",
+          "meta": { "title": "Office Cleaning in {city}, {state} | {brand}", "description": "After-hours office cleaning in {city}, {state} for small offices, studios and suites. {brand} cleans on your schedule. Get a free quote." },
+          "summary": "After-hours cleaning for small offices, studios and suites, so your team walks into a clean space.",
+          "hero_image": "/images/services/office-cleaning.webp",
+          "image": { "src": "/images/services/office-cleaning.webp", "alt": "Clean, open small office space after an evening clean in {city}, {state}" },
+          "body": [
+            "Small offices get messy in the same places homes do: the kitchen, the restrooms, the floors at the entrance and every surface people touch all day. {brand} cleans offices, studios and suites in {city} after hours, so the space is ready when your team and clients walk in.",
+            "Each visit covers desks and shared surfaces, kitchens and break areas, restrooms, trash and recycling, high-touch points like door handles and switches, and floors. We agree on a checklist up front and follow it every visit, and we flag anything that needs your attention, like a running toilet or low supplies.",
+            "Most offices choose a weekly or twice-weekly schedule in the evening or on weekends. Tell us about your space, your hours and how you handle keys or alarm codes, and we will quote a plan that works around your business. As your team grows or your hours change, the schedule can change with it, with no long-term contract."
+          ],
+          "benefits": [
+            "Desks, counters and shared surfaces wiped down",
+            "Kitchens and break areas cleaned",
+            "Restrooms cleaned and restocked from your supplies",
+            "Trash and recycling emptied",
+            "Door handles, switches and other high-touch points sanitized",
+            "Floors vacuumed and mopped"
+          ],
+          "sidebar_heading": "Start every workday in a clean office.",
+          "faq": {
+            "heading": "Office Cleaning FAQ",
+            "intro": "Common questions about office cleaning in {city}, {state}.",
+            "items": [
+              { "q": "Do you offer office cleaning near me in {city}, {state}?", "a": "Yes. {brand} cleans small offices, studios and suites across {city}, {nearby1} and {nearby2}. Tell us about your space for a quote." },
+              { "q": "What does an office clean include?", "a": "Desks and shared surfaces, kitchens, restrooms, trash, high-touch points and floors, following a checklist we agree on up front." },
+              { "q": "Do you clean after hours?", "a": "Yes. Evenings and weekends are standard so we never interrupt your team or clients." },
+              { "q": "What size offices do you clean?", "a": "We focus on small offices, studios and suites. For larger spaces, send us the details and we will tell you if it is a fit." },
+              { "q": "How do you handle keys and alarm codes?", "a": "We agree on access before the first clean and limit codes and keys to the people who clean your office." },
+              { "q": "Do I have to sign a long-term contract?", "a": "No. Office cleaning runs on a flexible schedule you can adjust as your needs change." }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+
+  "home": {
+    "hero_heading": "House Cleaning Across {region}",
+    "services": {
+      "label": "What We Clean",
+      "intro": "From weekly upkeep to a top-to-bottom reset or a move-out deadline, pick the clean that fits where your home is right now.",
+      "mid_cta": "Not sure what you need? Tell us about your home and we'll recommend the right clean."
+    },
+    "process": {
+      "heading": "How Booking Works",
+      "intro": "From your first call or text to a clean home, we keep it simple and tell you the price before we start.",
+      "steps": [
+        { "title": "Call, Text or Request a Quote", "text": "Tell us about your home, the clean you want and a day that works. The form takes under a minute." },
+        { "title": "Confirm Scope and Time", "text": "We confirm the details, give you a clear quote and lock in your date and arrival window." },
+        { "title": "We Clean", "text": "We arrive with our own supplies and work through a written checklist, room by room." },
+        { "title": "Walkthrough and Follow-Up", "text": "If anything was missed, tell us and we will make it right. Then pick your next clean, or don't." }
+      ],
+      "note": "We bring our own supplies and equipment. Prefer fragrance-free or your own products? Just tell us when you book."
+    },
+    "reviews_cta": "Ready to come home to a clean house?",
+    "faq_items": [
+      { "q": "What areas do you serve?", "a": "{brand} serves {city} and nearby communities across {region}, including {nearby1} and {nearby2}. Call or text to check your address." },
+      { "q": "How much does a house cleaning cost?", "a": "It depends on the size of the home, its condition and the type of clean. Tell us about your home and we'll send a clear quote before any work starts." },
+      { "q": "Do I need to be home?", "a": "No. Many clients leave a key, lockbox or door code. We go over entry, alarms and pets before the first visit." },
+      { "q": "Do you bring cleaning supplies?", "a": "Yes. We bring supplies and equipment to every clean. Fragrance-free or your own products are fine; just tell us when you book." },
+      { "q": "What if I'm not happy with something?", "a": "Tell us right away. We would rather hear about it and fix it than have you wonder whether to call." }
+    ],
+    "final_cta_note": "Fast replies by call or text"
+  },
+
+  "contact": {
+    "phone_note": "Fastest way to reach us. Call or text.",
+    "email_note": "We reply as soon as we can, usually the same day",
+    "steps_heading": "What happens after you reach out",
+    "steps": [
+      { "title": "Tell Us About Your Home", "when": "Right now", "text": "Send the form, call or text with your address, home size, the clean you want and a day that works." },
+      { "title": "Get Your Quote", "when": "Usually the same day", "text": "We confirm the details and send a clear quote. No pressure and no obligation." },
+      { "title": "Pick Your Time", "when": "When it suits you", "text": "Choose a date and arrival window. We confirm by text and remind you before the visit." },
+      { "title": "Come Home to Clean", "when": "Cleaning day", "text": "We arrive with our supplies and follow the checklist. Tell us if anything needs another look." }
+    ]
+  },
+
+  "area_essay": {
+    "_how": "Area pages need a 3-paragraph local essay (place -> condition -> our method, 180+ words), an about_heading naming the city and its condition, 5 FAQ written the way a homeowner talks (name a neighborhood; the last one cross-sells the other category), a meta title that leads with the service the area's housing needs most, and 6 towns/neighborhoods served.",
+    "conditions": [
+      { "id": "pollen", "use_when": "anywhere in Georgia, spring", "condition": "Spring pine and oak pollen coats sills, screens, fans, patio doors and anything near an open window in a yellow-green film.", "method": "We wipe sills, tracks and blades by hand during pollen season instead of just dusting, which only spreads it." },
+      { "id": "red-clay", "use_when": "suburban homes with yards, driveways, kids, dogs", "condition": "Georgia red clay tracks in on shoes and paws and stains entry tile, grout and light carpet.", "method": "We give entries, mudrooms and back doors extra attention and treat grout lines instead of only mopping over them." },
+      { "id": "humidity", "use_when": "any home, especially older bathrooms without strong ventilation", "condition": "Long humid summers keep bathrooms damp, so soap scum hardens and mildew shows up in grout and caulk.", "method": "We scrub grout and caulk lines, descale glass and leave bathrooms drying, not just wiped." },
+      { "id": "pet-hair", "use_when": "family neighborhoods, reviews mention dogs or cats", "condition": "Pet hair works into rugs, stairs, baseboards and under furniture faster than a weekly vacuum keeps up with.", "method": "We vacuum edges, stairs and under furniture and dust baseboards so hair doesn't build up between visits." },
+      { "id": "older-homes", "use_when": "bungalows, craftsman and pre-1960 homes (Decatur, Kirkwood, Virginia-Highland, Inman Park, East Point)", "condition": "Original hardwoods, vintage tile and plaster walls need gentler products and a slower hand than new construction.", "method": "We use pH-neutral products on old floors and tile and hand-detail trim and sills, where age shows first." },
+      { "id": "high-rise", "use_when": "condos and apartments (Midtown, Buckhead, downtown, Atlantic Station)", "condition": "Concierge check-in, elevator reservations and parking rules decide when cleaners can get in and how long they can stay.", "method": "We plan around building rules: check in with the concierge, book loading times when needed and bring compact equipment." },
+      { "id": "hoa", "use_when": "townhome and HOA communities (Brookhaven, Dunwoody, Smyrna, Alpharetta, Johns Creek)", "condition": "HOA guest-parking rules and multi-level townhome layouts make timing and access part of the job.", "method": "We follow your community's parking rules and work floor by floor so multi-level homes stay efficient." },
+      { "id": "short-term-rentals", "use_when": "neighborhoods with many rentals (Old Fourth Ward, Midtown, Inman Park, East Atlanta, Decatur)", "condition": "Back-to-back short-term stays leave a few hours to turn a unit around before the next guest arrives.", "method": "We schedule from your booking calendar and send photos after every turnover." },
+      { "id": "new-construction", "use_when": "fast-growing suburbs and infill (Brookhaven, Smyrna, Sandy Springs, Alpharetta, Kennesaw)", "condition": "New builds and remodels leave fine construction dust in cabinets, vents and window tracks for weeks.", "method": "We clean top down with damp methods so fine dust is picked up instead of pushed around." },
+      { "id": "big-family-homes", "use_when": "large single-family neighborhoods (Buckhead, Sandy Springs, Dunwoody, Johns Creek, Milton)", "condition": "Large homes with busy households wear hardest on kitchens, kids' bathrooms and high-traffic floors.", "method": "We focus each visit on the rooms the family actually lives in, and rotate the rest on a schedule." }
+    ],
+    "faq_patterns": [
+      "My {neighborhood} home has {condition detail}. How often should I have it cleaned?",
+      "Do you clean {housing type} in {neighborhood}?",
+      "We just moved into a new build in {neighborhood}. Is a post-construction clean worth it?",
+      "How do you handle parking and entry in {neighborhood}?",
+      "Do you also handle {other category service} in {city}?"
+    ]
+  }
+}

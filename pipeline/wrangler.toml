@@ -1,0 +1,15 @@
+name = "callcatcher-previews"
+main = "worker.js"
+compatibility_date = "2026-10-08"
+
+# sites/ holds one folder per lead; the worker maps {slug}.callcatcher.site to sites/{slug}/.
+[assets]
+directory = "../sites"
+binding = "ASSETS"
+run_worker_first = true
+html_handling = "none"   # exact path match; worker.js resolves /page -> page.html
+
+# One route covers every current and future preview subdomain.
+[[routes]]
+pattern = "*.callcatcher.site/*"
+zone_name = "callcatcher.site"

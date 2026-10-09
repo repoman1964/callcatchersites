@@ -1,0 +1,1178 @@
+{
+  "theme": "fresh",
+  "preview": {
+    "enabled": true
+  },
+  "business": {
+    "name": "Sweet Tea Cleaning Co.",
+    "url": "https://sweet-tea-cleaning.callcatcher.site",
+    "description": "Sweet Tea Cleaning Co. is a locally owned house cleaning company in Decatur, GA, serving homes, rentals and small offices across Metro Atlanta.",
+    "phone": "(404) 555-0142",
+    "phone_e164": "+14045550142",
+    "email": "",
+    "address": {
+      "addressLocality": "Decatur",
+      "addressRegion": "GA",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "lat": 33.7748,
+      "lng": -84.2963
+    },
+    "hours": [
+      {
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "14:00"
+      }
+    ],
+    "price_range": "$$",
+    "schema_types": [
+      "LocalBusiness",
+      "HouseCleaningService"
+    ],
+    "same_as": [],
+    "facebook": "",
+    "rating": 4.9,
+    "review_count": 37,
+    "google_place_id": "",
+    "trade": "House Cleaning",
+    "region": "Metro Atlanta",
+    "hq": "Decatur, GA",
+    "owner_pronoun_line": "Replies from the owner's phone",
+    "logo": "",
+    "og_image": "/images/og.webp"
+  },
+  "lead": {
+    "form_submit_url": "",
+    "notify_url": "",
+    "maps_embed_key": ""
+  },
+  "trust_points": [
+    "Locally owned in Decatur, GA",
+    "Free, no-pressure quotes",
+    "Fast replies by call or text",
+    "4.9★ rating on Google"
+  ],
+  "home": {
+    "meta": {
+      "title": "Sweet Tea Cleaning Co. | House Cleaning in Metro Atlanta",
+      "description": "Locally owned house cleaning in Decatur and Metro Atlanta. Recurring, deep and move-out cleans, rental turnovers and more. Free quotes."
+    },
+    "hero": {
+      "heading": "House Cleaning Across Metro Atlanta",
+      "sub": "Recurring, deep and move-out cleaning from a locally owned Decatur team. Tell us about your home, pick a day, and we'll text you a clear quote.",
+      "bg": "/images/hero.webp"
+    },
+    "trust_bar": [
+      "Locally Owned & Operated",
+      "Free Quotes, No Contracts",
+      "Call or Text — Fast Replies",
+      "4.9★ on Google"
+    ],
+    "services": {
+      "label": "What We Clean",
+      "intro": "From weekly upkeep to a top-to-bottom reset or a move-out deadline, pick the clean that fits where your home is right now.",
+      "mid_cta": "Not sure what you need? Tell us about your home and we'll recommend the right clean."
+    },
+    "story": {
+      "heading": "Cleaning done with",
+      "heading_em": "care and consistency",
+      "paragraphs": [
+        "Sweet Tea Cleaning Co. is a locally owned cleaning company based in Decatur. We started with a simple idea: a cleaner should show up when they say they will, follow the same checklist every time, and treat your home like it matters.",
+        "Our clients are busy families, professionals, landlords and rental hosts across Metro Atlanta. Some want a reset after a long stretch, some want the house kept on a schedule, and some need a unit turned over before a deadline. We plan every clean around what the home actually needs."
+      ],
+      "image": {
+        "src": "/images/about-team.webp",
+        "alt": "Cleaner in gloves and safety gear wiping down a window frame in a Metro Atlanta home"
+      }
+    },
+    "process": {
+      "heading": "How Booking Works",
+      "intro": "From your first call or text to a clean home, we keep it simple and tell you the price before we start.",
+      "steps": [
+        {
+          "title": "Call, Text or Request a Quote",
+          "text": "Tell us about your home, the clean you want and a day that works. The form takes under a minute."
+        },
+        {
+          "title": "Confirm Scope and Time",
+          "text": "We confirm the details, give you a clear quote and lock in your date and arrival window."
+        },
+        {
+          "title": "We Clean",
+          "text": "We arrive with our own supplies and work through a written checklist, room by room."
+        },
+        {
+          "title": "Walkthrough and Follow-Up",
+          "text": "If anything was missed, tell us and we will make it right. Then pick your next clean, or don't."
+        }
+      ],
+      "note": "We bring our own supplies and equipment. Prefer fragrance-free or your own products? Just tell us when you book."
+    },
+    "areas": {
+      "intro": "Based in Decatur, GA — cleaning homes across in-town Atlanta and the northern and western suburbs.",
+      "featured": "atlanta-ga",
+      "featured_blurb": "From Midtown high-rises to Virginia-Highland bungalows and BeltLine rentals, we plan every Atlanta clean around the building, the pollen and your schedule.",
+      "featured_image": {
+        "src": "/images/areas/area-1.webp",
+        "alt": "Clean, bright living room in an Atlanta, GA home"
+      },
+      "featured_caption": "Cleaning homes across Metro Atlanta."
+    },
+    "reviews_cta": "Ready to come home to a clean house?",
+    "faq": {
+      "heading": "House Cleaning Questions in Atlanta, GA",
+      "intro": "Answers to what people ask most before booking a cleaner.",
+      "items": [
+        {
+          "q": "What areas do you serve?",
+          "a": "Sweet Tea Cleaning Co. serves Atlanta and nearby communities across Metro Atlanta, including Decatur and Sandy Springs. Call or text to check your address."
+        },
+        {
+          "q": "How much does a house cleaning cost?",
+          "a": "It depends on the size of the home, its condition and the type of clean. Tell us about your home and we'll send a clear quote before any work starts."
+        },
+        {
+          "q": "Do I need to be home?",
+          "a": "No. Many clients leave a key, lockbox or door code. We go over entry, alarms and pets before the first visit."
+        },
+        {
+          "q": "Do you bring cleaning supplies?",
+          "a": "Yes. We bring supplies and equipment to every clean. Fragrance-free or your own products are fine; just tell us when you book."
+        },
+        {
+          "q": "What if I'm not happy with something?",
+          "a": "Tell us right away. We would rather hear about it and fix it than have you wonder whether to call."
+        }
+      ]
+    },
+    "final_cta": {
+      "heading": "Ready to Come Home to a Clean House?",
+      "body": "Sweet Tea Cleaning Co. cleans homes across Atlanta and Metro Atlanta. Tell us about yours and we'll send a clear quote, usually the same day.",
+      "note": "Fast replies by call or text"
+    }
+  },
+  "categories": [
+    {
+      "slug": "house-cleaning",
+      "name": "House Cleaning",
+      "description": "Recurring, deep and move-in/move-out cleaning for homes and apartments across Metro Atlanta.",
+      "image": {
+        "src": "/images/categories/house-cleaning.webp",
+        "alt": "Bright, freshly cleaned living room in a Atlanta, GA home"
+      },
+      "hub": {
+        "meta": {
+          "title": "House Cleaning Services in Atlanta, GA | Sweet Tea Cleaning Co.",
+          "description": "Recurring, deep and move-in/move-out house cleaning in Atlanta, GA. Sweet Tea Cleaning Co. brings the supplies and follows a checklist. Free quotes."
+        },
+        "hero_sub": "Sweet Tea Cleaning Co. keeps Atlanta homes clean on your schedule: a standing recurring clean, a top-to-bottom deep clean, or an empty-home clean before or after a move.",
+        "services_intro": "Pick the clean that fits where your home is right now. Not sure which one? Tell us about the house and we will recommend one.",
+        "why_points": [
+          "Locally owned and operated",
+          "A written checklist for every clean",
+          "We bring our own supplies and equipment",
+          "Free quotes before any work starts",
+          "Fast replies by call or text",
+          "Flexible scheduling, no long-term contracts"
+        ],
+        "band_label": "Ready when you are",
+        "band_heading": "Tell us about your home. We'll send a clear quote.",
+        "faq": {
+          "heading": "House Cleaning Questions in Atlanta, GA",
+          "intro": "Straight answers to what Atlanta homeowners ask before booking a cleaner.",
+          "items": [
+            {
+              "q": "What is the difference between a regular clean and a deep clean?",
+              "a": "A regular clean keeps kitchens, bathrooms, floors and surfaces at baseline. A deep clean adds the detail work a regular clean skips, like baseboards, inside appliances, grout and blinds."
+            },
+            {
+              "q": "Do I need a deep clean before recurring service starts?",
+              "a": "Usually, yes. If it has been a couple of months since a professional clean, a first deep clean resets the home so recurring visits stay quick and consistent."
+            },
+            {
+              "q": "Do you bring your own supplies?",
+              "a": "Yes. We bring supplies and equipment to every clean. If you prefer your own products or fragrance-free options, tell us when you book."
+            },
+            {
+              "q": "Do I need to be home during the cleaning?",
+              "a": "No. Many clients leave a key, lockbox or door code. We go over entry, alarms and pets before the first visit."
+            }
+          ]
+        }
+      },
+      "services": [
+        {
+          "slug": "recurring-cleaning",
+          "name": "Recurring Cleaning",
+          "meta": {
+            "title": "Recurring House Cleaning in Atlanta, GA | Sweet Tea Cleaning Co.",
+            "description": "Weekly, every-two-weeks or monthly house cleaning in Atlanta, GA. Sweet Tea Cleaning Co. follows the same checklist every visit. Get a free quote."
+          },
+          "summary": "Weekly, every-two-weeks or monthly cleaning on a set schedule, so your Atlanta home stays at baseline without you thinking about it.",
+          "hero_image": "/images/services/recurring-cleaning.webp",
+          "image": {
+            "src": "/images/services/recurring-cleaning.webp",
+            "alt": "Gloved hand with a spray bottle during a recurring house cleaning in Atlanta, GA"
+          },
+          "body": [
+            "Most Atlanta households don't need a cleaner because the house is a disaster. They need one because the week fills up and the bathrooms, floors and kitchen slide a little further every few days. Recurring cleaning fixes that by putting your home on a schedule. Weekly, every two weeks or monthly, Sweet Tea Cleaning Co. comes in, works through the same checklist and leaves the house reset.",
+            "Every visit covers kitchens, bathrooms, dusting, floors and trash, and we rotate one detail task each time, like baseboards, the inside of the microwave or blinds, so the small stuff never piles up. Pets, entry codes and the rooms you care about most are noted once and followed every visit.",
+            "Recurring service is also the easiest clean to plan around. You know when we are coming, and you can skip or move a visit when life changes. Ask about a first-time deep clean if it has been a while, so regular visits can focus on upkeep instead of catch-up."
+          ],
+          "benefits": [
+            "Kitchen counters, sink, stovetop and appliance fronts wiped and shined",
+            "Bathrooms scrubbed: toilets, tubs, showers, sinks and mirrors",
+            "Floors vacuumed and mopped throughout",
+            "Reachable surfaces dusted, and trash emptied and relined",
+            "A rotating detail task each visit so nothing builds up",
+            "Your preferences noted once and followed every visit"
+          ],
+          "sidebar_heading": "Put your home on a cleaning schedule.",
+          "faq": {
+            "heading": "Recurring Cleaning FAQ",
+            "intro": "Common questions about recurring house cleaning in Atlanta, GA.",
+            "items": [
+              {
+                "q": "Do you offer recurring house cleaning near me in Atlanta, GA?",
+                "a": "Yes. Sweet Tea Cleaning Co. provides weekly, every-two-weeks and monthly cleaning throughout Atlanta, Decatur and Sandy Springs. Call or text to check your street and available days."
+              },
+              {
+                "q": "What does a recurring cleaning include?",
+                "a": "Kitchens, bathrooms, dusting, floors and trash every visit, plus one rotating detail task. We follow a written checklist so every visit is consistent."
+              },
+              {
+                "q": "How do I know which frequency is right for my home?",
+                "a": "Homes with kids, pets or heavy cooking usually do best weekly or every two weeks. Smaller or quieter homes often stay on top of things with a monthly clean."
+              },
+              {
+                "q": "Can I add extra tasks to a recurring visit?",
+                "a": "Yes. Inside the oven, inside the fridge, interior windows and laundry can be added to a visit. Ask when you book or text us before your next clean."
+              },
+              {
+                "q": "Can I skip or reschedule a visit?",
+                "a": "Yes. Give us notice and we will move or skip the visit. There are no long-term contracts."
+              },
+              {
+                "q": "Is Sweet Tea Cleaning Co. a local company?",
+                "a": "Yes. We are a locally owned cleaning company based in Decatur, GA, serving homes across Metro Atlanta."
+              }
+            ]
+          }
+        },
+        {
+          "slug": "deep-cleaning",
+          "name": "Deep Cleaning",
+          "meta": {
+            "title": "Deep House Cleaning in Atlanta, GA | Sweet Tea Cleaning Co.",
+            "description": "Top-to-bottom deep cleaning in Atlanta, GA: baseboards, inside appliances, grout and blinds. Sweet Tea Cleaning Co. gives free quotes. Call or text today."
+          },
+          "summary": "A top-to-bottom reset for the places a regular clean skips: baseboards, inside appliances, grout, blinds and fixtures.",
+          "hero_image": "/images/services/deep-cleaning.webp",
+          "image": {
+            "src": "/images/services/deep-cleaning.webp",
+            "alt": "Spotless glass shower and vanity after a deep cleaning in a Atlanta, GA bathroom"
+          },
+          "body": [
+            "A deep clean is for the house that needs more than upkeep: the first clean with a new cleaner, a seasonal reset, getting ready to host, or catching up after a busy few months. In Atlanta homes that usually means pollen film on sills and fans, red clay ground into entry floors, and soap scum and mildew in bathrooms that run humid most of the year.",
+            "Sweet Tea Cleaning Co. works top to bottom, room by room. We start high with fans, vents and light fixtures, work down through cabinet fronts, baseboards and door frames, and finish with floors so nothing falls onto a surface that is already clean. Bathrooms get scrubbed tile and grout and descaled glass. Kitchens get degreased fronts and the inside of the oven and fridge.",
+            "Deep cleans take longer than regular visits, so we confirm the size and condition of the home up front and give you a clear quote before we start. Many clients follow a deep clean with recurring service, because the hard part is already done."
+          ],
+          "benefits": [
+            "Baseboards, door frames and light switches wiped by hand",
+            "Inside the oven and refrigerator cleaned",
+            "Tile and grout scrubbed and shower glass descaled",
+            "Ceiling fans, vents, blinds and light fixtures dusted",
+            "Cabinet fronts degreased and window sills and tracks cleaned",
+            "Floors cleaned edge to edge, including behind light furniture"
+          ],
+          "sidebar_heading": "Reset the whole house in one visit.",
+          "faq": {
+            "heading": "Deep Cleaning FAQ",
+            "intro": "Common questions about deep house cleaning in Atlanta, GA.",
+            "items": [
+              {
+                "q": "Do you offer deep cleaning near me in Atlanta, GA?",
+                "a": "Yes. Sweet Tea Cleaning Co. handles deep cleans across Atlanta, Decatur and Sandy Springs. Call or text with your address and the size of your home for a quote."
+              },
+              {
+                "q": "What does a deep clean include that a regular clean doesn't?",
+                "a": "Baseboards, inside the oven and fridge, grout and tile, blinds, fans, vents and cabinet fronts. It is the detail work that builds up between regular cleans."
+              },
+              {
+                "q": "How do I know if my Atlanta home needs a deep clean?",
+                "a": "If it has been two months or more since a professional clean, you are starting service with a new cleaner, or you are getting ready for guests, a deep clean is the right start."
+              },
+              {
+                "q": "Can you deep clean just the kitchen and bathrooms?",
+                "a": "Yes. We can focus a deep clean on the rooms that need it most. Tell us which rooms when you ask for a quote."
+              },
+              {
+                "q": "How long does a deep clean take?",
+                "a": "It depends on the size and condition of the home. We confirm the expected time when we quote, so you can plan your day."
+              },
+              {
+                "q": "Should I switch to recurring cleaning after a deep clean?",
+                "a": "Many clients do. Once the home is reset, regular visits keep it there with less time and effort each visit."
+              }
+            ]
+          }
+        },
+        {
+          "slug": "move-in-move-out-cleaning",
+          "name": "Move-In & Move-Out Cleaning",
+          "meta": {
+            "title": "Move-In & Move-Out Cleaning in Atlanta, GA | Sweet Tea Cleaning Co.",
+            "description": "Empty-home move-in and move-out cleaning in Atlanta, GA: inside cabinets, appliances and closets. Sweet Tea Cleaning Co. works from your checklist."
+          },
+          "summary": "An empty-home clean before you move in or after you move out: inside cabinets, closets and appliances, top to bottom.",
+          "hero_image": "/images/services/move-in-move-out-cleaning.webp",
+          "image": {
+            "src": "/images/services/move-in-move-out-cleaning.webp",
+            "alt": "Empty, freshly cleaned kitchen ready for move-in in Atlanta, GA"
+          },
+          "body": [
+            "Moving in Metro Atlanta is stressful enough without scrubbing out an apartment at midnight before the walkthrough. A move-out clean gets the place ready for your landlord, property manager or buyer. A move-in clean means you unpack into a home that's actually clean, not one that was \"broom swept\" by the last owner.",
+            "Empty homes let us reach everything, so we go inside every cabinet, drawer and closet, inside the oven, fridge, dishwasher and microwave, and along every baseboard and window track. If your landlord or property manager gave you a checklist, send it with your quote request and we will work from it line by line.",
+            "Timing matters on moving day, so we schedule around your movers and your lease date. Let us know your deadline when you reach out, and we will tell you which days we can cover. If you are buying, a move-in clean before your furniture arrives is the one chance to clean inside every cabinet and closet while they are empty."
+          ],
+          "benefits": [
+            "Inside every cabinet, drawer and closet wiped out",
+            "Inside the oven, fridge, dishwasher and microwave cleaned",
+            "Baseboards, doors, frames and switch plates wiped",
+            "Bathrooms scrubbed and descaled top to bottom",
+            "Window sills and tracks cleaned and floors done edge to edge",
+            "Your landlord or property-manager checklist followed"
+          ],
+          "sidebar_heading": "Hand over the keys with a clean home.",
+          "faq": {
+            "heading": "Move-In & Move-Out Cleaning FAQ",
+            "intro": "Common questions about moving cleans in Atlanta, GA.",
+            "items": [
+              {
+                "q": "Do you offer move-out cleaning near me in Atlanta, GA?",
+                "a": "Yes. Sweet Tea Cleaning Co. cleans apartments, condos and houses for moves throughout Atlanta, Decatur and Sandy Springs. Tell us your move date for availability."
+              },
+              {
+                "q": "What is included in a move-out clean?",
+                "a": "Inside cabinets, drawers and closets, inside appliances, bathrooms, baseboards, sills and floors. It is a full empty-home clean, not a quick wipe-down."
+              },
+              {
+                "q": "Does the home need to be empty?",
+                "a": "Empty or close to it works best. Furniture and boxes block the places a move-out inspection checks."
+              },
+              {
+                "q": "Can you work from my landlord's checklist?",
+                "a": "Yes. Send it with your quote request and we will follow it line by line."
+              },
+              {
+                "q": "Can you clean on the same day as my move?",
+                "a": "Often, yes. We schedule around your movers so every surface is reachable. Tell us the timing when you ask for a quote."
+              },
+              {
+                "q": "Do you clean carpets?",
+                "a": "We vacuum carpets thoroughly. If your lease requires steam cleaning, ask us and we will tell you what we offer or who we recommend."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "specialty-cleaning",
+      "name": "Specialty Cleaning",
+      "description": "Short-term rental turnovers, post-construction cleanup and small-office cleaning across Metro Atlanta.",
+      "image": {
+        "src": "/images/categories/specialty-cleaning.webp",
+        "alt": "Hotel-style made bed in a short-term rental cleaned in Atlanta, GA"
+      },
+      "hub": {
+        "meta": {
+          "title": "Specialty Cleaning in Atlanta, GA | Sweet Tea Cleaning Co.",
+          "description": "Airbnb turnovers, post-construction cleanup and office cleaning in Atlanta, GA. Sweet Tea Cleaning Co. schedules around your guests, crews and hours."
+        },
+        "hero_sub": "Beyond homes, Sweet Tea Cleaning Co. handles cleans that run on someone else's clock: guest turnovers, the dust after a remodel, and offices after hours.",
+        "services_intro": "Each of these is built around a deadline: a check-in time, a move-in date or a Monday morning. Tell us yours.",
+        "why_points": [
+          "Locally owned and operated",
+          "Scheduled around your deadlines",
+          "A written checklist for every job",
+          "We bring our own supplies and equipment",
+          "Free quotes before any work starts",
+          "Fast replies by call or text"
+        ],
+        "band_label": "On your schedule",
+        "band_heading": "Tell us the deadline. We'll plan the clean around it.",
+        "faq": {
+          "heading": "Specialty Cleaning Questions in Atlanta, GA",
+          "intro": "What property hosts, homeowners and office managers ask us most.",
+          "items": [
+            {
+              "q": "Do you clean short-term rentals between guests?",
+              "a": "Yes. We do turnovers between check-out and check-in, including linens, restocking from your supplies and photos when we finish."
+            },
+            {
+              "q": "When should I book a post-construction clean?",
+              "a": "After the trades are finished and before furniture goes in. That order keeps fine dust from settling on clean surfaces again."
+            },
+            {
+              "q": "Can you clean our office after hours?",
+              "a": "Yes. Evenings and weekends are standard for office cleaning, on a weekly or more frequent schedule."
+            },
+            {
+              "q": "How do you quote specialty cleans?",
+              "a": "Send photos or a short description of the space and the deadline. We confirm the scope and give you a clear quote before scheduling."
+            }
+          ]
+        }
+      },
+      "services": [
+        {
+          "slug": "airbnb-cleaning",
+          "name": "Airbnb & Rental Turnovers",
+          "meta": {
+            "title": "Airbnb Cleaning in Atlanta, GA | Sweet Tea Cleaning Co.",
+            "description": "Short-term rental turnovers in Atlanta, GA: linens, restocking and photos after every clean. Sweet Tea Cleaning Co. works between check-out and check-in."
+          },
+          "summary": "Guest-ready turnovers between check-out and check-in, with linens changed, supplies restocked and photos when we finish.",
+          "hero_image": "/images/services/airbnb-cleaning.webp",
+          "image": {
+            "src": "/images/services/airbnb-cleaning.webp",
+            "alt": "Short-term rental bedroom with fresh linens after a turnover clean in Atlanta, GA"
+          },
+          "body": [
+            "Short-term rentals in Atlanta live and die by reviews, and cleanliness is the review guests are quickest to complain about. A turnover clean has a few hours between check-out and check-in to get the place back to the photos: fresh linens, a clean kitchen, spotless bathrooms and nothing left behind by the last guest.",
+            "Sweet Tea Cleaning Co. works from your listing's checklist. We strip and make beds, clean the kitchen and bathrooms, take out the trash, restock supplies from what you keep on site, and walk the unit for anything that needs your attention. You get photos when we finish, plus a note about any damage, missing items or low supplies.",
+            "Same-day turnovers need dependable timing, so we plan around your booking calendar. Tell us how many units you manage and how often they turn over, and we will set up a schedule that fits. Between stays, we can also handle deeper periodic cleans, like inside appliances and baseboards, so the unit keeps matching its listing photos."
+          ],
+          "benefits": [
+            "Beds stripped and remade with fresh linens",
+            "Kitchen, dishes and appliances reset for the next guest",
+            "Bathrooms cleaned and towels replaced",
+            "Supplies restocked from your on-site inventory",
+            "Damage, missing items and low supplies reported to you",
+            "Photos sent after every turnover"
+          ],
+          "sidebar_heading": "Keep every check-in guest-ready.",
+          "faq": {
+            "heading": "Airbnb & Rental Cleaning FAQ",
+            "intro": "Common questions about short-term rental turnovers in Atlanta, GA.",
+            "items": [
+              {
+                "q": "Do you offer Airbnb cleaning near me in Atlanta, GA?",
+                "a": "Yes. Sweet Tea Cleaning Co. turns over short-term rentals across Atlanta, Decatur and Sandy Springs. Tell us where your units are and how often they book."
+              },
+              {
+                "q": "What does a turnover clean include?",
+                "a": "Linens, beds, kitchen, bathrooms, trash, restocking from your supplies and a walkthrough for damage. We send photos when the unit is ready."
+              },
+              {
+                "q": "How do you know when to clean?",
+                "a": "We schedule from your booking calendar, so each turnover lands between check-out and the next check-in."
+              },
+              {
+                "q": "Do you supply linens and toiletries?",
+                "a": "We restock from the supplies you keep on site. If you need linen service or supplies sourced, ask us about it when you get a quote."
+              },
+              {
+                "q": "What happens if a guest checks out late?",
+                "a": "We adjust within the turnover window and message you if timing gets tight, so you are never surprised at check-in."
+              },
+              {
+                "q": "Can you handle more than one property?",
+                "a": "Yes. Tell us how many units you manage and we will set up a schedule that covers them."
+              }
+            ]
+          }
+        },
+        {
+          "slug": "post-construction-cleaning",
+          "name": "Post-Construction Cleaning",
+          "meta": {
+            "title": "Post-Construction Cleaning in Atlanta, GA | Sweet Tea Cleaning Co.",
+            "description": "Post-construction and renovation cleanup in Atlanta, GA: fine dust, paint flecks and sticker residue removed. Sweet Tea Cleaning Co. gives free quotes."
+          },
+          "summary": "After a remodel or new build: fine dust, paint flecks, sticker residue and grime cleared so the space is ready to live in.",
+          "hero_image": "/images/services/post-construction-cleaning.webp",
+          "image": {
+            "src": "/images/services/post-construction-cleaning.webp",
+            "alt": "Newly renovated open living space cleaned after construction in Atlanta, GA"
+          },
+          "body": [
+            "Renovation dust is different from everyday dust. It is fine enough to sit on top of cabinets, inside drawers, along every ledge and in the air for days, and a normal clean just moves it around. In Metro Atlanta, where a lot of older homes are being opened up and updated, post-construction cleaning is the step that turns a job site back into a home.",
+            "Sweet Tea Cleaning Co. cleans from the top down: light fixtures, fans and vents first, then cabinets inside and out, counters, windows, sills and tracks, and finally floors. We remove paint flecks, sticker residue and adhesive from new fixtures and glass, and vacuum and damp-wipe so fine dust is picked up instead of pushed around.",
+            "Most projects need the clean after the trades finish and before furniture moves in. Some benefit from a rough clean followed by a final touch-up. Send us photos or a description of the job and your move-in date, and we will quote the scope that fits."
+          ],
+          "benefits": [
+            "Fine construction dust removed from every surface and ledge",
+            "Inside new cabinets and drawers wiped out",
+            "Paint flecks, sticker residue and adhesive removed",
+            "Windows, sills and tracks cleaned",
+            "Light fixtures, fans and vents dusted",
+            "Floors vacuumed and cleaned for move-in"
+          ],
+          "sidebar_heading": "Turn the job site back into a home.",
+          "faq": {
+            "heading": "Post-Construction Cleaning FAQ",
+            "intro": "Common questions about cleaning after a remodel or build in Atlanta, GA.",
+            "items": [
+              {
+                "q": "Do you offer post-construction cleaning near me in Atlanta, GA?",
+                "a": "Yes. Sweet Tea Cleaning Co. cleans after remodels and new builds in Atlanta, Decatur and Sandy Springs. Send photos or a description of the job for a quote."
+              },
+              {
+                "q": "What does post-construction cleaning include?",
+                "a": "Dust removal from every surface, vent and fixture, inside cabinets, windows and tracks, paint and sticker residue removal and a full floor clean."
+              },
+              {
+                "q": "When should I schedule the clean?",
+                "a": "After all trades are done and before furniture goes in. Booking earlier usually means re-cleaning dust that settles later."
+              },
+              {
+                "q": "Do you haul away construction debris?",
+                "a": "No. We clean; bulk debris and haul-away stay with your contractor. We handle everything that's left after the trash is out."
+              },
+              {
+                "q": "Do you work with contractors and builders?",
+                "a": "Yes. We can coordinate directly with your contractor on timing and access."
+              },
+              {
+                "q": "Is one visit enough?",
+                "a": "Smaller jobs often take one visit. Larger remodels may need a rough clean plus a final touch-up. We will tell you which when we quote."
+              }
+            ]
+          }
+        },
+        {
+          "slug": "office-cleaning",
+          "name": "Office Cleaning",
+          "meta": {
+            "title": "Office Cleaning in Atlanta, GA | Sweet Tea Cleaning Co.",
+            "description": "After-hours office cleaning in Atlanta, GA for small offices, studios and suites. Sweet Tea Cleaning Co. cleans on your schedule. Get a free quote."
+          },
+          "summary": "After-hours cleaning for small offices, studios and suites, so your team walks into a clean space.",
+          "hero_image": "/images/services/office-cleaning.webp",
+          "image": {
+            "src": "/images/services/office-cleaning.webp",
+            "alt": "Clean, open small office space after an evening clean in Atlanta, GA"
+          },
+          "body": [
+            "Small offices get messy in the same places homes do: the kitchen, the restrooms, the floors at the entrance and every surface people touch all day. Sweet Tea Cleaning Co. cleans offices, studios and suites in Atlanta after hours, so the space is ready when your team and clients walk in.",
+            "Each visit covers desks and shared surfaces, kitchens and break areas, restrooms, trash and recycling, high-touch points like door handles and switches, and floors. We agree on a checklist up front and follow it every visit, and we flag anything that needs your attention, like a running toilet or low supplies.",
+            "Most offices choose a weekly or twice-weekly schedule in the evening or on weekends. Tell us about your space, your hours and how you handle keys or alarm codes, and we will quote a plan that works around your business. As your team grows or your hours change, the schedule can change with it, with no long-term contract."
+          ],
+          "benefits": [
+            "Desks, counters and shared surfaces wiped down",
+            "Kitchens and break areas cleaned",
+            "Restrooms cleaned and restocked from your supplies",
+            "Trash and recycling emptied",
+            "Door handles, switches and other high-touch points sanitized",
+            "Floors vacuumed and mopped"
+          ],
+          "sidebar_heading": "Start every workday in a clean office.",
+          "faq": {
+            "heading": "Office Cleaning FAQ",
+            "intro": "Common questions about office cleaning in Atlanta, GA.",
+            "items": [
+              {
+                "q": "Do you offer office cleaning near me in Atlanta, GA?",
+                "a": "Yes. Sweet Tea Cleaning Co. cleans small offices, studios and suites across Atlanta, Decatur and Sandy Springs. Tell us about your space for a quote."
+              },
+              {
+                "q": "What does an office clean include?",
+                "a": "Desks and shared surfaces, kitchens, restrooms, trash, high-touch points and floors, following a checklist we agree on up front."
+              },
+              {
+                "q": "Do you clean after hours?",
+                "a": "Yes. Evenings and weekends are standard so we never interrupt your team or clients."
+              },
+              {
+                "q": "What size offices do you clean?",
+                "a": "We focus on small offices, studios and suites. For larger spaces, send us the details and we will tell you if it is a fit."
+              },
+              {
+                "q": "How do you handle keys and alarm codes?",
+                "a": "We agree on access before the first clean and limit codes and keys to the people who clean your office."
+              },
+              {
+                "q": "Do I have to sign a long-term contract?",
+                "a": "No. Office cleaning runs on a flexible schedule you can adjust as your needs change."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "areas": [
+    {
+      "slug": "atlanta-ga",
+      "name": "Atlanta, GA",
+      "city": "Atlanta",
+      "state": "GA",
+      "county": "Fulton County",
+      "meta": {
+        "title": "Recurring & Airbnb Cleaning in Atlanta, GA",
+        "description": "Midtown high-rises, Virginia-Highland bungalows and BeltLine rentals each clean differently. We handle recurring cleans and turnovers across Atlanta."
+      },
+      "hero_text": "Atlanta homes run from Midtown and Buckhead high-rise condos to 1920s bungalows in Virginia-Highland and lofts along the BeltLine in Old Fourth Ward. Each one cleans differently, and each one collects the same yellow film of spring pollen.",
+      "hero_image": "/images/areas/area-1.webp",
+      "location_note": "No extra travel fee in this area",
+      "towns": [
+        "Midtown",
+        "Buckhead",
+        "Virginia-Highland",
+        "Inman Park",
+        "Old Fourth Ward",
+        "West Midtown"
+      ],
+      "about_heading": "In-Town Atlanta Cleaning Built Around High-Rises, Bungalows and Rentals",
+      "about_paragraphs": [
+        "In-town Atlanta is a patchwork of housing. Midtown and Buckhead are stacked with high-rise condos and apartments, Virginia-Highland and Inman Park are full of 1910s-1930s bungalows and Victorians, and Old Fourth Ward and West Midtown keep adding lofts and townhomes along the BeltLine. A lot of those units turn over as short-term rentals, and nearly every one of them sits under the tree canopy that gives Atlanta its name.",
+        "That canopy is beautiful until March. Pine and oak pollen coats balconies, window sills, ceiling fans and anything near a patio door, and it comes back inside on every pair of shoes. In the high-rises, the challenge is access instead: concierge check-in, elevator bookings and garage rules decide when a cleaner can get in and how long they can stay.",
+        "We plan for both. In pollen season we hand-wipe sills, tracks, fan blades and screens instead of just dusting them, which only spreads the film around. In condo buildings we check in with the concierge, follow loading and parking rules and bring compact equipment, and for BeltLine rentals we schedule turnovers straight from your booking calendar."
+      ],
+      "glance": [
+        "Locally owned and operated",
+        "Free quotes before any work starts",
+        "Recurring and one-time cleans",
+        "Fast replies by call or text"
+      ],
+      "image": {
+        "src": "/images/areas/area-2.webp",
+        "alt": "Freshly cleaned home interior in Atlanta, GA"
+      },
+      "services_intro": "Recurring cleaning is the most requested service in Atlanta, especially every-two-weeks visits for busy households in Midtown and Virginia-Highland. Short-term rental turnovers come next, concentrated around the BeltLine, Inman Park and Old Fourth Ward, followed by move-out cleans when condo leases end.",
+      "cta_body": "We know in-town Atlanta, from concierge desks in Midtown to street parking in Virginia-Highland. Tell us about your home and we'll send a clear quote.",
+      "faq": {
+        "heading": "House Cleaning FAQ for Atlanta, GA",
+        "intro": "Questions we hear most from Atlanta homeowners.",
+        "items": [
+          {
+            "q": "My Midtown condo building requires a certificate of insurance and elevator booking. Can you work with that?",
+            "a": "Tell us your building's requirements when you request a quote and we'll confirm what we can provide and plan the visit around elevator and concierge rules."
+          },
+          {
+            "q": "Everything in my Virginia-Highland bungalow turns yellow in spring. Can a cleaning help?",
+            "a": "Yes. During pollen season we hand-wipe sills, screens, tracks and fan blades so the film comes off instead of spreading around, and pay extra attention to entry floors."
+          },
+          {
+            "q": "Do you turn over Airbnbs near the BeltLine in Old Fourth Ward?",
+            "a": "Yes. We schedule turnovers from your booking calendar, reset linens and supplies, and send photos when the unit is guest-ready."
+          },
+          {
+            "q": "How often should I schedule cleaning in a busy Inman Park household?",
+            "a": "Most families with kids or pets do best every two weeks. Weekly works well for homes with heavy cooking or multiple pets."
+          },
+          {
+            "q": "Do you also clean offices in West Midtown?",
+            "a": "Yes. We clean small offices and studios after hours across Atlanta, on a weekly or more frequent schedule."
+          }
+        ]
+      },
+      "spotlight_blurb": "From Midtown high-rises to Virginia-Highland bungalows, we plan every Atlanta clean around the building, the pollen and your schedule.",
+      "spotlight_towns": [
+        "Midtown",
+        "Buckhead",
+        "Virginia-Highland",
+        "Inman Park",
+        "Old Fourth Ward",
+        "West Midtown"
+      ]
+    },
+    {
+      "slug": "decatur-ga",
+      "name": "Decatur, GA",
+      "city": "Decatur",
+      "state": "GA",
+      "county": "DeKalb County",
+      "meta": {
+        "title": "Deep Cleaning for Older Homes in Decatur, GA",
+        "description": "Decatur's bungalows and craftsman homes have original hardwoods and vintage tile that need a gentler clean. Deep and recurring cleaning across Decatur."
+      },
+      "hero_text": "Decatur is the DeKalb County seat, about six miles east of downtown Atlanta, and its neighborhoods are full of 1920s-1950s bungalows and craftsman homes with original hardwoods, vintage tile and plaster walls.",
+      "hero_image": "/images/areas/area-2.webp",
+      "location_note": "No extra travel fee in this area",
+      "towns": [
+        "Downtown Decatur",
+        "Oakhurst",
+        "Winnona Park",
+        "Midway Woods",
+        "Lenox Place",
+        "East Lake"
+      ],
+      "about_heading": "Gentle, Detailed Cleaning for Decatur's Older Homes",
+      "about_paragraphs": [
+        "Decatur sits about six miles east of downtown Atlanta and serves as the county seat of DeKalb County. Around the courthouse square, neighborhoods like Oakhurst, Winnona Park and Midway Woods are lined with bungalows and craftsman homes from the 1920s to the 1950s, many lovingly renovated, many still wearing their original oak floors, hex tile bathrooms and plaster walls. It is also our home base.",
+        "Older homes show dirt differently. Hardwood finishes worn thin by decades of use dull quickly with harsh cleaners, vintage grout stains easily, and the deep trim, tall baseboards and window sills of a craftsman home catch dust and pollen that newer, flatter surfaces shed. Bathrooms with original fixtures and limited ventilation stay damp through the summer, so mildew finds caulk and grout lines fast.",
+        "We clean these homes with a slower hand. We use pH-neutral products on old wood and tile, hand-detail trim, sills and baseboards instead of skimming over them, and scrub grout and caulk lines in older bathrooms so they dry clean. Many Decatur clients start with a deep clean and then keep the house there with recurring visits."
+      ],
+      "glance": [
+        "Locally owned and operated",
+        "Free quotes before any work starts",
+        "Recurring and one-time cleans",
+        "Fast replies by call or text"
+      ],
+      "image": {
+        "src": "/images/areas/area-3.webp",
+        "alt": "Freshly cleaned home interior in Decatur, GA"
+      },
+      "services_intro": "Deep cleaning is the most requested service in Decatur, often as a first visit before recurring cleaning every two weeks. We also see steady move-in and move-out cleans as homes sell around the square, and fragrance-free cleaning requests are common here; just ask.",
+      "cta_body": "Decatur is our home base, so getting to you is easy. Tell us about your house and we'll quote a clean that suits it.",
+      "faq": {
+        "heading": "House Cleaning FAQ for Decatur, GA",
+        "intro": "Questions we hear most from Decatur homeowners.",
+        "items": [
+          {
+            "q": "My Oakhurst bungalow has original hardwoods. What do you clean them with?",
+            "a": "We use pH-neutral, wood-safe products and damp, not wet, mopping so old finishes aren't stripped or dulled."
+          },
+          {
+            "q": "Can you deep clean a craftsman home with lots of trim and built-ins?",
+            "a": "Yes. We hand-detail trim, baseboards, sills and built-ins room by room. Tell us about the house and we'll quote the time it needs."
+          },
+          {
+            "q": "Our Winnona Park bathroom has original tile and the grout is stained. Can you help?",
+            "a": "We scrub grout and caulk lines by hand during a deep clean. Very old staining sometimes needs a specialist, and we'll tell you honestly if so."
+          },
+          {
+            "q": "Do you offer fragrance-free cleaning in Decatur?",
+            "a": "Yes. Ask for fragrance-free products when you book and we'll use them every visit."
+          },
+          {
+            "q": "Do you clean after renovations in Decatur?",
+            "a": "Yes. Our post-construction cleaning removes fine dust, paint flecks and residue after a remodel, which is common in older Decatur homes."
+          }
+        ]
+      },
+      "spotlight_blurb": "Our home base: craftsman homes, original hardwoods and vintage tile, cleaned with a gentler hand.",
+      "spotlight_towns": [
+        "Downtown Decatur",
+        "Oakhurst",
+        "Winnona Park",
+        "Midway Woods",
+        "Lenox Place",
+        "East Lake"
+      ]
+    },
+    {
+      "slug": "sandy-springs-ga",
+      "name": "Sandy Springs, GA",
+      "city": "Sandy Springs",
+      "state": "GA",
+      "county": "Fulton County",
+      "meta": {
+        "title": "Recurring House Cleaning in Sandy Springs, GA",
+        "description": "Sandy Springs family homes with kids, pets and busy kitchens need steady upkeep. Recurring and deep house cleaning across Sandy Springs."
+      },
+      "hero_text": "Sandy Springs stretches north of Atlanta along GA-400 and the Chattahoochee River, with wooded family neighborhoods from the 1970s through the 1990s and newer condos around City Springs and the Perimeter.",
+      "hero_image": "/images/areas/area-3.webp",
+      "location_note": "No extra travel fee in this area",
+      "towns": [
+        "City Springs",
+        "Riverside",
+        "North Springs",
+        "High Point",
+        "Mount Vernon Woods",
+        "Hammond Hills"
+      ],
+      "about_heading": "Steady, Family-Focused Cleaning for Sandy Springs Homes",
+      "about_paragraphs": [
+        "Sandy Springs runs north of Atlanta in Fulton County, between GA-400 and the Chattahoochee River. Most of its neighborhoods, like Riverside, North Springs and High Point, are wooded subdivisions of two-story family homes built between the 1970s and the 1990s, with condos and apartments clustered around City Springs and the Perimeter business district.",
+        "Family homes here work hard. Kitchens get used three times a day, kids' bathrooms take a beating, and dogs bring in red clay from wooded yards and shed into rugs, stairs and baseboards faster than a weekly vacuum can keep up. Add the pollen that drifts out of all those trees each spring and the house slides off baseline in a matter of days.",
+        "So we focus on the rooms a family actually lives in. Recurring visits put kitchens, bathrooms and high-traffic floors first, vacuum edges, stairs and under furniture to stay ahead of pet hair, and give entry tile and grout extra attention when the clay is coming in. Seasonal deep cleans pick up the baseboards, blinds and fans in between, and before the holidays we can book a deeper reset so the house is ready when family arrives."
+      ],
+      "glance": [
+        "Locally owned and operated",
+        "Free quotes before any work starts",
+        "Recurring and one-time cleans",
+        "Fast replies by call or text"
+      ],
+      "image": {
+        "src": "/images/areas/area-4.webp",
+        "alt": "Freshly cleaned home interior in Sandy Springs, GA"
+      },
+      "services_intro": "Recurring cleaning every two weeks is the most requested service in Sandy Springs, usually with a focus on pet hair and kitchens. Seasonal deep cleans and move-out cleans for condos around City Springs round out most of our work here.",
+      "cta_body": "We serve neighborhoods across Sandy Springs, from the river to the Perimeter. Tell us about your home and we'll quote your recurring clean.",
+      "faq": {
+        "heading": "House Cleaning FAQ for Sandy Springs, GA",
+        "intro": "Questions we hear most from Sandy Springs homeowners.",
+        "items": [
+          {
+            "q": "We have two dogs in our North Springs home. How often should we have it cleaned?",
+            "a": "Most homes with dogs do best every two weeks, or weekly with heavy shedders. We vacuum edges, stairs and under furniture so hair doesn't build up."
+          },
+          {
+            "q": "Red clay keeps staining our entry tile in Riverside. Can you get it out?",
+            "a": "We scrub entry tile and grout lines instead of just mopping over them. Regular visits keep the staining from setting in."
+          },
+          {
+            "q": "Do you clean condos near City Springs?",
+            "a": "Yes. We clean condos and apartments around City Springs and the Perimeter, and plan around building parking and access rules."
+          },
+          {
+            "q": "Can you deep clean before we host family for the holidays?",
+            "a": "Yes. Book a deep clean a few days before guests arrive. Popular dates fill up, so reach out early."
+          },
+          {
+            "q": "Do you also do move-out cleaning in Sandy Springs?",
+            "a": "Yes. Our move-out cleans cover inside cabinets, closets and appliances and can follow your landlord's checklist."
+          }
+        ]
+      },
+      "spotlight_blurb": "Wooded family neighborhoods with kids, pets and busy kitchens, kept on a steady cleaning schedule.",
+      "spotlight_towns": [
+        "City Springs",
+        "Riverside",
+        "North Springs",
+        "High Point",
+        "Mount Vernon Woods",
+        "Hammond Hills"
+      ]
+    },
+    {
+      "slug": "brookhaven-ga",
+      "name": "Brookhaven, GA",
+      "city": "Brookhaven",
+      "state": "GA",
+      "county": "DeKalb County",
+      "meta": {
+        "title": "Move-In & Post-Construction Cleaning in Brookhaven, GA",
+        "description": "Brookhaven's new infill homes and remodels leave fine construction dust behind. Move-in, post-construction and recurring cleaning in Brookhaven."
+      },
+      "hero_text": "Brookhaven, in DeKalb County just north of Buckhead, is where 1940s-1950s brick ranches are steadily giving way to new infill homes and townhomes, from Ashford Park and Drew Valley to Brookhaven Fields.",
+      "hero_image": "/images/areas/area-4.webp",
+      "location_note": "No extra travel fee in this area",
+      "towns": [
+        "Historic Brookhaven",
+        "Ashford Park",
+        "Drew Valley",
+        "Brookhaven Fields",
+        "Lynwood Park",
+        "Pine Hills"
+      ],
+      "about_heading": "Move-In and Post-Construction Cleaning for Brookhaven's New Builds",
+      "about_paragraphs": [
+        "Brookhaven sits just north of Buckhead in DeKalb County along Peachtree Road. Its post-war neighborhoods, including Ashford Park, Drew Valley and Brookhaven Fields, were built out with modest 1940s and 1950s brick ranches, and over the last decade many of those lots have been rebuilt as larger infill homes, with townhome communities filling in along the main corridors.",
+        "All that building leaves a particular kind of mess. Fresh drywall sanding and trim work leave fine dust inside new cabinets, on top of door frames, in HVAC vents and window tracks, and it keeps settling for weeks after the builder's cleanup. In the townhome and HOA communities, the challenge is logistics: guest-parking rules and three-story layouts make timing and access part of the job.",
+        "We clean new builds from the top down with damp methods, so fine dust is picked up instead of pushed into the air to settle again. We wipe inside every cabinet and drawer before you unpack, remove sticker and paint residue from new fixtures, and follow your community's parking rules while working floor by floor through multi-level homes."
+      ],
+      "glance": [
+        "Locally owned and operated",
+        "Free quotes before any work starts",
+        "Recurring and one-time cleans",
+        "Fast replies by call or text"
+      ],
+      "image": {
+        "src": "/images/areas/area-1.webp",
+        "alt": "Freshly cleaned home interior in Brookhaven, GA"
+      },
+      "services_intro": "Move-in and post-construction cleaning are the most requested services in Brookhaven as new homes and remodels change hands. Once families settle in, many switch to recurring cleaning every two weeks.",
+      "cta_body": "We know Brookhaven's new builds and HOA rules. Tell us your move-in date and we'll plan the clean around it.",
+      "faq": {
+        "heading": "House Cleaning FAQ for Brookhaven, GA",
+        "intro": "Questions we hear most from Brookhaven homeowners.",
+        "items": [
+          {
+            "q": "We just bought a new build in Ashford Park. Is a post-construction clean worth it?",
+            "a": "Usually, yes. Builder cleans rarely get the fine dust out of cabinets, vents and tracks, and it keeps settling for weeks. A top-down clean before you unpack saves a lot of re-dusting."
+          },
+          {
+            "q": "Can you clean our Drew Valley townhome around HOA parking rules?",
+            "a": "Yes. Tell us your community's guest-parking rules and we'll follow them and schedule around them."
+          },
+          {
+            "q": "How long after construction should we schedule the clean?",
+            "a": "After all trades are finished and before furniture arrives. If touch-ups are still happening, we can do a rough clean now and a final pass later."
+          },
+          {
+            "q": "Do you clean three-story townhomes in Brookhaven?",
+            "a": "Yes. We work floor by floor, top down, so multi-level homes stay efficient and dust doesn't drift onto finished floors."
+          },
+          {
+            "q": "Do you also handle recurring house cleaning in Brookhaven?",
+            "a": "Yes. Many clients book a move-in clean first and then switch to recurring visits every two weeks."
+          }
+        ]
+      },
+      "spotlight_blurb": "Infill new builds and townhome communities, cleaned top down before move-in and kept that way after.",
+      "spotlight_towns": [
+        "Historic Brookhaven",
+        "Ashford Park",
+        "Drew Valley",
+        "Brookhaven Fields",
+        "Lynwood Park",
+        "Pine Hills"
+      ]
+    },
+    {
+      "slug": "dunwoody-ga",
+      "name": "Dunwoody, GA",
+      "city": "Dunwoody",
+      "state": "GA",
+      "county": "DeKalb County",
+      "meta": {
+        "title": "Deep & Recurring Cleaning in Dunwoody, GA",
+        "description": "Dunwoody's two-story family homes and townhomes near Perimeter Center need steady upkeep. Deep and recurring house cleaning across Dunwoody."
+      },
+      "hero_text": "Dunwoody, at the top of DeKalb County by Perimeter Center, is known for its 1970s and 1980s two-story traditional homes in neighborhoods like Kingsley, Wynterhall and Dunwoody North, plus newer townhomes near Dunwoody Village.",
+      "hero_image": "/images/areas/area-1.webp",
+      "location_note": "No extra travel fee in this area",
+      "towns": [
+        "Dunwoody Village",
+        "Georgetown",
+        "Kingsley",
+        "Wynterhall",
+        "Dunwoody North",
+        "Perimeter Center"
+      ],
+      "about_heading": "Thorough Cleaning for Dunwoody's Busy Family Homes",
+      "about_paragraphs": [
+        "Dunwoody sits at the northern tip of DeKalb County, just inside the Perimeter's top edge. Most of the city was built in the 1970s and 1980s as two-story traditional homes on wooded lots, in swim-and-tennis neighborhoods like Kingsley, Wynterhall and Dunwoody North, with Georgetown and the streets around Perimeter Center adding townhomes and condos.",
+        "These are big, busy family homes, and the wear shows in predictable places: kitchens that feed a full household, kids' bathrooms, mudrooms and the stairs everyone runs up and down. Wooded lots mean heavy pollen in spring and leaves and clay tracked in the rest of the year, and the original bathrooms in many 1980s homes hold humidity long after a shower.",
+        "We start with the rooms that see the most use and work outward. Deep cleans reset kitchens, bathrooms, baseboards and fans; recurring visits keep high-traffic floors, entries and kids' bathrooms in shape between them. In older bathrooms we scrub grout and caulk lines and leave the room drying, so mildew doesn't get a head start. Your preferences, pets and entry instructions are noted once and followed every visit."
+      ],
+      "glance": [
+        "Locally owned and operated",
+        "Free quotes before any work starts",
+        "Recurring and one-time cleans",
+        "Fast replies by call or text"
+      ],
+      "image": {
+        "src": "/images/areas/area-2.webp",
+        "alt": "Freshly cleaned home interior in Dunwoody, GA"
+      },
+      "services_intro": "Deep cleaning and recurring cleaning every two weeks are the most requested services in Dunwoody. Townhome owners near Georgetown and Perimeter Center often book move-out cleans as well.",
+      "cta_body": "We clean throughout Dunwoody, from Dunwoody Village to Perimeter Center. Tell us about your home and we'll quote a clean that fits.",
+      "faq": {
+        "heading": "House Cleaning FAQ for Dunwoody, GA",
+        "intro": "Questions we hear most from Dunwoody homeowners.",
+        "items": [
+          {
+            "q": "Our Kingsley home was built in the 1980s and the bathrooms always feel damp. Can you help?",
+            "a": "Yes. We scrub grout and caulk lines, descale glass and leave bathrooms drying, which keeps mildew from coming back as fast."
+          },
+          {
+            "q": "How often should a family of five in Dunwoody schedule cleaning?",
+            "a": "Most large, busy households do best weekly or every two weeks, with a deep clean a couple of times a year."
+          },
+          {
+            "q": "Do you clean townhomes in Georgetown?",
+            "a": "Yes. We follow your community's parking rules and work floor by floor through multi-level townhomes."
+          },
+          {
+            "q": "Can you deep clean before we list our Dunwoody North home?",
+            "a": "Yes. A pre-listing deep clean makes the home photograph and show better. Book it a few days before photos."
+          },
+          {
+            "q": "Do you also clean offices near Perimeter Center?",
+            "a": "Yes. We clean small offices and suites after hours on a weekly or more frequent schedule."
+          }
+        ]
+      },
+      "spotlight_blurb": "Two-story family homes on wooded lots, cleaned where the household actually lives.",
+      "spotlight_towns": [
+        "Dunwoody Village",
+        "Georgetown",
+        "Kingsley",
+        "Wynterhall",
+        "Dunwoody North",
+        "Perimeter Center"
+      ]
+    },
+    {
+      "slug": "smyrna-ga",
+      "name": "Smyrna, GA",
+      "city": "Smyrna",
+      "state": "GA",
+      "county": "Cobb County",
+      "meta": {
+        "title": "Move-In & Recurring Cleaning in Smyrna, GA",
+        "description": "Smyrna's mix of 1950s ranches and new townhomes near The Battery each need a different clean. Move-in and recurring house cleaning across Smyrna."
+      },
+      "hero_text": "Smyrna, in Cobb County northwest of Atlanta, pairs 1950s brick ranches near Market Village with a wave of new townhomes and apartments around the Cumberland area and The Battery.",
+      "hero_image": "/images/areas/area-2.webp",
+      "location_note": "No extra travel fee in this area",
+      "towns": [
+        "Market Village",
+        "Jonquil",
+        "Vinings",
+        "Cumberland",
+        "Belmont Hills",
+        "Forest Hills"
+      ],
+      "about_heading": "Cleaning Smyrna's Ranches, Townhomes and New Builds",
+      "about_paragraphs": [
+        "Smyrna is a Cobb County city just northwest of Atlanta, between I-285 and the Chattahoochee. Its older neighborhoods around Market Village and Belmont Hills are mostly 1950s and 1960s brick ranches on wide lots, while the area near Cumberland and The Battery has filled in fast with new townhomes, apartments and mixed-use buildings. Vinings, just across I-285, adds a few older wooded streets to the mix.",
+        "That mix means two very different cleans. The ranches have older bathrooms, original floors and big yards that send red clay through the back door after every rain. The new builds start life with fine construction dust in cabinets, vents and window tracks, then turn into busy townhomes where three floors of stairs and HOA parking rules shape every visit.",
+        "We adjust to the house. In older ranches we give entries, grout and bathrooms the extra time they need and use gentle products on original floors. In new builds we clean top down with damp methods before move-in, and in townhome communities we follow parking rules and work floor by floor so nothing gets dusted twice. Either way, you get a clear quote before we start."
+      ],
+      "glance": [
+        "Locally owned and operated",
+        "Free quotes before any work starts",
+        "Recurring and one-time cleans",
+        "Fast replies by call or text"
+      ],
+      "image": {
+        "src": "/images/areas/area-3.webp",
+        "alt": "Freshly cleaned home interior in Smyrna, GA"
+      },
+      "services_intro": "Move-in cleaning is the most requested service in Smyrna, driven by new townhomes around Cumberland and The Battery. Recurring cleaning every two weeks is a close second, especially in the established neighborhoods near Market Village.",
+      "cta_body": "From Market Village to The Battery, we clean Smyrna homes old and new. Tell us about yours and we'll send a clear quote.",
+      "faq": {
+        "heading": "House Cleaning FAQ for Smyrna, GA",
+        "intro": "Questions we hear most from Smyrna homeowners.",
+        "items": [
+          {
+            "q": "We're moving into a new townhome near The Battery. Do you do move-in cleans?",
+            "a": "Yes. We clean new townhomes top down before you unpack, including inside every cabinet and drawer and the construction dust in vents and tracks."
+          },
+          {
+            "q": "Red clay keeps coming in from our backyard in Belmont Hills. Can you keep up with it?",
+            "a": "Yes. Recurring visits give entries, back doors and grout lines extra attention so clay stains don't set in."
+          },
+          {
+            "q": "Do you follow HOA parking rules in Smyrna townhome communities?",
+            "a": "Yes. Tell us your community's rules when you book and we'll plan around them."
+          },
+          {
+            "q": "Our 1950s ranch near Market Village has original floors. Is that a problem?",
+            "a": "Not at all. We use gentle, floor-safe products on older wood and tile."
+          },
+          {
+            "q": "Do you also turn over short-term rentals in Smyrna?",
+            "a": "Yes. We handle rental turnovers between guests, with linens, restocking and photos after every clean."
+          }
+        ]
+      },
+      "spotlight_blurb": "1950s ranches near Market Village and new townhomes by The Battery, each cleaned the way it needs.",
+      "spotlight_towns": [
+        "Market Village",
+        "Jonquil",
+        "Vinings",
+        "Cumberland",
+        "Belmont Hills",
+        "Forest Hills"
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Danielle R.",
+      "rating": 5,
+      "date": "September 2026",
+      "text": "Maria and her team deep cleaned our Decatur bungalow before my in-laws visited and it has honestly never looked better. They got into the grout in our old tile bathroom that I had given up on. Booked every two weeks now."
+    },
+    {
+      "name": "Marcus T.",
+      "rating": 5,
+      "date": "August 2026",
+      "text": "Used Sweet Tea for a move-out clean on my Midtown apartment. They worked from the property manager's checklist, sent photos when they finished, and I got my full deposit back. Super easy to book by text."
+    },
+    {
+      "name": "Priya S.",
+      "rating": 5,
+      "date": "August 2026",
+      "text": "We have two dogs and a toddler, so the floors were a constant battle. After a couple of months of every-other-week cleaning the house finally feels under control. Always on time and they text before they arrive."
+    },
+    {
+      "name": "Kevin W.",
+      "rating": 5,
+      "date": "July 2026",
+      "text": "Our new build in Brookhaven still had drywall dust everywhere weeks after closing. They wiped out every cabinet and drawer, vents, window tracks, all of it. Worth every penny before we unpacked."
+    },
+    {
+      "name": "Lauren B.",
+      "rating": 4,
+      "date": "June 2026",
+      "text": "Great turnover cleans for our two Airbnb units near the BeltLine. Photos after each clean and they flag when we're low on supplies. One late arrival early on but they communicated about it and it hasn't happened since."
+    }
+  ],
+  "about": {
+    "meta": {
+      "title": "About Sweet Tea Cleaning Co. | Decatur, GA",
+      "description": "Meet Sweet Tea Cleaning Co., a locally owned house cleaning company in Decatur, GA serving homes and rentals across Metro Atlanta."
+    },
+    "hero_sub": "A locally owned cleaning company rooted in Decatur, GA, cleaning homes, rentals and small offices across Metro Atlanta.",
+    "story_paragraphs": [
+      "Sweet Tea Cleaning Co. is a locally owned cleaning company based in Decatur. We started with a simple idea: a cleaner should show up when they say they will, follow the same checklist every time, and treat your home like it matters.",
+      "Our clients are busy families, professionals, landlords and rental hosts across Metro Atlanta. Some want a reset after a long stretch, some want the house kept on a schedule, and some need a unit turned over before a deadline. We plan every clean around what the home actually needs.",
+      "Metro Atlanta homes have their own quirks: pollen season, red clay at the back door, humid bathrooms, original hardwoods in old bungalows and fine dust in brand-new builds. We clean with those in mind, and we tell you up front what a clean will involve and what it will cost.",
+      "Most of our work comes from neighbors and word of mouth, and our reviews say it better than we can. If something isn't right, tell us. We would rather fix it than have you wonder whether to call."
+    ],
+    "values_heading": "What you can count on",
+    "values": [
+      {
+        "title": "Locally Rooted",
+        "text": "We live and work in the same Metro Atlanta neighborhoods we clean."
+      },
+      {
+        "title": "Clear Quotes",
+        "text": "You get the price before we start. If something changes, we tell you first."
+      },
+      {
+        "title": "The Same Checklist",
+        "text": "Every clean follows a written checklist, so visits are consistent."
+      },
+      {
+        "title": "Easy to Reach",
+        "text": "Call or text and get a real answer from a real person, fast."
+      },
+      {
+        "title": "Your Preferences",
+        "text": "Pets, entry, products and priorities are noted once and followed every visit."
+      },
+      {
+        "title": "Flexible Scheduling",
+        "text": "Recurring or one-time, with no long-term contracts."
+      }
+    ],
+    "cta_badge": "Free, No-Pressure Quote",
+    "cta_heading": "Ready for a cleaner you can count on?",
+    "cta_body": "Call or text (404) 555-0142, or send the form, and we'll get you a clear quote."
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact Sweet Tea Cleaning Co. | Free Cleaning Quotes",
+      "description": "Call, text or send the form for a free house cleaning quote from Sweet Tea Cleaning Co. in Decatur, GA. Pick a day and we'll confirm by text."
+    },
+    "hero_sub": "Call, text or send the form. Tell us about your home and a day that works, and we'll confirm a quote and time.",
+    "phone_note": "Fastest way to reach us. Call or text.",
+    "email_note": "We reply as soon as we can, usually the same day",
+    "steps_heading": "What happens after you reach out",
+    "steps": [
+      {
+        "title": "Tell Us About Your Home",
+        "when": "Right now",
+        "text": "Send the form, call or text with your address, home size, the clean you want and a day that works."
+      },
+      {
+        "title": "Get Your Quote",
+        "when": "Usually the same day",
+        "text": "We confirm the details and send a clear quote. No pressure and no obligation."
+      },
+      {
+        "title": "Pick Your Time",
+        "when": "When it suits you",
+        "text": "Choose a date and arrival window. We confirm by text and remind you before the visit."
+      },
+      {
+        "title": "Come Home to Clean",
+        "when": "Cleaning day",
+        "text": "We arrive with our supplies and follow the checklist. Tell us if anything needs another look."
+      }
+    ]
+  }
+}

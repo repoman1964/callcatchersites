@@ -1,0 +1,84 @@
+---
+// Quote + request-a-time form: name and phone required; service, preferred date, arrival window
+// and notes optional; SMS consent. Used in the home hero, the quote modal and the contact page.
+// Submission is handled by scripts/lead-form.js (it posts every named field).
+import Icon from './Icon.astro';
+import { biz, lead, cta, booking, allServices } from '../lib/site';
+
+interface Props {
+  id: string; // prefix for field ids: hero | modal | contact
+  dark?: boolean;
+  class?: string;
+  imageTitle?: string;
+}
+const { id, dark = false, class: cls = 'bg-surface-raised border border-border shadow-sm', imageTitle = cta.quote } = Astro.props;
+const label = dark ? 'form-label text-text-on-dark' : 'form-label';
+const input = dark ? 'form-input form-input-dark' : 'form-input';
+---
+
+<div class={`lead-form rounded-xl p-[clamp(1.5rem,4vw,2.25rem)] ${cls}`} data-custom-lead-form data-submit-url={lead.form_submit_url} data-place-id={biz.google_place_id}>
+  <div class="mb-6 flex flex-col items-center text-center" data-lead-form-heading>
+    {biz.logo && <img src={biz.logo} alt="" width="56" height="56" class="max-h-14 w-auto object-contain mb-3" loading="lazy" decoding="async" title={`${imageTitle} — image`} />}
+    <h3 class:list={['font-heading text-[clamp(1.25rem,3vw,1.5rem)] font-bold leading-[1.2]', dark ? 'text-text-on-dark' : 'text-text']}>{cta.formHeading}</h3>
+    <p class:list={['text-[0.8125rem] mt-1 mb-0 max-w-none', dark ? 'text-text-on-dark-muted' : 'text-text-muted']}>Pick a day that works. We'll confirm by text.</p>
+  </div>
+  <form class="flex flex-col gap-4" data-lead-form>
+    <input type="text" name="bot-trap" style="display:none" tabindex="-1" autocomplete="off" />
+    <div class="flex flex-col">
+      <label class={label} for={`${id}-lead-name`}>Full Name <span class:list={['ml-0.5', dark ? 'text-accent-on-dark' : 'text-accent']} aria-hidden="true">*</span></label>
+      <input class={input} type="text" id={`${id}-lead-name`} name="name" autocomplete="name" required placeholder="Jane Smith" />
+    </div>
+    <div class="flex flex-col">
+      <label class={label} for={`${id}-lead-phone`}>Phone Number <span class:list={['ml-0.5', dark ? 'text-accent-on-dark' : 'text-accent']} aria-hidden="true">*</span></label>
+      <input class={input} type="tel" id={`${id}-lead-phone`} name="phone" inputmode="tel" autocomplete="tel" required data-phone-input placeholder="(555) 123-4567" />
+    </div>
+    <div class="flex flex-col">
+      <label class={label} for={`${id}-lead-service`}>Service</label>
+      <select class={input} id={`${id}-lead-service`} name="service">
+        <option value="">Not sure yet</option>
+        {allServices.map((s) => <option value={s.name}>{s.name}</option>)}
+      </select>
+    </div>
+    <fieldset class="grid grid-cols-1 sm:grid-cols-2 gap-3 border-0 m-0 p-0" data-booking>
+      <legend class={`${label} mb-1.5`}>{cta.book}</legend>
+      <div class="flex flex-col min-w-0">
+        <label class={`${label} text-[0.75rem]`} for={`${id}-lead-date`}>Preferred date</label>
+        <input class={input} type="date" id={`${id}-lead-date`} name="preferred_date" data-min-today />
+      </div>
+      <div class="flex flex-col min-w-0">
+        <label class={`${label} text-[0.75rem]`} for={`${id}-lead-window`}>Arrival window</label>
+        <select class={input} id={`${id}-lead-window`} name="arrival_window">
+          {booking.windows.map((w) => <option value={w}>{w}</option>)}
+        </select>
+      </div>
+    </fieldset>
+    <div class="flex flex-col">
+      <label class={label} for={`${id}-lead-message`}>{cta.formMessageLabel}</label>
+      <textarea class={`${input} resize-y min-h-[80px]`} id={`${id}-lead-message`} name="message" rows="3" placeholder={cta.formMessagePlaceholder}></textarea>
+    </div>
+    <div class:list={['pt-4 mt-1 border-t flex flex-col gap-2', dark ? 'border-border-on-dark' : 'border-border']}>
+      <label class="grid grid-cols-[1.125rem_1fr] gap-3 items-start cursor-pointer select-none">
+        <span class="consent-box relative inline-flex items-center justify-center mt-0.5">
+          <input type="checkbox" name="consent" value="yes" required data-consent-error="Please agree to continue." class="consent-checkbox appearance-none w-[1.125rem] h-[1.125rem] rounded-[4px] border border-border-strong cursor-pointer" />
+          <Icon n="7420fc" />
+        </span>
+        <span class:list={['text-xs leading-snug', dark ? 'text-text-on-dark-muted' : 'text-text-muted']}>
+          I agree to the <a href="/terms" target="_blank" rel="noopener noreferrer" class="underline">Terms &amp; Conditions</a> provided by the company. By providing my phone number, I agree to receive text messages from the business.
+        </span>
+      </label>
+    </div>
+    <button type="submit" class="btn-primary w-full justify-center text-base py-[0.9375rem] px-[1.875rem]" style="white-space: normal;" data-submit-label="Sending...">{cta.formSubmit}</button>
+  </form>
+  <div class:list={['flex flex-col items-center gap-2 py-6 text-center lead-form__success', dark ? 'text-text-on-dark' : 'text-text']} data-lead-form-success role="status" aria-live="polite" hidden>
+    <Icon n="bae44b" />
+    <p class="font-medium">Request received.</p>
+    <p class:list={['text-sm', dark ? 'text-text-on-dark-muted' : 'text-text-muted']}>We'll text you shortly to confirm your quote and time.</p>
+  </div>
+</div>
+
+<script>
+  // Date pickers can't go into the past; "today" must be computed in the visitor's browser, not at build time.
+  const d = new Date();
+  const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  document.querySelectorAll<HTMLInputElement>('input[data-min-today]').forEach((el) => (el.min = today));
+</script>

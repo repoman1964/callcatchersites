@@ -1,0 +1,25 @@
+---
+import { business } from "../data/site";
+const icons: Record<string, string> = {
+  shield: '<path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/>',
+  people: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5c2.8.4 5 2.6 5 5.5"/>',
+  tag: '<path d="M3 12V4a1 1 0 011-1h8l9 9-9 9-9-9z"/><circle cx="8" cy="8" r="1.5"/>',
+  star: '<path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.4l6.1-.8L12 3z"/>',
+};
+const items = [
+  { i: "shield", t: "Background-checked & insured", s: `Bonded · ${business.insurance}` },
+  { i: "people", t: "Same team every visit", s: "For every recurring client" },
+  { i: "tag", t: "Flat prices, shown upfront", s: "See your price before you book" },
+  { i: "star", t: `${business.rating} from ${business.reviewCount} reviews`, s: "Read them on this site" },
+];
+---
+<div class="trustbar" role="region" aria-label="Why trust us">
+  <div class="trust-grid">
+    {items.map((it) => (
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#123C47" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[it.i]} />
+        <div><strong>{it.t}</strong><span>{it.s}</span></div>
+      </div>
+    ))}
+  </div>
+</div>

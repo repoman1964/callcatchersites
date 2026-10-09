@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TrustBar from "../../components/TrustBar.astro";
+import { business, services } from "../../data/site";
+---
+<BaseLayout
+  title="Cleaning Services in Atlanta | 6 Services, Priced Upfront"
+  description="Recurring, deep, move-in/out, Airbnb, post-construction, and office cleaning in Atlanta. Flat prices shown upfront, same team, 24-hour guarantee."
+>
+  <div class="hero-compact on-dark">
+    <div class="container">
+      <div class="smallcaps">Our services</div>
+      <h1>Six cleaning services, priced upfront.</h1>
+      <p class="lead">One local team, one written checklist, and a 24-hour re-clean guarantee on every job.</p>
+      <p style="margin-top:16px"><a class="btn btn-mint" href="/book">Book a Clean →</a> <a href={business.phoneTel} style="color:var(--mint);font-weight:800;margin-left:12px">{business.phoneDisplay}</a> <a href={business.phoneSms} style="color:var(--mint);margin-left:8px">Text us →</a></p>
+    </div>
+  </div>
+  <TrustBar />
+  <section>
+    <div class="container">
+      <div class="grid-2">
+        {services.map((s, i) => (
+          <article class="card" style={i % 2 === 0 ? "" : ""}>
+            <div class="smallcaps" style="color:var(--green)">{s.name}</div>
+            <h2 style="font-size:28px">{s.short}</h2>
+            <p>{s.pitch}</p>
+            <ul class="check-list">
+              {s.bullets.map((b) => <li><span class="check">✓</span><span>{b}</span></li>)}
+            </ul>
+            <p style="margin-top:12px;font-weight:800;color:var(--teal)">
+              {s.slug === "recurring-cleaning" && "1–2 bed $110–$160 · 3 bed $150–$210 · 4+ bed $200–$300 per visit"}
+              {s.slug === "deep-cleaning" && "$220–$350 (1–2 bed) · $280–$420 (3 bed) · $400–$650 (4+ bed)"}
+              {s.slug === "move-in-move-out-cleaning" && "$250–$400 (1–2 bed) · $350–$550 (3 bed) · $500–$800 (4+ bed)"}
+              {s.slug === "airbnb-cleaning" && "$75–$180 per turnover by unit size · linen add-on"}
+              {s.slug === "post-construction-cleaning" && "Typically $0.30–$0.60 per sq ft · quoted after walkthrough"}
+              {s.slug === "office-cleaning" && "Quoted per space · most small offices $120–$300 per visit"}
+            </p>
+            <p><a class="btn btn-outline" href={`/services/${s.slug}`}>See full details →</a></p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

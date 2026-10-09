@@ -1,0 +1,39 @@
+---
+// Two-up category cards (image left, service rows right). Home "What We Do" and area pages.
+import Icon from '../Icon.astro';
+import { categories, categoryHref, serviceHref } from '../../lib/site';
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-5 reveal-stagger">
+  {categories.map((c) => (
+    <article class="group bg-surface-raised border border-border rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row">
+      <a href={categoryHref(c)} class="relative block aspect-[4/3] sm:aspect-auto sm:w-[52%] shrink-0 overflow-hidden bg-surface-raised no-underline" tabindex="-1" aria-hidden="true">
+        <img src={c.image.src} alt={c.image.alt} title={c.image.alt} width="560" height="420" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+        <div class="absolute inset-y-0 right-0 w-10 bg-[linear-gradient(to_right,transparent,oklch(from_var(--color-overlay)_l_c_h/0.18))] hidden sm:block pointer-events-none"></div>
+      </a>
+      <div class="flex flex-col gap-4 p-6 sm:p-6 flex-1 min-w-0">
+        <div class="min-w-0">
+          <h3 class="font-heading text-[1.1875rem] font-bold text-text leading-tight m-0">
+            <a href={categoryHref(c)} class="text-inherit no-underline hover:underline underline-offset-[3px] decoration-2 focus-visible:outline focus-visible:rounded-sm">{c.name}</a>
+          </h3>
+          <p class="text-[0.875rem] text-text-secondary leading-[1.5] mt-1 mb-0 line-clamp-2">{c.description}</p>
+        </div>
+        <hr class="border-border m-0" />
+        <ul class="list-none m-0 p-0 flex flex-col gap-1 flex-1">
+          {c.services.map((s) => (
+            <li class="m-0 p-0">
+              <a href={serviceHref(c, s)} class="group/row flex items-center gap-2.5 rounded-md px-2.5 py-[7px] -mx-0.5 no-underline border border-transparent transition-all duration-150 hover:bg-accent-light hover:border-accent-border-medium focus-visible:outline focus-visible:rounded-md">
+                <span class="size-[5px] rounded-full shrink-0 bg-accent opacity-70 group-hover/row:opacity-100" aria-hidden="true"></span>
+                <span class="flex-1 min-w-0 text-[0.9rem] font-medium text-text-secondary group-hover/row:text-text leading-snug transition-colors duration-150">{s.name}</span>
+                <Icon n="e4d464" />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a href={categoryHref(c)} class="flex items-center gap-1.5 text-[0.8125rem] font-semibold no-underline transition-[gap] duration-150 hover:gap-2.5 text-accent mt-1">
+          Explore {c.name} <Icon n="0236ca" />
+        </a>
+      </div>
+    </article>
+  ))}
+</div>

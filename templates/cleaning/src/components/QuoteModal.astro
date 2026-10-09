@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import LeadForm from './LeadForm.astro';
+import { cta } from '../lib/site';
+
+interface Props {
+  imageTitle?: string;
+}
+---
+
+<dialog id="quote-modal" class="fixed inset-0 w-[100dvw] h-[100dvh] max-w-none max-h-none m-0 p-0 border-0 bg-transparent overflow-hidden items-center justify-center pointer-events-none opacity-0 transition-opacity duration-200 [transition-timing-function:var(--ease-out-expo)] [&.is-open]:opacity-100 [&.is-open]:pointer-events-auto" aria-label={cta.quote}>
+  <!-- Panel -->
+  <div class="relative w-[min(480px,calc(100dvw-2rem))] max-h-[min(820px,calc(100dvh-2rem))] shrink-0 overflow-y-auto overscroll-contain rounded-xl shadow-xl bg-transparent translate-y-2.5 scale-[0.98] transition-transform duration-[260ms] [transition-timing-function:var(--ease-out-expo)] [.is-open_&]:translate-y-0 [.is-open_&]:scale-100">
+    <button type="button" class="quote-modal__close absolute top-3 right-3 z-10 flex items-center justify-center w-[2.25rem] h-[2.25rem] rounded-full bg-surface-raised border border-border text-text-secondary transition-colors duration-150 hover:bg-accent-light hover:text-accent" data-close-quote-modal aria-label="Close">
+      <Icon n="6f10a2" />
+    </button>
+    <LeadForm id="modal" imageTitle={Astro.props.imageTitle} />
+  </div>
+</dialog>

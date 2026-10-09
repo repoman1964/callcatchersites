@@ -1,0 +1,79 @@
+---
+import Icon from './Icon.astro';
+import { biz, telHref, categories, areas, categoryHref, serviceHref, areaHref, cta } from '../lib/site';
+
+interface Props {
+  active?: 'about' | 'contact';
+}
+const { active } = Astro.props;
+const mainLink = (key: string) =>
+  `block px-4 py-2.5 text-base font-[900] rounded-md transition-colors duration-150 no-underline ${
+    active === key ? 'text-accent bg-accent-light' : 'text-text hover:bg-accent-light hover:text-accent'
+  }`;
+---
+
+<div id="mobile-overlay" class="mobile-overlay fixed inset-0 bg-overlay/50 z-[9100]" aria-hidden="true"></div>
+<nav id="mobile-nav" class="mobile-nav fixed top-0 right-0 bottom-0 w-[min(340px,92vw)] bg-surface-raised z-[9200] overflow-y-auto flex flex-col" aria-label="Mobile navigation" aria-hidden="true">
+  <!-- Drawer header -->
+  <div class="flex items-center justify-between px-5 py-4 border-b border-border shrink-0">
+    <span class="font-heading text-base font-bold text-text">{biz.name}</span>
+    <button id="nav-close" class="flex items-center justify-center w-9 h-9 bg-transparent border border-border rounded-md cursor-pointer text-text-secondary hover:bg-accent-light hover:text-accent transition-colors duration-150" aria-label="Close navigation menu" onclick="document.getElementById('nav-toggle').click()">
+      <Icon n="e408a4" />
+    </button>
+  </div>
+  <div class="p-5 flex flex-col gap-1 flex-1 overflow-y-auto">
+    <!-- Main links -->
+    <a href="/about" class={mainLink('about')}>About</a>
+    <a href="/contact" class={mainLink('contact')}>Contact</a>
+    <!-- Services section -->
+    <div class="mt-4 pt-4 border-t border-border">
+      <div class="flex items-center justify-between px-4 mb-1">
+        <p class="text-[0.6875rem] font-bold tracking-[0.12em] uppercase text-text-muted">Services</p>
+        <a href="/#services" class="text-[0.75rem] text-accent font-semibold no-underline hover:underline">All →</a>
+      </div>
+      {categories.map((c, i) => (
+        <div class="mb-0.5">
+          <!-- Category row: link + chevron (right) -->
+          <div class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 min-w-0 px-4">
+            <a href={categoryHref(c)} class="min-w-0 max-w-full w-max justify-self-start py-2.5 text-base font-[900] text-text rounded-md no-underline transition-colors duration-150 hover:bg-accent-light hover:text-accent truncate">{c.name}</a>
+            <button type="button" class="cat-toggle flex items-center justify-center w-9 h-9 shrink-0 text-text-muted rounded-md transition-colors duration-150 hover:bg-accent-light hover:text-accent" aria-expanded="false" aria-controls={`cat-panel-${i}`} aria-label={`Toggle ${c.name} services`}>
+              <Icon n="ef305f" />
+            </button>
+          </div>
+          <!-- Collapsible services panel — animated via grid-template-rows -->
+          <div id={`cat-panel-${i}`} class="cat-panel grid overflow-hidden" style="grid-template-rows: 0fr">
+            <div class="min-h-0">
+              <div class="pl-4 flex flex-col gap-0.5 pt-0.5 pb-2">
+                {c.services.map((s) => (
+                  <a href={serviceHref(c, s)} class="flex items-center justify-between px-3 py-1.5 text-[0.875rem] text-text-secondary rounded-md no-underline transition-colors duration-150 hover:bg-accent-light hover:text-accent capitalize">
+                    <span>{s.name}</span>
+                    <Icon n="8ff139" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <!-- Service Areas section -->
+    <div class="mt-2 pt-4 border-t border-border">
+      <div class="flex items-center justify-between px-4 mb-2">
+        <p class="text-[0.6875rem] font-bold tracking-[0.12em] uppercase text-text-muted">Service Areas</p>
+        <a href="/#service-areas" class="text-[0.75rem] text-accent font-semibold no-underline hover:underline">All →</a>
+      </div>
+      {areas.map((a) => (
+        <a href={areaHref(a)} class="flex items-center gap-2.5 px-4 py-2.5 text-[0.9375rem] font-medium text-text-secondary rounded-md no-underline transition-colors duration-150 hover:bg-accent-light hover:text-accent capitalize">
+          <Icon n="eb5cfa" />
+          <span class="flex-1">{a.name}</span>
+          <Icon n="8ff139" />
+        </a>
+      ))}
+    </div>
+    <!-- Bottom CTAs -->
+    <div class="flex flex-col gap-3 mt-auto pt-5 border-t border-border">
+      <a href={telHref} class="btn-phone w-full justify-center"><Icon n="5de33e" /> {biz.phone}</a>
+      <button type="button" data-open-quote-modal class="btn-primary w-full justify-center">{cta.quote}</button>
+    </div>
+  </div>
+</nav>

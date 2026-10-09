@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/sections/PageHero.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { site, biz, telHref, mailHref, areas, areaHref, hours, cta } from '../lib/site';
+import { breadcrumbs } from '../lib/schema';
+
+const contact = site.contact;
+---
+
+<BaseLayout title={contact.meta.title} description={contact.meta.description} schema={[breadcrumbs([{ name: 'Contact', path: '/contact' }])]} active="contact" heading={cta.quote}>
+  <PageHero label="Get in Touch" title={cta.quote} sub={contact.hero_sub} crumb="Contact" ariaLabel="Contact page header" />
+
+  <section class="section-pad" aria-label="Contact form and information">
+    <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <!-- Left: info -->
+      <div class="reveal order-2 lg:order-1">
+        <h2 class="text-[1.375rem] font-bold text-text mb-8">How to reach us</h2>
+        <div class="flex flex-col gap-7 mb-10">
+          <!-- Phone -->
+          <div class="flex gap-4 items-start">
+            <div class="w-11 h-11 bg-accent-light rounded-lg flex items-center justify-center text-accent shrink-0"><Icon n="da79e1" /></div>
+            <div class="flex flex-col gap-[2px]">
+              <p class="text-xs font-semibold uppercase tracking-[0.08em] text-text-muted m-0">Phone</p>
+              <a href={telHref} class="text-base font-semibold text-text no-underline transition-colors duration-150 hover:text-accent">{biz.phone}</a>
+              <p class="text-[0.8rem] text-text-muted m-0">{contact.phone_note}</p>
+            </div>
+          </div>
+          <!-- Email -->
+          {biz.email && (
+            <div class="flex gap-4 items-start">
+              <div class="w-11 h-11 bg-accent-light rounded-lg flex items-center justify-center text-accent shrink-0"><Icon n="1243f4" /></div>
+              <div class="flex flex-col gap-[2px]">
+                <p class="text-xs font-semibold uppercase tracking-[0.08em] text-text-muted m-0">Email</p>
+                <a href={mailHref} class="text-base font-semibold text-text no-underline transition-colors duration-150 hover:text-accent">{biz.email}</a>
+                <p class="text-[0.8rem] text-text-muted m-0">{contact.email_note}</p>
+              </div>
+            </div>
+          )}
+          <!-- Address -->
+          <div class="flex gap-4 items-start">
+            <div class="w-11 h-11 bg-accent-light rounded-lg flex items-center justify-center text-accent shrink-0"><Icon n="2e33ec" /></div>
+            <div class="flex flex-col gap-[2px]">
+              <p class="text-xs font-semibold uppercase tracking-[0.08em] text-text-muted m-0">Office</p>
+              <address class="text-base font-semibold text-text not-italic">{biz.hq}</address>
+              <p class="text-[0.8rem] text-text-muted m-0">Serving <span class="capitalize">{biz.region}</span> by appointment</p>
+            </div>
+          </div>
+        </div>
+        <!-- Hours -->
+        <div class="pt-7 border-t border-border mt-7">
+          <h3 class="font-body text-xs font-semibold tracking-[0.12em] uppercase text-text-muted mb-4">Business Hours</h3>
+          <dl class="flex flex-col gap-2">
+            {hours.map((h) => (
+              <div class="flex justify-between gap-4 text-sm">
+                <dt class="text-text-secondary">{h.days}</dt>
+                <dd class="font-medium text-text m-0">{h.time}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <!-- Service areas -->
+        <div class="pt-7 border-t border-border mt-7">
+          <h3 class="font-body text-xs font-semibold tracking-[0.12em] uppercase text-text-muted mb-4">Areas We Serve</h3>
+          <div class="flex flex-wrap gap-2">
+            {areas.map((a) => <a href={areaHref(a)} class="area-pill capitalize"><Icon n="6d9392" /> {a.name}</a>)}
+          </div>
+        </div>
+      </div>
+      <!-- Right: embedded form -->
+      <div class="reveal order-1 lg:order-2" style="transition-delay: 100ms;">
+        <LeadForm id="contact" />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-[clamp(3rem,_6vw,_5rem)] mt-16 border-t border-border" aria-labelledby="expect-heading">
+    <div class="container-site">
+      <h2 id="expect-heading" class="text-[clamp(1.5rem,_3vw,_2rem)] font-bold mb-10 reveal">{contact.steps_heading}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 reveal-stagger">
+        {contact.steps.map((s, i) => (
+          <div class="flex flex-col gap-[0.625rem]">
+            <div class="font-heading text-[2.25rem] font-bold text-accent leading-none">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="text-base font-bold text-text">{s.title}</h3>
+            <p class="text-[0.8125rem] font-semibold text-accent m-0">{s.when}</p>
+            <p class="text-sm text-text-secondary leading-[1.6] m-0">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

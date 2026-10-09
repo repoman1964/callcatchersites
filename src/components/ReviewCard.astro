@@ -1,0 +1,9 @@
+---
+interface Props { quote: string; name: string; area: string; service: string; }
+const { quote, name, area, service } = Astro.props as Props;
+---
+<article class="review-card">
+  <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+  <blockquote>“{quote}”</blockquote>
+  <div class="review-meta"><strong>{name}</strong> · {area} · {service}</div>
+</article>

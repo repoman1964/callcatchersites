@@ -1,0 +1,200 @@
+---
+import "../styles/global.css";
+import { business, services, areas } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+  h1?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  canonical?: string;
+}
+
+const { title, description, jsonLd, canonical } = Astro.props as Props;
+const siteUrl = "https://[businessdomain].com";
+const canon = canonical ?? `${siteUrl}${Astro.url.pathname.replace(/\/$/, "") || "/"}`;
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (href: string) => (href === "/" ? current === "/" : current.startsWith(href));
+
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HouseCleaningService",
+  name: business.name,
+  telephone: business.phoneE164,
+  email: business.email,
+  url: siteUrl,
+  address: { "@type": "PostalAddress", addressLocality: "Atlanta", addressRegion: "GA", addressCountry: "US" },
+  areaServed: ["Atlanta", ...areas.map((a) => a.name)],
+  openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-14:00"],
+};
+
+const extra = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canon} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canon} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script type="application/ld+json" set:html={JSON.stringify([siteJsonLd, ...extra])} />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="phonebar" role="region" aria-label="Call or text">
+    <div class="phonebar-inner">
+      <span class="bar-label">Questions? Call or text:</span>
+      <a class="bar-phone" href={business.phoneTel}>{business.phoneDisplay}</a>
+      <a class="bar-text" href={business.phoneSms}>Text us →</a>
+      <a class="m-call" href={business.phoneTel}>Call</a>
+      <a class="m-text" href={business.phoneSms}>Text</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="/">{business.name}</a>
+      <nav class="mainnav" aria-label="Primary">
+        <a href="/" aria-current={isActive("/") && current === "/" ? "page" : undefined}>Home</a>
+        <a href="/services" aria-current={isActive("/services") ? "page" : undefined}>Services</a>
+        <a href="/pricing" aria-current={current === "/pricing" ? "page" : undefined}>Pricing</a>
+        <a href="/service-areas" aria-current={isActive("/service-areas") ? "page" : undefined}>Areas</a>
+        <a href="/reviews" aria-current={current === "/reviews" ? "page" : undefined}>Reviews</a>
+        <a href="/about" aria-current={current === "/about" ? "page" : undefined}>About</a>
+        <a href="/contact" aria-current={current === "/contact" ? "page" : undefined}>Contact</a>
+      </nav>
+      <div class="header-right">
+        <a class="header-phone" href={business.phoneTel}>{business.phoneDisplay}</a>
+        <a href={business.phoneSms} style="font-weight:700;font-size:14px;white-space:nowrap">Text us</a>
+        <a class="btn btn-primary" href="/book">Book a Clean →</a>
+        <button class="hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-overlay" id="mobileNav" role="dialog" aria-label="Menu">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <strong style="font-size:20px;color:var(--teal)">{business.name}</strong>
+      <button class="hamburger" id="navClose" aria-label="Close menu" style="display:inline-flex">✕</button>
+    </div>
+    <a class="mnav" href="/">Home</a>
+    <a class="mnav" href="/services">Services</a>
+    <a class="mnav" href="/pricing">Pricing</a>
+    <a class="mnav" href="/service-areas">Areas</a>
+    <a class="mnav" href="/reviews">Reviews</a>
+    <a class="mnav" href="/about">About</a>
+    <a class="mnav" href="/contact">Contact</a>
+    <div class="mobile-ctas">
+      <a class="btn btn-primary" href={business.phoneTel}>Call {business.phoneDisplay}</a>
+      <a class="btn btn-outline" href="/book">Book a Clean</a>
+      <a href={business.phoneSms} style="text-align:center;font-weight:700">or Text us →</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <section class="cta-band on-dark" aria-label="Get your price">
+    <div class="container" style="max-width:720px">
+      <div class="smallcaps">Get your Saturday back</div>
+      <h2>See your price in 30 seconds.</h2>
+      <p>Flat pricing by home size. Book online, pick your arrival window, and we&#39;ll text you the day before. Not happy with something? We come back within 24 hours and fix it free.</p>
+      <div class="cta-row">
+        <a class="btn btn-mint" href="/pricing">Get My Price →</a>
+        <a class="btn btn-outline-white" href="/book">Book a Clean</a>
+      </div>
+      <div>
+        <a class="phone-big phone-dark" href={business.phoneTel}>{business.phoneDisplay}</a>
+        <div style="margin-top:8px"><a href={business.phoneSms} style="color:var(--mint);font-weight:700">or text us →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer on-dark">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <strong style="font-size:22px">{business.name}</strong>
+        <p style="margin-top:12px;font-size:15px">Local, insured house cleaners serving Atlanta since {business.founded}. Same team every visit. Flat prices. 24-hour re-clean guarantee.</p>
+        <span class="footer-badge">BACKGROUND-CHECKED · INSURED · BONDED</span>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          {services.map((s) => <li><a href={`/services/${s.slug}`}>{s.name}</a></li>)}
+          <li><a href="/services">View all →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Areas</h4>
+        <ul>
+          {areas.map((a) => <li><a href={`/service-areas/${a.slug}`}>{a.name}</a></li>)}
+          <li><a href="/service-areas">View all →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/reviews">Reviews</a></li>
+          <li><a href="/guarantee">Guarantee</a></li>
+          <li><a href="/book">Book a Clean</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <a class="phone-big phone-dark" style="font-size:28px" href={business.phoneTel}>{business.phoneDisplay}</a>
+      <span> · </span><a href={business.phoneSms} style="color:var(--mint);font-weight:700">Text us</a>
+      <div style="margin-top:8px">{business.email} · {business.hours}</div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {business.founded} {business.name}.</span>
+      <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const t = document.getElementById('navToggle');
+    const c = document.getElementById('navClose');
+    const m = document.getElementById('mobileNav');
+    let lastFocus = null;
+    function open(){ lastFocus = document.activeElement; m?.classList.add('open'); t?.setAttribute('aria-expanded','true'); c?.focus(); document.body.style.overflow='hidden'; }
+    function close(){ m?.classList.remove('open'); t?.setAttribute('aria-expanded','false'); document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
+    t?.addEventListener('click', open);
+    c?.addEventListener('click', close);
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape' && m?.classList.contains('open')) close();
+      if(e.key==='Tab' && m?.classList.contains('open')){
+        const f = [...m.querySelectorAll('a,button')].filter((el)=>!el.disabled);
+        if(!f.length) return;
+        const first = f[0], last = f[f.length-1];
+        if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+      }
+    });
+    document.querySelectorAll('.faq-q').forEach((btn)=>{
+      btn.addEventListener('click', ()=>{
+        const exp = btn.getAttribute('aria-expanded')==='true';
+        btn.setAttribute('aria-expanded', String(!exp));
+        const panel = document.getElementById(btn.getAttribute('aria-controls')||'');
+        panel?.classList.toggle('open', !exp);
+      });
+    });
+  </script>
+</body>
+</html>

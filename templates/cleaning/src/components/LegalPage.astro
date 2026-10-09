@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from './Icon.astro';
+import { biz, site } from '../lib/site';
+import { breadcrumbs } from '../lib/schema';
+
+interface Props {
+  doc: { meta: { title: string; description: string }; title: string; sub: string; html: string };
+  path: string;
+  ariaPrefix: string; // "Privacy policy" | "Terms and conditions"
+}
+const { doc, path, ariaPrefix } = Astro.props;
+// Legal copy is stored with {{tokens}} (src/data/niche.ts) so it is reused across businesses.
+const contactLine = biz.email
+  ? `Email us at <a href="mailto:${biz.email}">${biz.email}</a> or call or text <a href="tel:${biz.phone_e164}">${biz.phone}</a>.`
+  : `Call or text us at <a href="tel:${biz.phone_e164}">${biz.phone}</a>.`;
+const tokens: Record<string, string> = {
+  name: biz.name,
+  phone: biz.phone,
+  email: biz.email,
+  hq: biz.hq,
+  domain: biz.url.replace(/^https?:\/\//, ''),
+  contact_line: contactLine,
+};
+const fill = (s: string) => s.replace(/\{\{(\w+)\}\}/g, (m, k) => tokens[k] ?? m);
+const html = fill(doc.html);
+const meta = { title: fill(doc.meta.title), description: fill(doc.meta.description) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} schema={[breadcrumbs([{ name: doc.title, path }])]} heading={doc.title}>
+  <section class="bg-dark-bg relative overflow-hidden pt-[max(6rem,_clamp(3.5rem,_7vw,_6rem))] pb-[clamp(3.5rem,_7vw,_6rem)]" aria-label={`${ariaPrefix} header`}>
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.18] [filter:saturate(0.7)] hero-bg-zoom" style={`background-image: url('${site.home.hero.bg}')`} role="presentation"></div>
+    <div class="container-site relative z-10 max-w-[760px]">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-[0.8125rem] mb-8 hero-fade-up" style="animation-delay: 0ms">
+        <a href="/" class="text-text-on-dark-dim hover:text-accent-light transition-colors duration-150 no-underline">Home</a>
+        <Icon n="f9103b" />
+        <span aria-current="page" class="text-text-on-dark-muted">{doc.title}</span>
+      </nav>
+      <span class="section-label section-label-dark hero-fade-up" style="animation-delay: 80ms">Legal</span>
+      <h1 class="text-[clamp(2rem,_5vw,_3rem)] font-bold text-text-on-dark mb-4 leading-[1.1] hero-fade-up" style="animation-delay: 150ms">{doc.title}</h1>
+      <p class="text-sm text-text-on-dark-muted hero-fade-up" style="animation-delay: 270ms">{doc.sub}</p>
+    </div>
+  </section>
+  <section class="section-pad" aria-label={`${ariaPrefix} content`}>
+    <div class="container-site max-w-[760px]">
+      <div class="prose-legal" set:html={html} />
+    </div>
+  </section>
+</BaseLayout>

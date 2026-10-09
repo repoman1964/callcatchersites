@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import Reviews from '../../../components/sections/Reviews.astro';
+import Faq from '../../../components/sections/Faq.astro';
+import FindUs from '../../../components/sections/FindUs.astro';
+import { site, biz, telHref, categories, areas, areaHref, categoryHref, serviceHref, primaryCity, trustPoints, type Category, cta } from '../../../lib/site';
+import { service, faqPage, breadcrumbs } from '../../../lib/schema';
+
+export function getStaticPaths() {
+  return categories.map((c) => ({ params: { category: c.slug }, props: { cat: c } }));
+}
+const { cat } = Astro.props as { cat: Category };
+const hub = cat.hub;
+const path = categoryHref(cat);
+const heading = `${cat.name} Services in ${primaryCity}`;
+const others = categories.filter((c) => c.slug !== cat.slug);
+const schema = [service(`${cat.name} in ${primaryCity}`, hub.hero_sub, path), faqPage(hub.faq), breadcrumbs([{ name: cat.name, path }])];
+---
+
+<BaseLayout title={hub.meta.title} description={hub.meta.description} schema={schema} heading={heading}>
+  <section class="bg-dark-bg relative overflow-hidden pt-[max(6rem,_clamp(4rem,_8vw,_7rem))] pb-[clamp(4rem,_8vw,_7rem)]" aria-label={`${cat.name} service page header`}>
+    <div class="container-site relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10 lg:gap-14 items-center">
+      <!-- Left: text content -->
+      <div>
+        <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-[0.8125rem] mb-7 hero-fade-up" style="animation-delay: 0ms">
+          <a href="/" class="text-text-on-dark-dim hover:text-accent-light">Home</a>
+          <Icon n="f9103b" />
+          <a href="/#services" class="text-text-on-dark-dim hover:text-accent-light">Services</a>
+          <Icon n="f9103b" />
+          <span aria-current="page" class="text-text-on-dark-muted capitalize">{cat.name}</span>
+        </nav>
+        <span class="section-label section-label-dark hero-fade-up" style="animation-delay: 80ms">{cat.name}</span>
+        <h1 class="text-[clamp(2rem,_5vw,_3.25rem)] font-bold text-text-on-dark leading-[1.1] mb-4 hero-fade-up capitalize" style="animation-delay: 150ms">{heading}</h1>
+        <!-- Service count accent -->
+        <p class="text-[0.75rem] font-semibold tracking-[0.1em] uppercase text-text-on-dark-dim mb-1 hero-fade-up" style="animation-delay: 170ms">
+          <span class="font-heading text-[1.375rem] font-bold text-accent-on-dark tracking-normal">{cat.services.length}</span> specialized services available
+        </p>
+        <p class="text-[clamp(1rem,_2vw,_1.125rem)] text-text-on-dark leading-[1.65] max-w-[56ch] mb-8 hero-fade-up" style="animation-delay: 210ms">{hub.hero_sub}</p>
+        <div class="flex flex-wrap gap-3 mb-8 hero-fade-up" style="animation-delay: 330ms">
+          <button type="button" data-open-quote-modal class="btn-primary py-3.5 px-7">{cta.book}</button>
+          <a href={telHref} class="btn-ghost-light py-3.5 px-6">Call {biz.phone}</a>
+        </div>
+      </div>
+      <!-- Right: category image — desktop only -->
+      <div class="hidden lg:block relative overflow-hidden rounded-xl aspect-[3/4] hero-fade-right" style="animation-delay: 180ms">
+        <img src={cat.image.src} alt={cat.image.alt} title={cat.image.alt} width="760" height="1013" loading="eager" decoding="async" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-[linear-gradient(to_top,oklch(from_var(--color-overlay)_l_c_h/0.38)_0%,transparent_52%)]"></div>
+        <div class="absolute bottom-0 left-0 right-0 px-7 py-6">
+          <p class="font-heading text-lg font-bold text-text-on-dark leading-tight capitalize m-0 max-w-none">{cat.name}</p>
+          <p class="text-[0.75rem] text-text-on-dark-muted mt-[3px] m-0 max-w-none">Serving {primaryCity} and {biz.region}</p>
+        </div>
+        <!-- Floating trust badges top-right -->
+        <div class="absolute top-5 right-5 flex flex-col gap-2">
+          {site.home.trust_bar.slice(0, 3).map((t) => (
+            <div class="flex items-center gap-1.5 bg-overlay/[0.88] border border-border-on-dark rounded-md px-3 py-1.5 backdrop-blur-sm">
+              <Icon n="72e166" />
+              <span class="text-[0.6875rem] font-semibold text-text-on-dark whitespace-nowrap">{t}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="services" aria-labelledby="category-services-heading">
+    <div class="container-site">
+      <!-- Row 1: section header -->
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 reveal">
+        <div class="max-w-[600px]">
+          <span class="section-label">Services</span>
+          <h2 id="category-services-heading" class="text-[clamp(1.875rem,_4vw,_2.5rem)] font-bold mb-3 capitalize">{heading}</h2>
+          <p class="text-[1.0625rem] text-text-secondary leading-[1.65]">{hub.services_intro}</p>
+        </div>
+      </div>
+      <!-- Row 2: service cards, full width -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 reveal-stagger">
+        {cat.services.map((s, i) => (
+          <a href={serviceHref(cat, s)} class="card group flex flex-col no-underline overflow-hidden">
+            <div class="relative aspect-[16/9] overflow-hidden shrink-0">
+              <img src={s.image.src} alt={s.image.alt} title={s.image.alt} width="640" height="360" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+              <div class="absolute inset-x-0 bottom-0 h-14 bg-[linear-gradient(to_top,oklch(from_var(--color-overlay)_l_c_h/0.10),transparent)]"></div>
+            </div>
+            <div class="p-7 flex flex-col gap-3 flex-1">
+              <h3 class="font-heading text-xl font-bold text-text leading-tight capitalize">{s.name}</h3>
+              <p class="text-[0.9rem] text-text-secondary leading-[1.6]">{s.summary}</p>
+              <ul class="list-none m-0 p-0 flex flex-col gap-2 flex-1">
+                {s.benefits.slice(0, 3).map((b) => (
+                  <li class="flex items-start gap-2 text-[0.8125rem] text-text-secondary leading-[1.4]">
+                    <Icon n={i % 2 ? 'ac8c84' : '55b850'} /> {b}
+                  </li>
+                ))}
+              </ul>
+              <span class:list={['flex items-center gap-1.5 text-sm font-semibold mt-2 transition-[gap] duration-150 group-hover:gap-2.5', i % 2 ? 'text-secondary' : 'text-accent']}>
+                Learn More
+                <Icon n="399c48" />
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <!-- Quick nav: areas as plain inline links, below the cards -->
+      <div class="border-t border-border pt-7 grid grid-cols-1 sm:grid-cols-2 gap-5 reveal" style="transition-delay: 60ms;">
+        <div class="sm:border-l sm:border-border sm:pl-5">
+          <p class="text-[0.6875rem] font-semibold tracking-[0.1em] uppercase text-text-muted mb-2.5 max-w-none">We Serve</p>
+          <ul class="list-none m-0 p-0 flex flex-wrap gap-x-5 gap-y-1" role="list">
+            {areas.map((a) => <li><a href={areaHref(a)} class="text-sm text-text-secondary no-underline hover:text-accent transition-colors duration-150 capitalize">{a.name}</a></li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-bg-warm py-[clamp(3rem,_6vw,_5rem)]" aria-labelledby="why-us-heading">
+    <div class="container-site">
+      <div class="max-w-[560px] mb-10 reveal">
+        <span class="section-label">Why Choose Us</span>
+        <h2 id="why-us-heading" class="text-[clamp(1.75rem,_4vw,_2.25rem)] font-bold mb-2">What sets us apart for <span class="capitalize">{cat.name}</span></h2>
+        <span class="accent-bar"></span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
+        {(hub.why_points.length ? hub.why_points : trustPoints).map((t, i) => (
+          <div class="flex items-start gap-4 bg-surface-raised border border-border rounded-xl p-6">
+            <div class:list={['w-9 h-9 rounded-lg flex items-center justify-center shrink-0', i % 2 ? 'bg-secondary-light text-secondary' : 'bg-accent-light text-accent']} aria-hidden="true"><Icon n="b8e56a" /></div>
+            <p class="text-[0.9375rem] font-semibold text-text text-left leading-[1.5] m-0 pt-[4px]">{t}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-dark-bg py-[clamp(2.5rem,_5vw,_4rem)]" aria-label={cta.quote}>
+    <div class="container-site flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+      <div class="max-w-[560px] reveal">
+        <p class="text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-accent-on-dark mb-2 max-w-none">{hub.band_label}</p>
+        <h2 class="font-heading text-[clamp(1.5rem,_3.5vw,_2rem)] font-bold text-text-on-dark leading-[1.15] m-0 max-w-none">{hub.band_heading}</h2>
+      </div>
+      <div class="flex flex-wrap gap-3 shrink-0 justify-center reveal" style="transition-delay: 120ms">
+        <button type="button" data-open-quote-modal class="btn-primary py-3.5 px-7 whitespace-nowrap">{cta.book}</button>
+        <a href={telHref} class="btn-ghost-light py-3.5 px-6 whitespace-nowrap">Call {biz.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <Faq faq={hub.faq} />
+  <Reviews />
+  <FindUs />
+
+  {
+    others.length > 0 && (
+      <section class="section-pad" aria-labelledby="related-heading">
+        <div class="container-site">
+          <h2 id="related-heading" class="text-[clamp(1.5rem,_3vw,_2rem)] font-bold mb-8 reveal">Other Services by {biz.name}</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
+            {others.map((o) => (
+              <a href={categoryHref(o)} class="card group p-7 flex gap-4 items-start no-underline">
+                <div class="w-11 h-11 rounded-lg border border-border bg-surface-raised overflow-hidden shrink-0 transition-[border-color,box-shadow] duration-150 group-hover:border-accent group-hover:shadow-[0_0_0_1px_var(--color-accent)] flex items-center justify-center" aria-hidden="true">
+                  <img src={o.image.src} alt={`${o.name} category icon`} title={`${o.name} category icon`} width="48" height="48" class="size-full object-cover" loading="lazy" decoding="async" />
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-text mb-1 capitalize">{o.name}</h3>
+                  <p class="text-[0.8125rem] text-text-secondary leading-[1.5] m-0">{o.description}</p>
+                </div>
+                <Icon n="6e3dbc" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

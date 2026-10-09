@@ -1,0 +1,15 @@
+---
+interface Props { items: { q: string; a: string }[]; idPrefix: string; }
+const { items, idPrefix } = Astro.props as Props;
+---
+<div class="faq">
+  {items.map((f, i) => {
+    const id = `${idPrefix}-${i}`;
+    return (
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls={id}>{f.q}</button>
+        <div class="faq-a" id={id}>{f.a}</div>
+      </div>
+    );
+  })}
+</div>

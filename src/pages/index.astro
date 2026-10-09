@@ -1,0 +1,167 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TrustBar from "../components/TrustBar.astro";
+import Faq from "../components/Faq.astro";
+import HeroArt from "../components/HeroArt.astro";
+import QuoteForm from "../components/QuoteForm.astro";
+import ReviewCard from "../components/ReviewCard.astro";
+import { business, services, areas, reviews, homeFaq } from "../data/site";
+const faqJsonLd = {
+  "@type": "FAQPage",
+  mainEntity: homeFaq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+---
+<BaseLayout
+  title="Atlanta House Cleaning | Flat Prices & Same Team Pros Today"
+  description="Vetted, insured Atlanta house cleaners. Same team every visit, flat prices shown upfront, 24-hour re-clean guarantee. See your price in 30 seconds."
+  jsonLd={faqJsonLd}
+>
+  <div class="hero">
+    <div class="container hero-split">
+      <div>
+        <span class="eyebrow">House Cleaning · Atlanta</span>
+        <h1>A clean home, without the follow-up.</h1>
+        <p class="lead" style="max-width:480px">Vetted, insured cleaners — the same team every visit. Flat prices you see before you book. If we miss anything, we&#39;re back within 24 hours to fix it.</p>
+        <div class="cta-row" style="justify-content:flex-start">
+          <a class="btn btn-primary" href="/book">Book a Clean →</a>
+          <a class="btn btn-outline" href={business.phoneTel}>Call {business.phoneDisplay}</a>
+        </div>
+        <p class="trust-chips">INSURED &amp; BONDED · SAME TEAM · NO CONTRACTS · {business.rating}★ ON GOOGLE</p>
+        <p style="font-size:14px"><a href={business.phoneSms}>Text us →</a></p>
+      </div>
+      <div>
+        <QuoteForm />
+        <div style="margin-top:16px"><HeroArt variant="kitchen" label="Cleaner in branded polo wiping a bright kitchen island in morning light" /></div>
+      </div>
+    </div>
+  </div>
+
+  <TrustBar />
+
+  <section aria-label="Straight answers">
+    <div class="container prose">
+      <div class="smallcaps">The five things people ask first</div>
+      <h2>Here&#39;s how we handle each one.</h2>
+      <ol style="list-style:none;padding:0;display:grid;gap:24px;margin-top:32px">
+        <li><h3>01 · Who is coming into my home?</h3><p>Background-checked, insured and bonded cleaners who are trained, managed, and paid by us — never dispatched from an anonymous gig app. Your team is assigned by name before the first visit.</p></li>
+        <li><h3>02 · How much will it cost?</h3><p>Flat pricing by bedrooms and bathrooms, shown upfront on this page, every service page, and the pricing page. Recurring plans cost 10–20% less than one-time cleans. If your home differs from what you booked, we tell you before we start — never on the invoice.</p></li>
+        <li><h3>03 · Do I need to be home?</h3><p>No. Most clients use a lockbox, door code, or key. Codes are stored encrypted, only your assigned team sees them, and entry is logged. Nothing is written on paper.</p></li>
+        <li><h3>04 · Will it be the same people every time?</h3><p>Yes. Recurring clients get the same assigned team every visit, with a named backup if someone is out. We text you names the day before.</p></li>
+        <li><h3>05 · What if something isn&#39;t done right?</h3><p>Tell us within 24 hours and we return within 2 business days to re-clean that area free. The guarantee is in writing on every job.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band-light" aria-label="Services">
+    <div class="container">
+      <div class="smallcaps">What we clean</div>
+      <h2>Six services. One accountable team.</h2>
+      <div class="grid-3" style="margin-top:32px">
+        {services.map((s) => (
+          <a class="card" href={`/services/${s.slug}`}>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>
+            <h3>{s.name}</h3>
+            <p>{s.short}</p>
+            <div class="from">{s.priceFrom}</div>
+            <div class="more">Learn more →</div>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:20px"><a href="/services">See all services →</a></p>
+    </div>
+  </section>
+
+  <section aria-label="How it works">
+    <div class="container">
+      <div class="smallcaps">How it works</div>
+      <h2>Price. Book. Done.</h2>
+      <div class="steps" style="margin-top:32px">
+        <div class="step"><div class="step-num">01</div><h3>See your price</h3><p>Choose bedrooms, bathrooms, and how often. Your flat price shows instantly.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Pick a date</h3><p>Choose an arrival window on the calendar. We text you the day before with your team&#39;s names.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Come home to it done</h3><p>Your team follows the checklist, sends a completion text, and the 24-hour guarantee starts.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-dark on-dark" aria-label="Flat pricing">
+    <div class="container">
+      <div class="smallcaps">Flat pricing</div>
+      <h2>You&#39;ll see the number before anyone shows up.</h2>
+      <p style="color:rgba(245,248,247,.9);max-width:680px">We price by home size and service, not by the hour, so a slower clean never costs you more. If your home is very different from the size you picked, we tell you before we start — never on the invoice.</p>
+      <div class="chips" style="margin:24px 0">
+        <span class="chip chip-dark">2 bed / 2 bath recurring: typically $130–$180</span>
+        <span class="chip chip-dark">Deep clean, 3 bed / 2 bath: typically $280–$420</span>
+        <span class="chip chip-dark">Move-out, 2 bed / 2 bath: typically $280–$450</span>
+      </div>
+      <p>Recurring clients save 10–20% versus one-time cleans. No contracts. <a href="/pricing" style="color:var(--mint);font-weight:700">See full pricing →</a></p>
+    </div>
+  </section>
+
+  <section aria-label="FAQ">
+    <div class="container">
+      <div class="smallcaps" style="text-align:center">FAQ</div>
+      <h2 style="text-align:center">Quick answers.</h2>
+      <Faq items={homeFaq} idPrefix="home" />
+      <p style="text-align:center;margin-top:20px"><a href="/faq">See the full FAQ →</a></p>
+    </div>
+  </section>
+
+  <section class="band-light" aria-label="Reviews">
+    <div class="container">
+      <div class="smallcaps">What Atlanta clients say</div>
+      <h2>{business.reviewCount} reviews. Read them here — not only on Google.</h2>
+      <p><span class="avail">★ {business.rating} on Google · On-site quotes below</span></p>
+      <div class="grid-3" style="margin-top:24px">
+        <ReviewCard quote={reviews[0].quote} name={reviews[0].name} area={reviews[0].area} service={reviews[0].service} />
+        <ReviewCard quote={reviews[1].quote} name={reviews[1].name} area={reviews[1].area} service={reviews[1].service} />
+        <ReviewCard quote={reviews[2].quote} name={reviews[2].name} area={reviews[2].area} service={reviews[2].service} />
+      </div>
+      <p style="margin-top:20px"><a href="/reviews">Read all on-site reviews →</a></p>
+    </div>
+  </section>
+
+  <section aria-label="Checklist">
+    <div class="container split-5-7">
+      <div>
+        <div class="smallcaps">The checklist</div>
+        <h2>Every room, every time.</h2>
+        <p>Your team works from the same written checklist every visit, so nothing depends on who remembers what.</p>
+        <p><a href="/services/deep-cleaning">See deep-clean extras →</a></p>
+      </div>
+      <div class="rooms">
+        <div class="room"><h3>Kitchen</h3><ul class="check-list"><li><span class="check">✓</span>Counters, sink, stovetop wiped</li><li><span class="check">✓</span>Appliance exteriors + microwave inside</li><li><span class="check">✓</span>Trash emptied</li><li><span class="check">✓</span>Floors vacuumed + mopped</li></ul></div>
+        <div class="room"><h3>Bathrooms</h3><ul class="check-list"><li><span class="check">✓</span>Toilet, tub/shower scrubbed</li><li><span class="check">✓</span>Sinks + mirrors</li><li><span class="check">✓</span>Tile spot-cleaned</li><li><span class="check">✓</span>Floors mopped</li></ul></div>
+        <div class="room"><h3>Bedrooms &amp; living areas</h3><ul class="check-list"><li><span class="check">✓</span>Surfaces dusted</li><li><span class="check">✓</span>Beds made</li><li><span class="check">✓</span>Switches + handles sanitized</li><li><span class="check">✓</span>Floors vacuumed</li></ul></div>
+        <div class="room"><h3>Floors &amp; finishing</h3><ul class="check-list"><li><span class="check">✓</span>Vacuum + mop throughout</li><li><span class="check">✓</span>Baseboard spot-check</li><li><span class="check">✓</span>Trash relined</li><li><span class="check">✓</span>Final walkthrough</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-light" aria-label="Areas">
+    <div class="container">
+      <div class="smallcaps">Areas we cover</div>
+      <h2>House cleaning across Atlanta.</h2>
+      <div class="chips" style="margin-top:20px">
+        {areas.map((a) => <a class="chip" href={`/service-areas/${a.slug}`}>{a.name}</a>)}
+      </div>
+      <p style="margin-top:16px">Not sure if we cover you? Call or text <a href={business.phoneTel}>{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us →</a></p>
+    </div>
+  </section>
+
+  <section aria-label="Team">
+    <div class="container split-5-7">
+      <div>
+        <div class="smallcaps">Real people</div>
+        <h2>The people who&#39;ll be in your home.</h2>
+        <p>Vetted, trained in-house, and paid fairly. The same faces every visit — you&#39;ll know names before the first knock.</p>
+        <p><a href="/about">Meet the team →</a></p>
+      </div>
+      <div class="team-grid" style="grid-template-columns:1fr 1fr">
+        <div class="team-card"><div class="team-photo">TM</div><div class="body"><strong>[Team Member]</strong><br /><span style="font-size:14px;color:var(--text2)">Lead Cleaner · [X] yrs</span></div></div>
+        <div class="team-card"><div class="team-photo">TM</div><div class="body"><strong>[Team Member]</strong><br /><span style="font-size:14px;color:var(--text2)">Lead Cleaner · [X] yrs</span></div></div>
+        <div class="team-card"><div class="team-photo">TM</div><div class="body"><strong>[Team Member]</strong><br /><span style="font-size:14px;color:var(--text2)">Cleaner · [X] yrs</span></div></div>
+        <div class="team-card"><div class="team-photo">TM</div><div class="body"><strong>[Team Member]</strong><br /><span style="font-size:14px;color:var(--text2)">Cleaner · [X] yrs</span></div></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

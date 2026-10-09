@@ -1,0 +1,70 @@
+---
+import { business } from "../data/site";
+const addons = [
+  { id: "oven", label: "Inside oven", price: 35 },
+  { id: "fridge", label: "Inside fridge", price: 35 },
+  { id: "windows", label: "Interior windows", price: 75 },
+  { id: "laundry", label: "Laundry fold", price: 25 },
+  { id: "cabinets", label: "Inside cabinets", price: 50 },
+];
+---
+<div class="form-card" id="priceCalc" aria-label="Price calculator">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div class="field">
+      <label for="c-service">Service type</label>
+      <select id="c-service"><option value="recurring">Recurring</option><option value="deep">Deep</option><option value="move">Move-in / move-out</option><option value="airbnb">Airbnb</option></select>
+    </div>
+    <div class="field">
+      <label for="c-freq">Frequency (recurring)</label>
+      <select id="c-freq"><option value="weekly">Weekly</option><option value="biweekly" selected>Every 2 weeks</option><option value="monthly">Monthly</option><option value="onetime">One-time</option></select>
+    </div>
+    <div class="field">
+      <label for="c-beds">Bedrooms</label>
+      <select id="c-beds"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5+</option></select>
+    </div>
+    <div class="field">
+      <label for="c-baths">Bathrooms</label>
+      <select id="c-baths"><option>1</option><option selected>2</option><option>3</option><option>4+</option></select>
+    </div>
+  </div>
+  <fieldset style="border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin:8px 0 0">
+    <legend style="font-weight:700;font-size:14px;padding:0 8px">Add-ons</legend>
+    {addons.map((a) => (
+      <label style="display:flex;gap:10px;align-items:center;padding:6px 0;font-size:15px">
+        <input type="checkbox" class="c-addon" value={a.price} data-label={a.label} style="width:20px;height:20px" /> {a.label} <span style="color:var(--text2)">+${a.price}</span>
+      </label>
+    ))}
+  </fieldset>
+  <div class="live-price" aria-live="polite">
+    <span>Your price: <strong class="price-figure" id="c-price">$170</strong> <span style="font-size:13px;color:var(--text2)">per clean</span></span>
+    <a class="btn btn-primary" id="c-book" href="/book">Book this clean →</a>
+  </div>
+  <p style="font-size:14px">Questions? <a href={business.phoneTel}>{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us</a></p>
+</div>
+<script>
+  const bedBase: Record<string, number> = { "1": 110, "2": 135, "3": 170, "4": 220, "5+": 270 };
+  const bathAdd: Record<string, number> = { "1": 0, "2": 20, "3": 40, "4+": 60 };
+  const freqMult: Record<string, number> = { weekly: 0.9, biweekly: 1.0, monthly: 1.15, onetime: 1.3 };
+  function calc() {
+    const svc = (document.getElementById("c-service") as HTMLSelectElement)?.value ?? "recurring";
+    const beds = (document.getElementById("c-beds") as HTMLSelectElement)?.value ?? "3";
+    const baths = (document.getElementById("c-baths") as HTMLSelectElement)?.value ?? "2";
+    const freq = (document.getElementById("c-freq") as HTMLSelectElement)?.value ?? "biweekly";
+    let base = (bedBase[beds] ?? 170) + (bathAdd[baths] ?? 20);
+    if (svc === "recurring") base = base * (freqMult[freq] ?? 1);
+    if (svc === "deep") base = base * 1.8;
+    if (svc === "move") base = base * 2.0 + 30;
+    if (svc === "airbnb") base = beds === "1" ? 95 : beds === "2" ? 125 : beds === "3" ? 150 : 180;
+    let add = 0;
+    const labels: string[] = [];
+    document.querySelectorAll<HTMLInputElement>(".c-addon:checked").forEach((c) => { add += Number(c.value); labels.push(c.dataset.label ?? ""); });
+    const total = Math.round((base + add) / 5) * 5;
+    const el = document.getElementById("c-price");
+    if (el) el.textContent = "$" + total;
+    const book = document.getElementById("c-book") as HTMLAnchorElement | null;
+    if (book) book.href = `/book?service=${svc}&beds=${encodeURIComponent(beds)}&baths=${encodeURIComponent(baths)}&freq=${freq}&addons=${encodeURIComponent(labels.join(","))}&price=${total}`;
+  }
+  ["c-service","c-freq","c-beds","c-baths"].forEach((id) => document.getElementById(id)?.addEventListener("change", calc));
+  document.querySelectorAll(".c-addon").forEach((c) => c.addEventListener("change", calc));
+  calc();
+</script>

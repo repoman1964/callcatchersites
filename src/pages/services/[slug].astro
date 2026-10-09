@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TrustBar from "../../components/TrustBar.astro";
+import HeroArt from "../../components/HeroArt.astro";
+import Faq from "../../components/Faq.astro";
+import { business, services } from "../../data/site";
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug } }));
+}
+
+const { slug } = Astro.params;
+const svc = services.find((s) => s.slug === slug);
+if (!svc) throw new Error(`Unknown service ${slug}`);
+const related = svc.related.map((r) => services.find((s) => s.slug === r)!).filter(Boolean);
+const artVariant: Record<string, string> = {
+  "recurring-cleaning": "living",
+  "deep-cleaning": "bath",
+  "move-in-move-out-cleaning": "bedroom",
+  "airbnb-cleaning": "rental",
+  "post-construction-cleaning": "build",
+  "office-cleaning": "office",
+};
+const faqJsonLd = {
+  "@type": "FAQPage",
+  mainEntity: svc.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+const serviceJsonLd = {
+  "@type": "Service",
+  name: svc.name,
+  description: svc.pitch,
+  provider: { "@type": "HouseCleaningService", name: business.name, telephone: business.phoneE164 },
+  areaServed: "Atlanta, GA",
+};
+---
+<BaseLayout
+  title={`${svc.name} Atlanta | Flat Prices, Same Team, Book Today`}
+  description={`${svc.name} in Atlanta with flat pricing upfront, same accountable team, and written checklist. 24-hour re-clean guarantee included on every visit.`}
+  jsonLd={[faqJsonLd, serviceJsonLd]}
+>
+  <div class="hero">
+    <div class="container hero-split">
+      <div>
+        <span class="eyebrow">Services · Atlanta</span>
+        <h1>{svc.h1}</h1>
+        <p class="lead">{svc.pitch}</p>
+        <div class="cta-row" style="justify-content:flex-start">
+          <a class="btn btn-primary" href="/book">Book a Clean →</a>
+          <a class="btn btn-outline" href={business.phoneTel}>Call {business.phoneDisplay}</a>
+        </div>
+        <p style="font-size:14px">Prefer to text? <a href={business.phoneSms}>Text us →</a> · <a href="/pricing">See pricing →</a></p>
+        <p class="trust-chips">INSURED &amp; BONDED · SAME TEAM · {business.rating}★ ON GOOGLE</p>
+      </div>
+      <div><HeroArt variant={artVariant[svc.slug] ?? "kitchen"} label={`${svc.name} documentary photo`} /></div>
+    </div>
+  </div>
+
+  <TrustBar />
+
+  <section aria-label="What's included">
+    <div class="container">
+      <div class="smallcaps">What&#39;s included</div>
+      <h2>Room by room, on the checklist.</h2>
+      <ul class="check-list" style="margin-top:24px;max-width:720px">
+        {svc.included.map((it) => <li><span class="check">✓</span><span>{it}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band-dark on-dark" aria-label="Pricing">
+    <div class="container">
+      <div class="smallcaps">Flat pricing</div>
+      <h2>Confirmed before we start. Never on the invoice.</h2>
+      <div class="chips" style="margin:24px 0">
+        {svc.priceChips.map((c) => <span class="chip chip-dark">{c}</span>)}
+      </div>
+      <p><a href="/pricing" style="color:var(--mint);font-weight:700">See full pricing →</a> · <a href={business.phoneTel} style="color:var(--mint);font-weight:700">{business.phoneDisplay}</a> · <a href={business.phoneSms} style="color:var(--mint)">Text us →</a></p>
+    </div>
+  </section>
+
+  <section aria-label="How it works">
+    <div class="container">
+      <div class="smallcaps">How it works</div>
+      <h2>Three steps.</h2>
+      <div class="steps" style="margin-top:24px">
+        {svc.howItWorks.map((s, i) => (
+          <div class="step"><div class="step-num">0{i + 1}</div><h3>{s.t}</h3><p>{s.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band-light" aria-label="FAQ">
+    <div class="container">
+      <div class="smallcaps" style="text-align:center">{svc.name} FAQ</div>
+      <h2 style="text-align:center">Five questions, straight answers.</h2>
+      <Faq items={svc.faq} idPrefix={svc.slug} />
+    </div>
+  </section>
+
+  <section aria-label="Related services">
+    <div class="container">
+      <div class="smallcaps">Related services</div>
+      <h2>Also from the same team.</h2>
+      <div class="grid-3" style="margin-top:24px">
+        {related.map((r) => (
+          <a class="card" href={`/services/${r.slug}`}>
+            <h3>{r.name}</h3>
+            <p>{r.short}</p>
+            <div class="from">{r.priceFrom}</div>
+            <div class="more">See full details →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

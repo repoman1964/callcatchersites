@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { business } from "../data/site";
+---
+<BaseLayout
+  title="Privacy Policy | Atlanta House Cleaning Team Data Promise Now"
+  description="How we collect, use, and protect your info: quotes, bookings, entry codes, SMS consent and opt-out, cookies, retention, your rights today!!!"
+>
+  <div class="hero"><div class="container prose">
+    <span class="eyebrow">Privacy</span>
+    <h1>Privacy policy.</h1>
+    <p class="lead">We collect the minimum needed to quote, schedule, and service your home — and nothing else.</p>
+  </div></div>
+  <section><div class="container prose">
+    <h2>Information we collect</h2>
+    <ul><li>Quote and booking forms: name, phone, email, property address, home size, service details.</li><li>Entry instructions: lockbox codes, door codes, key arrangements, parking and pet notes.</li><li>Call and text records related to scheduling and service.</li></ul>
+    <h2>How we use it</h2>
+    <p>To quote, schedule, and service your home only — including day-before texts with your team&#39;s names and completion confirmations. We do not sell personal information, ever.</p>
+    <h2>Entry codes and keys</h2>
+    <p>Codes are stored encrypted and visible only to your assigned team. Nothing is written on paper. Entry is logged. Keys on file are stored securely and returned or destroyed on request.</p>
+    <h2>SMS and call consent</h2>
+    <p>By submitting a form, you agree to receive calls and texts about your quote and bookings from {business.name}. Message and data rates may apply. Reply STOP to opt out at any time; you will still receive transactional confirmations required to complete a booked service unless you cancel it.</p>
+    <h2>No sale of personal information</h2>
+    <p>We never sell, rent, or trade your information. Vendors (scheduling, payments, analytics) receive only what they need to perform their function and are bound to protect it.</p>
+    <h2>Cookies and analytics</h2>
+    <p>We use privacy-respecting analytics to understand aggregate site usage. No advertising trackers, no cross-site profiling.</p>
+    <h2>Retention</h2>
+    <p>Quote records are kept 24 months; booking and service records 7 years for tax and insurance purposes; entry codes deleted within 30 days of service cancellation on request.</p>
+    <h2>Your rights</h2>
+    <p>Request access, correction, or deletion of your information at {business.email}. We respond within 30 days.</p>
+    <h2>Contact</h2>
+    <p>{business.name} · {business.email} · <a href={business.phoneTel}>{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us →</a> · {business.address}.</p>
+  </div></section>
+</BaseLayout>

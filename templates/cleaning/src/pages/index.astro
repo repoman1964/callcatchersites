@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CategoryCards from '../components/sections/CategoryCards.astro';
+import Story from '../components/sections/Story.astro';
+import Reviews from '../components/sections/Reviews.astro';
+import Faq from '../components/sections/Faq.astro';
+import FindUs from '../components/sections/FindUs.astro';
+import { site, biz, telHref, areas, areaHref, primaryArea, trustPoints, cta } from '../lib/site';
+import { faqPage } from '../lib/schema';
+
+const home = site.home;
+const heading = home.hero.heading;
+const otherAreas = areas.filter((a) => a.slug !== primaryArea.slug);
+const spotlightTowns = (primaryArea as { spotlight_towns?: string[] }).spotlight_towns ?? primaryArea.towns;
+---
+
+<BaseLayout title={home.meta.title} description={home.meta.description} schema={[faqPage(home.faq)]} heading={heading}>
+  <!-- Hero -->
+  <section class="relative bg-dark-bg overflow-hidden min-h-[100dvh] flex items-center" aria-label="Hero">
+    <!-- Background image layer — slow Ken Burns zoom -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.42] [filter:saturate(0.85)] hero-bg-zoom" style={`background-image: url('${home.hero.bg}')`} role="presentation"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,oklch(10%_0.01_90/0.44)_0%,oklch(10%_0.01_90/0.20)_52%,oklch(10%_0.01_90/0.04)_100%)]" aria-hidden="true"></div>
+    <div class="container-site relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-[clamp(2rem,_5vw,_5rem)] items-center py-[clamp(4rem,_8vw,_6.5rem)]">
+      <!-- Left: Content -->
+      <div class="flex flex-col gap-6">
+        <h1 class="font-heading text-[clamp(2.25rem,_5vw,_3.75rem)] font-bold text-text-on-dark leading-[1.1] tracking-[-0.01em] hero-fade-up" style="animation-delay: 80ms">
+          {heading}
+        </h1>
+        <p class="text-[clamp(1rem,_2vw,_1.125rem)] text-text-on-dark leading-[1.65] max-w-[52ch] hero-fade-up" style="animation-delay: 230ms">{home.hero.sub}</p>
+        <!-- Google verified badge + social links -->
+        <div class="flex flex-col gap-3 self-start hero-fade-up" style="animation-delay: 390ms">
+          <a href="/#reviews" class="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2.5 backdrop-blur-sm no-underline transition-[background-color,border-color] duration-150 hover:bg-white/16 hover:border-white/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent-light)]" aria-label={`${biz.rating} · ${biz.review_count}+ Google Reviews — jump to client reviews`}>
+            <Icon n="2636f7" />
+            <div class="flex items-center gap-[3px]" aria-hidden="true">
+              {[1, 2, 3, 4, 5].map(() => <Icon n="ca4c14" />)}
+            </div>
+            <span class="text-[1rem] font-bold leading-none text-white">{biz.rating}</span>
+            <span class="h-3.5 w-px shrink-0 bg-white/25" aria-hidden="true"></span>
+            <span class="text-[0.8125rem] leading-none text-white/65">{biz.review_count}+ Google reviews</span>
+          </a>
+          {biz.facebook && (
+            <div class="flex items-center gap-2" aria-label="Social profiles">
+              <a href={biz.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="flex items-center justify-center w-9 h-9 rounded-[var(--radius-md)] border border-white/20 bg-white/10 text-white/80 no-underline backdrop-blur-sm transition-[background-color,border-color,color] duration-150 hover:bg-white/20 hover:border-white/35 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent-light)]">
+                <Icon n="3e3341" />
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+      <!-- Right: Embedded Quote Form -->
+      <div class="relative z-20 hidden lg:block hero-fade-right" style="animation-delay: 180ms" id="quote-form">
+        <LeadForm id="hero" dark class="bg-dark-surface border border-border-on-dark" imageTitle={heading} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <section class="border-y border-accent-border bg-accent-light py-[clamp(1.25rem,_2.5vw,_1.875rem)] hidden md:block" aria-label="Why choose us">
+    <div class="container-site">
+      <div class="grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-4 lg:flex lg:items-center lg:divide-x lg:divide-accent-border lg:gap-0">
+        {home.trust_bar.map((t, i) => (
+          <div class="flex items-center gap-3 lg:flex-1 lg:justify-center lg:px-5 lg:first:pl-0 lg:last:pr-0 reveal" style={`transition-delay: ${i * 80}ms`}>
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/60 text-accent shadow-sm" aria-hidden="true"><Icon n="718fc3" /></div>
+            <p class="m-0 text-[0.875rem] text-left font-semibold leading-snug text-accent-text">{t}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section class="section-pad" id="services" aria-labelledby="services-heading">
+    <div class="container-site">
+      <div class="max-w-[680px] mb-8 reveal">
+        <span class="section-label">{home.services.label}</span>
+        <h2 id="services-heading" class="text-[clamp(1.875rem,_4vw,_2.625rem)] font-bold mb-4">
+          {biz.trade} Services in <em class="italic text-accent">{primaryArea.name}</em>
+        </h2>
+        <p class="text-[1.0625rem] text-text-secondary leading-[1.65] max-w-[65ch]">{home.services.intro}</p>
+      </div>
+      <div class="mb-8"><CategoryCards /></div>
+      <!-- Mid-page CTA — shown only on homepage -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 px-8 sm:px-10 py-8 bg-secondary-light border border-secondary-muted rounded-xl flex-wrap reveal">
+        <p class="text-[1.0625rem] font-semibold text-text m-0 max-w-[48ch]">{home.services.mid_cta}</p>
+        <div class="flex gap-3 shrink-0 flex-wrap">
+          <button type="button" data-open-quote-modal class="btn-primary">{cta.book}</button>
+          <a href={telHref} class="btn-ghost"><Icon n="5de33e" /> Call {biz.phone}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Story paragraphs={home.story.paragraphs} showLink />
+
+  <!-- How We Work -->
+  <section class="section-pad" id="process" aria-labelledby="process-heading">
+    <div class="container-site">
+      <div class="max-w-2xl mb-8 reveal">
+        <span class="section-label">How We Work</span>
+        <h2 id="process-heading" class="text-[clamp(1.875rem,_4vw,_2.5rem)] font-bold mb-4">{home.process.heading}</h2>
+        <p class="text-[1.0625rem] text-text-secondary leading-[1.65] max-w-[65ch]">{home.process.intro}</p>
+      </div>
+      <div class="process-steps mb-8">
+        {home.process.steps.map((s, i) => (
+          <div class:list={['process-step reveal', i % 2 && 'step-secondary']}>
+            <!-- Left/top: number node + connector -->
+            <div class="step-track" aria-hidden="true">
+              <div class:list={['step-number', i % 2 && 'bg-secondary']}>{String(i + 1).padStart(2, '0')}</div>
+              {i < home.process.steps.length - 1 && <div class="step-line"></div>}
+            </div>
+            <div class="step-body">
+              <h3 class="step-title font-heading font-bold text-text leading-tight">{s.title}</h3>
+              <p class="step-desc text-text-secondary leading-[1.65] m-0">{s.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="flex items-start gap-3.5 px-6 py-5 bg-accent-light rounded-xl border border-accent-border-medium reveal">
+        <Icon n="0f5e08" />
+        <p class="text-[0.9375rem] text-text-secondary leading-[1.55] m-0">{home.process.note}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Where We Work -->
+  <section class="section-pad bg-surface" id="service-areas" aria-labelledby="areas-heading">
+    <div class="container-site">
+      <div class="max-w-[680px] mb-12 reveal">
+        <span class="section-label">Where We Work</span>
+        <h2 id="areas-heading" class="text-[clamp(1.875rem,4vw,2.5rem)] font-bold mb-4">
+          <span class="capitalize">{biz.trade} Services</span> Across<br />{biz.region}
+        </h2>
+        <p class="text-[1.0625rem] text-text-secondary leading-[1.65]">{home.areas.intro}</p>
+      </div>
+      <!-- Primary area spotlight -->
+      <div class="grid md:grid-cols-2 gap-12 bg-surface-raised border border-border rounded-xl p-8 md:p-12 mb-10 shadow-md reveal">
+        <div>
+          <div class="flex flex-col gap-2 mb-4">
+            <span class="inline-flex self-start px-3 py-1 bg-accent text-accent-fg text-[0.6875rem] font-semibold tracking-[0.1em] uppercase rounded-full">Primary Service Area</span>
+            <h3 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-text leading-[1.1]">{primaryArea.name}</h3>
+          </div>
+          <p class="text-text-secondary leading-[1.65] mb-6">{home.areas.featured_blurb}</p>
+          <div class="mb-8">
+            <p class="text-[0.8125rem] font-semibold text-text-secondary mb-3">Cities &amp; Communities We Serve:</p>
+            <ul class="flex flex-wrap gap-2 list-none m-0 p-0">
+              {spotlightTowns.map((t, i) => (
+                <li class="inline-flex px-3 py-1 bg-surface border border-border rounded-full text-[0.8125rem] text-text-secondary">
+                  {i > 0 && <span class="sr-only">, </span>}
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <a href={areaHref(primaryArea)} class="btn-primary inline-flex items-center gap-2">{primaryArea.name} Services <Icon n="0e52e5" /></a>
+        </div>
+        <div class="hidden md:flex items-stretch" aria-hidden="true">
+          <div class="relative flex-1 min-h-[280px] overflow-hidden rounded-xl bg-dark-bg">
+            <img src={home.areas.featured_image.src} alt={home.areas.featured_image.alt} title={home.areas.featured_image.alt} width="640" height="420" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover opacity-80" />
+            <div class="absolute inset-0 bg-[linear-gradient(to_top,oklch(from_var(--color-overlay)_l_c_h/0.76),transparent_70%)]"></div>
+            <div class="absolute inset-x-0 bottom-0 p-7 text-text-on-dark">
+              <p class="text-xs font-semibold tracking-[0.12em] uppercase text-accent-on-dark mb-2 max-w-none">Local Coverage</p>
+              <p class="font-heading text-2xl font-bold leading-tight max-w-[12ch]">{home.areas.featured_caption}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Other areas grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10 reveal-stagger">
+        {otherAreas.map((a) => (
+          <a href={areaHref(a)} class="card px-5 py-4 flex items-center justify-between gap-3 no-underline group">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <Icon n="247f51" />
+              <div class="min-w-0">
+                <h3 class="font-heading text-[0.9375rem] font-semibold text-text truncate">{a.name}</h3>
+                <p class="hidden md:block text-[0.72rem] text-text-muted m-0 mt-0.5 truncate">{a.card_towns ?? a.towns.slice(0, 3).join(', ')}</p>
+              </div>
+            </div>
+            <Icon n="79fbf3" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Reviews showCta />
+  <Faq faq={home.faq} />
+  <FindUs bg="bg-bg-warm" />
+
+  <!-- Final call to action -->
+  <section class="bg-secondary-light relative overflow-hidden border-t border-card-warm-border" aria-label="Final call to action">
+    <div class="container-site relative py-[clamp(4.5rem,9vw,7.5rem)] flex flex-col md:flex-row items-center justify-between gap-12">
+      <div class="max-w-[640px] flex flex-col gap-5 relative z-10 reveal">
+        <span class="section-label">Get Started Today</span>
+        <h2 class="text-[clamp(2rem,5vw,3.25rem)] font-bold text-text leading-[1.1] tracking-[-0.01em]">{home.final_cta.heading}</h2>
+        <p class="text-[clamp(1rem,2vw,1.125rem)] text-text-secondary leading-[1.65] max-w-[54ch]">{home.final_cta.body}</p>
+        <!-- Trust row -->
+        <div class="flex flex-wrap gap-[0.875rem]">
+          {trustPoints.map((t) => <div class="flex items-center gap-2 text-sm font-semibold text-text-secondary"><Icon n="bddabb" /> {t}</div>)}
+        </div>
+        <!-- CTAs -->
+        <div class="flex flex-col gap-[0.875rem] items-stretch md:flex-row md:flex-wrap md:items-center">
+          <button type="button" data-open-quote-modal class="btn-primary py-4 px-8 text-base justify-center"><Icon n="a45df7" /> {cta.quote}</button>
+          <a href={telHref} class="btn-ghost py-4 px-7 text-base justify-center"><Icon n="5de33e" /> Call {biz.phone}</a>
+        </div>
+        <p class="flex items-center gap-2 text-[0.8125rem] text-text-muted m-0"><Icon n="202f86" /> {home.final_cta.note}</p>
+      </div>
+      <!-- Decorative pattern -->
+      <div class="hidden md:block absolute right-0 top-0 bottom-0 w-[40%] pointer-events-none overflow-hidden" aria-hidden="true">
+        <div class="absolute right-[-3rem] top-1/2 -translate-y-1/2 rotate-[15deg] grid grid-cols-4 gap-3 w-[420px] opacity-[0.08]">
+          {Array.from({ length: 12 }, (_, i) => <div class:list={['aspect-square rounded-md', i % 3 === 1 ? 'bg-secondary' : 'bg-accent']}></div>)}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

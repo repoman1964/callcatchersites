@@ -1,0 +1,68 @@
+---
+// Floating "text the owner" widget. Posts to lead.notify_url; with no endpoint configured it
+// hands off to the visitor's SMS app instead (see scripts/chat-widget.js).
+import Icon from './Icon.astro';
+import { biz, lead, cta } from '../lib/site';
+---
+
+<div id="chat-widget" data-notify-url={lead.notify_url} data-place-id={biz.google_place_id} data-sms-to={biz.phone_e164}>
+  <!-- Mobile trigger row: assessment CTA + chat toggle -->
+  <div class="chat-trigger-row">
+    <button id="assessment-cta" class="assessment-cta-btn" data-open-quote-modal aria-label={cta.quote}>
+      <Icon n="1115cf" />
+      {cta.quoteShort}
+    </button>
+    <button id="chat-toggle" aria-label="Send a quick message" aria-expanded="false" aria-controls="chat-panel">
+      <span class="chat-toggle-icon chat-toggle-icon--open" aria-hidden="true"><Icon n="7c8e09" /></span>
+      <span class="chat-toggle-icon chat-toggle-icon--close" aria-hidden="true"><Icon n="691810" /></span>
+      <span class="chat-toggle-pulse" aria-hidden="true"></span>
+    </button>
+  </div>
+  <!-- Panel -->
+  <div id="chat-panel" role="dialog" aria-label="Send a quick message" aria-hidden="true">
+    <div class="chat-header">
+      <div class="chat-header-identity">
+        <div class="chat-avatar" aria-hidden="true"><Icon n="2e6563" /></div>
+        <div>
+          <p class="chat-owner-name">{biz.name}</p>
+          <p class="chat-status">
+            <span class="chat-status-dot" aria-hidden="true"></span>
+            {biz.owner_pronoun_line}
+          </p>
+        </div>
+      </div>
+      <button class="chat-close-btn" id="chat-close" aria-label="Close chat"><Icon n="b21543" /></button>
+    </div>
+    <!-- Message bubble from owner -->
+    <div class="chat-body">
+      <div class="chat-bubble-row">
+        <div class="chat-bubble-avatar" aria-hidden="true"><Icon n="e86e16" /></div>
+        <div class="chat-bubble">
+          <p>This text goes straight to my personal phone. I will make sure to get back to you the second I'm free!</p>
+        </div>
+      </div>
+      <form id="chat-form" class="chat-form" novalidate>
+        <input type="text" name="bot-trap" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="chat-field">
+          <label class="chat-label" for="chat-name">Your Name <span aria-hidden="true">*</span></label>
+          <input class="chat-input" type="text" id="chat-name" name="name" placeholder="John Smith" autocomplete="name" required />
+        </div>
+        <div class="chat-field">
+          <label class="chat-label" for="chat-phone">Phone Number <span aria-hidden="true">*</span></label>
+          <input class="chat-input" type="tel" id="chat-phone" name="phone" placeholder="(386) 555-0000" autocomplete="tel" required />
+        </div>
+        <div class="chat-field">
+          <label class="chat-label" for="chat-message">Message</label>
+          <textarea class="chat-input chat-textarea" id="chat-message" name="message" placeholder="What can I help you with?" rows="3"></textarea>
+        </div>
+        <button type="submit" class="chat-send-btn"><Icon n="15817d" /> Send Message</button>
+      </form>
+      <!-- Success state -->
+      <div id="chat-success" class="chat-success" hidden>
+        <div class="chat-success-icon" aria-hidden="true"><Icon n="78ebc3" /></div>
+        <p class="chat-success-title">Message sent!</p>
+        <p class="chat-success-body">You'll hear back shortly. For urgent matters, call directly.</p>
+      </div>
+    </div>
+  </div>
+</div>

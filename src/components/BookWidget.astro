@@ -1,0 +1,145 @@
+---
+import { business } from "../data/site";
+---
+<div id="bookWidget">
+  <div class="stepbar" aria-label="Booking steps">
+    <span class="active" data-step="1">1 · Home &amp; service</span>
+    <span data-step="2">2 · Date &amp; time</span>
+    <span data-step="3">3 · Entry &amp; notes</span>
+    <span data-step="4">4 · Confirm</span>
+  </div>
+
+  <div class="cal-wrap">
+    <div>
+      <div class="form-card" id="bk-step1">
+        <h3>1 · Home &amp; service</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="field"><label for="b-service">Service</label>
+            <select id="b-service"><option value="recurring">Recurring</option><option value="deep">Deep</option><option value="move">Move-in / move-out</option><option value="airbnb">Airbnb</option></select></div>
+          <div class="field"><label for="b-freq">Frequency</label>
+            <select id="b-freq"><option value="weekly">Weekly</option><option value="biweekly">Every 2 weeks</option><option value="monthly">Monthly</option><option value="onetime">One-time</option></select></div>
+          <div class="field"><label for="b-beds">Bedrooms</label>
+            <select id="b-beds"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></div>
+          <div class="field"><label for="b-baths">Bathrooms</label>
+            <select id="b-baths"><option>1</option><option>2</option><option>3</option><option>4+</option></select></div>
+        </div>
+        <div class="field"><label for="b-name">Full name *</label><input id="b-name" autocomplete="name" /></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="field"><label for="b-phone">Phone *</label><input id="b-phone" type="tel" autocomplete="tel" /></div>
+          <div class="field"><label for="b-addr">Property address *</label><input id="b-addr" autocomplete="street-address" /></div>
+        </div>
+        <button class="btn btn-primary" data-next="2" type="button">Continue → Pick a date</button>
+        <p class="consent">By submitting, you agree to receive calls and texts about your booking from {business.name}. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
+      </div>
+
+      <div class="form-card" id="bk-step3" hidden>
+        <h3>3 · Entry &amp; notes</h3>
+        <div class="field"><label for="b-entry">Entry method</label>
+          <select id="b-entry"><option>I'll be home</option><option>Lockbox</option><option>Door code</option><option>Key on file</option></select></div>
+        <div class="field"><label for="b-pets">Pets</label><input id="b-pets" placeholder="e.g. 1 dog, friendly" /></div>
+        <div class="field"><label for="b-parking">Parking notes</label><input id="b-parking" placeholder="Driveway, garage, street…" /></div>
+        <div class="field"><label for="b-notes">Special requests</label><textarea id="b-notes" rows="3"></textarea></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn btn-outline" data-next="2" type="button">← Back</button>
+          <button class="btn btn-primary" data-next="4" type="button">Review booking →</button>
+        </div>
+      </div>
+
+      <div class="form-card" id="bk-step4" hidden>
+        <h3>4 · Confirm</h3>
+        <div id="b-summary" aria-live="polite" style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:16px"></div>
+        <div id="b-done" hidden>
+          <p style="font-size:20px;font-weight:800;color:var(--green)">Clean booked — we&#39;ll text you the day before with your team&#39;s names.</p>
+          <p>Questions? <a href={business.phoneTel}>{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us</a></p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap" id="b-confirmRow">
+          <button class="btn btn-outline" data-next="3" type="button">← Back</button>
+          <button class="btn btn-primary" id="b-confirm" type="button">Confirm booking</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="form-card" id="bk-step2" aria-label="Choose date and time">
+        <h3>2 · Date &amp; time</h3>
+        <p style="font-size:14px;color:var(--text2)" id="calLabel">Loading available arrival windows…</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <button class="btn btn-outline" id="calPrev" type="button" aria-label="Previous month">←</button>
+          <strong id="calTitle"></strong>
+          <button class="btn btn-outline" id="calNext" type="button" aria-label="Next month">→</button>
+        </div>
+        <div class="cal-grid" id="calGrid" role="group" aria-label="Calendar days"></div>
+        <h4 style="margin:16px 0 8px">Arrival windows</h4>
+        <div id="slots">
+          {["8–10am", "10am–12pm", "12–2pm", "2–4pm"].map((s) => (
+            <button class="slot" type="button" data-slot={s}>{s}</button>
+          ))}
+        </div>
+        <p style="font-size:13px;color:var(--text2)">Cleans run Mon–Sat. Sundays closed.</p>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+          <button class="btn btn-outline" data-next="1" type="button">← Back</button>
+          <button class="btn btn-primary" data-next="3" type="button">Continue → Entry &amp; notes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:16px">Prefer to talk? <a href={business.phoneTel}>{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us</a></p>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  function set(id: string, v: string | null) {
+    if (!v) return;
+    const el = document.getElementById(id) as HTMLSelectElement | null;
+    if (el && [...el.options].some((o) => o.value === v || o.text === v)) el.value = v;
+  }
+  set("b-service", q.get("service")); set("b-beds", q.get("beds")); set("b-baths", q.get("baths")); set("b-freq", q.get("freq"));
+
+  let view = new Date(); view.setDate(1);
+  let picked: string | null = null; let slot: string | null = null;
+  const grid = document.getElementById("calGrid")!;
+  const title = document.getElementById("calTitle")!;
+  const label = document.getElementById("calLabel")!;
+  function render() {
+    title.textContent = view.toLocaleString("en-US", { month: "long", year: "numeric" });
+    grid.innerHTML = "";
+    ["S","M","T","W","T","F","S"].forEach((d) => { const h = document.createElement("div"); h.textContent = d; h.style.cssText = "text-align:center;font-weight:800;font-size:12px;color:var(--text2)"; grid.appendChild(h); });
+    const y = view.getFullYear(), m = view.getMonth();
+    const first = new Date(y, m, 1).getDay();
+    for (let i = 0; i < first; i++) grid.appendChild(document.createElement("div"));
+    const days = new Date(y, m + 1, 0).getDate();
+    const today = new Date(); today.setHours(0,0,0,0);
+    for (let d = 1; d <= days; d++) {
+      const dt = new Date(y, m, d);
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "cal-day" + (picked === dt.toDateString() ? " selected" : "");
+      b.textContent = String(d);
+      const closed = dt.getDay() === 0 || dt < today;
+      if (closed) b.disabled = true;
+      b.addEventListener("click", () => { picked = dt.toDateString(); label.textContent = `Selected ${dt.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })} — choose an arrival window below.`; render(); });
+      grid.appendChild(b);
+    }
+  }
+  document.getElementById("calPrev")?.addEventListener("click", () => { view.setMonth(view.getMonth() - 1); render(); });
+  document.getElementById("calNext")?.addEventListener("click", () => { view.setMonth(view.getMonth() + 1); render(); });
+  document.querySelectorAll(".slot").forEach((s) => s.addEventListener("click", () => {
+    document.querySelectorAll(".slot").forEach((x) => x.classList.remove("selected"));
+    s.classList.add("selected"); slot = (s as HTMLElement).dataset.slot ?? null;
+  }));
+  render();
+
+  document.querySelectorAll("[data-next]").forEach((b) => b.addEventListener("click", () => {
+    const n = (b as HTMLElement).dataset.next!;
+    ["bk-step1","bk-step2","bk-step3","bk-step4"].forEach((id) => { (document.getElementById(id) as HTMLElement).hidden = id !== "bk-step" + n; });
+    document.querySelectorAll(".stepbar span").forEach((s) => s.classList.toggle("active", (s as HTMLElement).dataset.step === n));
+    if (n === "4") {
+      const g = (id: string) => (document.getElementById(id) as HTMLInputElement | HTMLSelectElement)?.value ?? "";
+      document.getElementById("b-summary")!.innerHTML =
+        `<strong>${g("b-service")} clean</strong> · ${g("b-beds")} bed / ${g("b-baths")} bath · ${g("b-freq")}<br>Date: ${picked ?? "—"} · Window: ${slot ?? "—"}<br>${g("b-name")} · ${g("b-phone")}<br>${g("b-addr")} · Entry: ${g("b-entry")}`;
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }));
+  document.getElementById("b-confirm")?.addEventListener("click", () => {
+    (document.getElementById("b-done") as HTMLElement).hidden = false;
+    (document.getElementById("b-confirmRow") as HTMLElement).hidden = true;
+  });
+</script>

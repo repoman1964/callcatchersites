@@ -1,0 +1,97 @@
+---
+import Icon from '../Icon.astro';
+import { biz, site, reviews, telHref, reviewHref, cta } from '../../lib/site';
+
+interface Props {
+  /** The region ("Metro Atlanta") by default; area pages pass their own city. */
+  location?: string;
+  /** The "Ready to become our next happy client?" CTA — homepage only. */
+  showCta?: boolean;
+}
+const { location = biz.region, showCta = false } = Astro.props;
+---
+
+<section class="section-pad relative bg-bg-warm overflow-hidden" id="reviews" aria-labelledby="reviews-heading">
+  <!-- Faint green radial wash from top — breaks the flat warm background -->
+  <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 90% 55% at 50% -5%, oklch(93% 0.04 145 / 0.10), transparent 70%)" aria-hidden="true"></div>
+  <!-- Decorative large opening quote — section level -->
+  <div class="pointer-events-none absolute right-[clamp(1rem,6vw,5rem)] top-[clamp(1rem,4vw,2.5rem)] select-none font-heading leading-none text-accent" style="font-size: clamp(7rem, 16vw, 13rem); opacity: 0.045; line-height: 1" aria-hidden="true">“</div>
+  <div class="container-site relative">
+    <div class="mb-10 reveal">
+      <span class="section-label">Client Reviews</span>
+      <h2 id="reviews-heading" class="text-[clamp(1.875rem,_4vw,_2.5rem)] font-bold mb-5">
+        What {location} customers <em class="italic text-accent">say.</em>
+      </h2>
+      <!-- Summary bar with Google badge -->
+      <div class="flex items-center justify-between gap-6 flex-wrap">
+        <div class="flex items-center gap-4">
+          <span class="font-heading text-5xl font-bold text-accent leading-none">{biz.rating}</span>
+          <div class="flex flex-col gap-1.5">
+            <div class="star-rating" role="img" aria-label={`${biz.rating} out of 5 stars`}>
+              {[1, 2, 3, 4, 5].map(() => <Icon n="efa9a5" />)}
+            </div>
+            <div class="flex items-center gap-1.5">
+              <Icon n="ade757" />
+              <span class="text-sm text-text-secondary">{biz.review_count} Google reviews</span>
+            </div>
+          </div>
+        </div>
+        <!-- Leave a review CTA -->
+        <div class="flex flex-col items-start sm:items-end gap-1.5">
+          <p class="text-xs font-semibold uppercase tracking-[0.1em] text-text-muted m-0">Worked with us?</p>
+          <a href={reviewHref} target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center gap-2">
+            <Icon n="2fc630" />
+            Leave a Review
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Review cards -->
+    <div class="relative mb-12">
+      <div id="reviews-track" class="reveal-stagger flex items-start gap-5 overflow-x-auto snap-x snap-mandatory pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-md:-mx-[clamp(1rem,5vw,2rem)] max-md:w-[calc(100%+2*clamp(1rem,5vw,2rem))] max-md:px-[clamp(1rem,5vw,2rem)] max-md:[scroll-padding-inline-start:clamp(1rem,5vw,2rem)]">
+        {reviews.map((r, i) => (
+          <article data-review-card class="snap-start shrink-0 grow-0 basis-[min(calc(85vw-0.5rem),340px)] md:basis-[calc((100%-1.25rem)/2)] lg:basis-[calc((100%-2*1.25rem)/3)] relative flex flex-col gap-4 overflow-hidden p-7 bg-surface-raised rounded-lg border border-card-warm-border shadow-sm-warm" aria-label={`Review from ${r.name}`}>
+            <!-- Decorative opening quote -->
+            <div class="pointer-events-none absolute bottom-3 right-4 select-none font-heading leading-none text-secondary" style="font-size: 5.5rem; opacity: 0.10; line-height: 1" aria-hidden="true">”</div>
+            <div class="star-rating gap-[3px]" role="img" aria-label={`${r.rating} out of 5 stars`}>
+              {[1, 2, 3, 4, 5].map((n) => (n <= r.rating ? <Icon n="f49cbe" /> : <span class="opacity-25"><Icon n="f49cbe" /></span>))}
+            </div>
+            <blockquote class="m-0 flex-1">
+              <p id={`review-text-${i}`} class="text-[0.9375rem] text-text-secondary leading-[1.7] italic m-0" data-review-text>{r.text}</p>
+            </blockquote>
+            <button type="button" class="text-sm font-semibold text-accent self-start -mt-2" data-review-toggle aria-controls={`review-text-${i}`} aria-expanded="false">See more</button>
+            <!-- Author -->
+            <footer class="flex items-center gap-3 pt-4 border-t border-border">
+              <div class:list={['w-10 h-10 rounded-full flex items-center justify-center font-heading text-base font-bold flex-shrink-0', i % 2 ? 'bg-secondary text-secondary-fg' : 'bg-accent text-accent-fg']} aria-hidden="true">{r.name.charAt(0)}</div>
+              <div class="flex flex-col gap-[2px]">
+                <span class="text-[0.9rem] font-semibold text-text">{r.name}</span>
+                <span class="text-xs text-text-muted">Google review · {r.date}</span>
+              </div>
+            </footer>
+          </article>
+        ))}
+      </div>
+      <!-- Dots + nav — always visible -->
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <button id="reviews-prev-m" type="button" class="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-surface-raised text-text-secondary transition-[color,background-color,border-color] duration-150 hover:border-accent hover:bg-accent-light hover:text-accent" aria-label="Previous reviews">
+          <Icon n="154ece" />
+        </button>
+        <div id="reviews-dots" class="flex items-center gap-[6px]" role="tablist" aria-label="Review navigation"></div>
+        <button id="reviews-next-m" type="button" class="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-surface-raised text-text-secondary transition-[color,background-color,border-color] duration-150 hover:border-accent hover:bg-accent-light hover:text-accent" aria-label="Next reviews">
+          <Icon n="10667b" />
+        </button>
+      </div>
+    </div>
+    {
+      showCta && (
+        <div class="flex items-center justify-center gap-5 flex-col text-center reveal">
+          <p class="text-xl font-semibold text-text text-left m-0">{site.home.reviews_cta}</p>
+          <div class="flex gap-3 flex-wrap justify-center">
+            <button type="button" data-open-quote-modal class="btn-primary">{cta.quote}</button>
+            <a href={telHref} class="btn-ghost"><Icon n="5de33e" /> {biz.phone}</a>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BookWidget from "../components/BookWidget.astro";
+import { business } from "../data/site";
+---
+<BaseLayout
+  title="Book a House Clean in Atlanta | Pick Your Date & Window Now"
+  description="Pick a date for your Atlanta clean. Calendar with arrival windows, entry and notes, instant confirmation. Flat price confirmed. Book online today!!"
+>
+  <div class="hero">
+    <div class="container">
+      <span class="eyebrow">Book</span>
+      <h1>Pick a date for your clean.</h1>
+      <p class="lead">Your price is confirmed before the first visit. No deposit to book. Questions? Call or text {business.phoneDisplay}.</p>
+      <p><a href={business.phoneTel} style="font-weight:800">{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us →</a></p>
+    </div>
+  </div>
+  <section>
+    <div class="container">
+      <BookWidget />
+    </div>
+  </section>
+</BaseLayout>

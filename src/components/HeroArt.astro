@@ -1,0 +1,34 @@
+---
+import { business } from "../data/site";
+interface Props { variant?: string; label?: string; }
+const { variant = "kitchen", label = "Documentary photo: cleaner at work in a real Atlanta home" } = Astro.props as Props;
+const palettes: Record<string, [string, string, string]> = {
+  kitchen: ["#E8F0ED", "#123C47", "#0F7A5A"],
+  bedroom: ["#EDEBE3", "#123C47", "#5FD3A8"],
+  bath: ["#E3EEF0", "#123C47", "#0F7A5A"],
+  living: ["#EFF3E8", "#123C47", "#0F7A5A"],
+  team: ["#E8EFEC", "#123C47", "#5FD3A8"],
+  rental: ["#ECEFF1", "#123C47", "#0F7A5A"],
+  build: ["#EFEDE6", "#123C47", "#0F7A5A"],
+  office: ["#E6EEEA", "#123C47", "#5FD3A8"],
+  porch: ["#E9F1EE", "#123C47", "#0F7A5A"],
+  map: ["#E4EFEB", "#123C47", "#0F7A5A"],
+};
+const [bg, fg, ac] = palettes[variant] ?? palettes.kitchen;
+---
+<div class="hero-image" style={`background:${bg}`} role="img" aria-label={label}>
+  <svg viewBox="0 0 640 420" width="100%" height="300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="640" height="420" fill={bg} />
+    {variant === "kitchen" && (<g><rect x="60" y="220" width="520" height="140" rx="8" fill={fg} opacity="0.12"/><rect x="90" y="150" width="220" height="110" rx="8" fill="#fff" stroke={fg} stroke-width="3"/><rect x="350" y="90" width="180" height="170" rx="8" fill={fg} opacity="0.85"/><rect x="370" y="110" width="140" height="18" rx="4" fill={ac}/><rect x="370" y="136" width="100" height="12" rx="4" fill="#fff" opacity="0.7"/><circle cx="150" cy="120" r="34" fill={ac} opacity="0.25"/><rect x="110" y="200" width="60" height="60" rx="6" fill={ac}/></g>)}
+    {variant === "bedroom" && (<g><rect x="80" y="200" width="480" height="150" rx="12" fill={fg} opacity="0.9"/><rect x="80" y="150" width="480" height="70" rx="12" fill="#fff" stroke={fg} stroke-width="3"/><rect x="110" y="120" width="160" height="60" rx="8" fill={fg} opacity="0.2"/><rect x="380" y="60" width="140" height="100" rx="8" fill={ac} opacity="0.3"/></g>)}
+    {variant === "bath" && (<g><rect x="120" y="80" width="400" height="260" rx="12" fill="#fff" stroke={fg} stroke-width="3"/><rect x="160" y="120" width="180" height="120" rx="8" fill={ac} opacity="0.25"/><rect x="380" y="120" width="100" height="180" rx="8" fill={fg} opacity="0.85"/><circle cx="250" cy="280" r="26" fill={fg} opacity="0.2"/></g>)}
+    {variant === "living" && (<g><rect x="70" y="180" width="220" height="140" rx="10" fill={fg} opacity="0.85"/><rect x="330" y="140" width="240" height="180" rx="10" fill="#fff" stroke={fg} stroke-width="3"/><rect x="360" y="170" width="180" height="14" rx="4" fill={ac}/><rect x="360" y="192" width="140" height="12" rx="4" fill={fg} opacity="0.3"/></g>)}
+    {variant === "team" && (<g><circle cx="200" cy="170" r="60" fill={fg} opacity="0.85"/><circle cx="320" cy="160" r="60" fill={ac}/><circle cx="440" cy="170" r="60" fill={fg} opacity="0.5"/><rect x="120" y="250" width="400" height="80" rx="10" fill="#fff" stroke={fg} stroke-width="3"/></g>)}
+    {variant === "rental" && (<g><rect x="90" y="100" width="220" height="220" rx="10" fill="#fff" stroke={fg} stroke-width="3"/><rect x="340" y="100" width="210" height="220" rx="10" fill={fg} opacity="0.9"/><rect x="120" y="140" width="160" height="16" rx="4" fill={ac}/><rect x="120" y="164" width="120" height="12" rx="4" fill={fg} opacity="0.3"/><rect x="370" y="140" width="150" height="16" rx="4" fill={ac}/></g>)}
+    {variant === "build" && (<g><rect x="80" y="120" width="480" height="200" rx="8" fill="none" stroke={fg} stroke-width="4"/><line x1="80" y1="220" x2="560" y2="220" stroke={fg} stroke-width="3"/><rect x="140" y="160" width="90" height="60" fill={ac} opacity="0.5"/><rect x="260" y="140" width="90" height="80" fill={fg} opacity="0.3"/></g>)}
+    {variant === "office" && (<g><rect x="70" y="150" width="500" height="20" rx="4" fill={fg}/><rect x="100" y="80" width="120" height="70" rx="6" fill={ac} opacity="0.4"/><rect x="250" y="60" width="140" height="90" rx="6" fill="#fff" stroke={fg} stroke-width="3"/><rect x="420" y="90" width="100" height="60" rx="6" fill={fg} opacity="0.6"/></g>)}
+    {variant === "porch" && (<g><rect x="180" y="60" width="280" height="300" rx="10" fill="#fff" stroke={fg} stroke-width="3"/><rect x="220" y="110" width="200" height="24" rx="4" fill={ac}/><rect x="220" y="150" width="160" height="14" rx="4" fill={fg} opacity="0.3"/><circle cx="320" cy="260" r="34" fill={fg} opacity="0.15"/></g>)}
+    {variant === "map" && (<g><rect x="100" y="60" width="440" height="300" rx="12" fill="#fff" stroke={fg} stroke-width="3"/><circle cx="280" cy="180" r="18" fill={ac}/><circle cx="360" cy="230" r="12" fill={fg}/><circle cx="330" cy="150" r="10" fill={fg} opacity="0.4"/><path d="M140 300 L260 200 L340 240 L420 160 L500 200" stroke={fg} stroke-width="3" fill="none"/></g>)}
+    {!(["kitchen","bedroom","bath","living","team","rental","build","office","porch","map"].includes(variant)) && (<g><rect x="120" y="100" width="400" height="220" rx="12" fill="#fff" stroke={fg} stroke-width="3"/><rect x="160" y="150" width="200" height="18" rx="4" fill={ac}/></g>)}
+  </svg>
+</div>

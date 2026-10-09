@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { business } from "../data/site";
+---
+<BaseLayout
+  title="Terms of Service | Atlanta House Cleaning Booking Rules Now"
+  description="Quotes and price confirmation, no-contract recurring terms, 48-hour cancellations, payments, guarantee, breakage, and Georgia law today now."
+>
+  <div class="hero"><div class="container prose">
+    <span class="eyebrow">Terms</span>
+    <h1>Terms of service.</h1>
+  </div></div>
+  <section><div class="container prose">
+    <h2>Quotes and price confirmation</h2>
+    <p>Online prices are estimates by home size. If your home differs materially from what was booked, we confirm the adjusted flat price before starting — never on the invoice.</p>
+    <h2>Recurring service and no-contract terms</h2>
+    <p>Recurring plans have no contracts. Skip, pause, or cancel anytime with 48 hours&#39; notice. Weekly and every-2-weeks rates are lowest; monthly and one-time higher.</p>
+    <h2>Cancellations, lockouts, and late fees</h2>
+    <p>Cancellations inside 48 hours and lockouts (we cannot access the home at the window) may incur a fee up to one visit rate. Late entry caused by access issues counts against the window.</p>
+    <h2>Payment timing</h2>
+    <p>Cards are charged after each clean. Office and post-construction clients may be invoiced net-15 by agreement.</p>
+    <h2>Re-clean guarantee</h2>
+    <p>Summary: report a missed checklist item within 24 hours and we return within 2 business days to re-clean that area free. Full terms on <a href="/guarantee">/guarantee</a>.</p>
+    <h2>Breakage and damage claims</h2>
+    <p>Report within 24 hours with a photo. Covered by our insurance; every claim documented and resolved in writing. Pre-existing damage and wear are excluded.</p>
+    <h2>Safety</h2>
+    <p>We may decline or stop work in unsafe conditions, biohazards, or extreme clutter, with a pro-rated charge for work performed. Pets must be secured if aggressive.</p>
+    <h2>Site use</h2>
+    <p>Content on this site is for quoting and booking cleaning services. Do not misuse forms or attempt to disrupt the service.</p>
+    <h2>Liability</h2>
+    <p>Liability is limited to the amount paid for the visit giving rise to the claim, to the maximum extent permitted by law.</p>
+    <h2>Governing law</h2>
+    <p>These terms are governed by the laws of Georgia. Contact: {business.email} · <a href={business.phoneTel}>{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us →</a>.</p>
+  </div></section>
+</BaseLayout>

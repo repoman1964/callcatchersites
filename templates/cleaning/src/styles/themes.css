@@ -1,0 +1,183 @@
+/* Three color/font themes over the same markup. <html data-theme="…"> picks one, set from the
+   content JSON. Unlayered, so these beat Tailwind's @theme defaults on :root.
+   Contrast: accent and secondary buttons carry white text at ≥ 4.5:1; muted text on white ≥ 4.5:1. */
+
+/* ── Fresh: deep teal + green, Plus Jakarta Sans ───────────────────────── */
+html[data-theme="fresh"] {
+  --font-heading: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --color-bg: #f7faf9;
+  --color-surface: #eff5f3;
+  --color-surface-raised: #ffffff;
+  --color-bg-warm: #f1f7f4;
+  --color-dark-bg: #123c47;
+  --color-dark-surface: #1a4b57;
+  --color-overlay: #0b2a32;
+  --color-surface-footer: #1f5562;
+  --color-text: #17201e;
+  --color-text-secondary: #43504c;
+  --color-text-muted: #5f6d69;
+  --color-text-on-dark: #f5f8f7;
+  --color-text-on-dark-muted: #c3d6d9;
+  --color-text-on-dark-dim: #93b3b9;
+  --color-text-footer: #c3d6d9;
+  --color-accent: #0f7a5a;
+  --color-accent-hover: #0b5f46;
+  --color-accent-active: #08483a;
+  --color-accent-light: #e4f3ec;
+  --color-accent-fg: #ffffff;
+  --color-accent-on-dark: #5fd3a8;
+  --color-accent-raised: #13906a;
+  --color-accent-border: #cfe8dd;
+  --color-accent-border-medium: #a8d5c2;
+  --color-accent-text: #0b5f46;
+  --color-accent-status: #e4f3ec;
+  --color-secondary: #123c47;
+  --color-secondary-hover: #0d2e37;
+  --color-secondary-active: #0a242b;
+  --color-secondary-light: #e8f1f2;
+  --color-secondary-fg: #ffffff;
+  --color-secondary-muted: #b9d1d5;
+  --color-border: #dfe7e4;
+  --color-border-strong: #b8c7c2;
+  --color-border-on-dark: #2e6370;
+  --color-card-warm-border: #e2ebe7;
+  --color-card-warm-border-hover: #c6d4cf;
+  --ring-accent-focus: 0 0 0 3px #0f7a5a33;
+  --ring-accent-focus-dark: 0 0 0 3px #5fd3a84d;
+  --ring-accent-hover: 0 0 0 1px #0f7a5a1f;
+}
+
+/* ── Classic: navy + gold, Playfair Display / DM Sans ──────────────────── */
+html[data-theme="classic"] {
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --color-bg: #faf8f4;
+  --color-surface: #f3efe6;
+  --color-surface-raised: #ffffff;
+  --color-bg-warm: #f7f2e8;
+  --color-dark-bg: #14233f;
+  --color-dark-surface: #1d3054;
+  --color-overlay: #0e1a30;
+  --color-surface-footer: #243a63;
+  --color-text: #1b1f2a;
+  --color-text-secondary: #474c59;
+  --color-text-muted: #636877;
+  --color-text-on-dark: #f7f5f0;
+  --color-text-on-dark-muted: #c9cfdc;
+  --color-text-on-dark-dim: #98a3ba;
+  --color-text-footer: #c9cfdc;
+  --color-accent: #1e3a66;
+  --color-accent-hover: #172e52;
+  --color-accent-active: #11233f;
+  --color-accent-light: #e9eef6;
+  --color-accent-fg: #ffffff;
+  --color-accent-on-dark: #e3b85c;
+  --color-accent-raised: #2a4c80;
+  --color-accent-border: #d4ddec;
+  --color-accent-border-medium: #b3c2db;
+  --color-accent-text: #172e52;
+  --color-accent-status: #e9eef6;
+  --color-secondary: #8c6416;
+  --color-secondary-hover: #745211;
+  --color-secondary-active: #5e420d;
+  --color-secondary-light: #f7efdc;
+  --color-secondary-fg: #ffffff;
+  --color-secondary-muted: #e6d3a8;
+  --color-border: #e6e1d6;
+  --color-border-strong: #c9c1b0;
+  --color-border-on-dark: #34497a;
+  --color-card-warm-border: #ebe4d4;
+  --color-card-warm-border-hover: #d6cbb3;
+  --ring-accent-focus: 0 0 0 3px #1e3a6633;
+  --ring-accent-focus-dark: 0 0 0 3px #e3b85c4d;
+  --ring-accent-hover: 0 0 0 1px #1e3a661f;
+}
+
+/* ── Warm: terracotta + sage, Fraunces / Inter ─────────────────────────── */
+html[data-theme="warm"] {
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --color-bg: #fbf8f3;
+  --color-surface: #f4eee5;
+  --color-surface-raised: #ffffff;
+  --color-bg-warm: #f7f0e6;
+  --color-dark-bg: #2f3b31;
+  --color-dark-surface: #3b4a3e;
+  --color-overlay: #232d25;
+  --color-surface-footer: #45564a;
+  --color-text: #24221f;
+  --color-text-secondary: #504b45;
+  --color-text-muted: #6b655d;
+  --color-text-on-dark: #f8f5ef;
+  --color-text-on-dark-muted: #d2d9cf;
+  --color-text-on-dark-dim: #a6b3a6;
+  --color-text-footer: #d2d9cf;
+  --color-accent: #b4532a;
+  --color-accent-hover: #96431f;
+  --color-accent-active: #7a3618;
+  --color-accent-light: #f8ebe4;
+  --color-accent-fg: #ffffff;
+  --color-accent-on-dark: #f0a47e;
+  --color-accent-raised: #c4633a;
+  --color-accent-border: #f0d8cc;
+  --color-accent-border-medium: #e3bba7;
+  --color-accent-text: #96431f;
+  --color-accent-status: #f8ebe4;
+  --color-secondary: #4f6b55;
+  --color-secondary-hover: #3f5844;
+  --color-secondary-active: #324637;
+  --color-secondary-light: #edf2ec;
+  --color-secondary-fg: #ffffff;
+  --color-secondary-muted: #b9c9bb;
+  --color-border: #e8e1d6;
+  --color-border-strong: #cbc1b2;
+  --color-border-on-dark: #56695a;
+  --color-card-warm-border: #ece3d6;
+  --color-card-warm-border-hover: #d8cab6;
+  --ring-accent-focus: 0 0 0 3px #b4532a33;
+  --ring-accent-focus-dark: 0 0 0 3px #f0a47e4d;
+  --ring-accent-hover: 0 0 0 1px #b4532a1f;
+}
+
+/* ── Text wordmark (businesses without a logo) ─────────────────────────── */
+.wordmark {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 3.6vw, 1.3rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  max-width: 15ch;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.26s var(--ease-out-expo);
+}
+.site-header--overlay:not(.is-scrolled) .wordmark { color: var(--color-text-on-dark); }
+/* Current-page link over the hero: the light accent pill would hide the white text, so use a translucent one. */
+.site-header--overlay:not(.is-scrolled) nav[aria-label="Main navigation"] > ul > li > a[aria-current="page"] { color: var(--color-text-on-dark); background-color: oklch(from var(--color-surface-raised) l c h / 0.16); }
+.wordmark--dark { color: var(--color-text-on-dark); max-width: 20ch; font-size: 1.375rem; }
+
+/* Legal pages: intro paragraph + inline links */
+.prose-legal .lead-p { font-size: 1.0625rem; color: var(--color-text-secondary); margin-bottom: 2.5rem; }
+.prose-legal a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+
+/* Lead form: selects + date input match text inputs */
+select.form-input { appearance: none; padding-right: 2.25rem; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 1.1rem) 52%, calc(100% - 0.8rem) 52%; background-size: 0.3rem 0.3rem; background-repeat: no-repeat; }
+input[type="date"].form-input { min-height: 2.9rem; }
+.form-input-dark { color-scheme: dark; }
+fieldset[data-booking] legend { padding: 0; grid-column: 1 / -1; }
+
+/* Classic: the navy accent disappears on navy sections, so buttons there switch to gold. */
+html[data-theme="classic"] :is(.bg-dark-bg, .bg-dark-surface) .btn-primary,
+html[data-theme="classic"] .site-header--overlay:not(.is-scrolled) .btn-primary {
+  background-color: var(--color-accent-on-dark);
+  color: #14233f;
+}
+html[data-theme="classic"] :is(.bg-dark-bg, .bg-dark-surface) .btn-primary:hover,
+html[data-theme="classic"] .site-header--overlay:not(.is-scrolled) .btn-primary:hover {
+  background-color: #edc978;
+  color: #14233f;
+}

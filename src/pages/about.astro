@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroArt from "../components/HeroArt.astro";
+import { business } from "../data/site";
+---
+<BaseLayout
+  title="About Our Atlanta Cleaning Team | Same Team, Every Visit Now"
+  description="Local Atlanta cleaning company since [YEAR]. Background-checked insured cleaners, the same team every visit, flat prices, 24-hour guarantee."
+>
+  <div class="hero">
+    <div class="container hero-split">
+      <div>
+        <span class="eyebrow">About</span>
+        <h1>The people who clean your home, and the company behind them.</h1>
+        <p class="lead">We started because cleaning services kept sending strangers each time. So we built the opposite: assigned teams, flat prices, written checklists, and a guarantee in writing.</p>
+      </div>
+      <div><HeroArt variant="team" label="Cleaning team portraits" /></div>
+    </div>
+  </div>
+
+  <section aria-label="Story">
+    <div class="container prose">
+      <h2>Why we exist.</h2>
+      <p>Most cleaning services optimize for dispatch speed: whoever is free gets sent. Clients get a different stranger every visit, no continuity, and no accountability when something is missed.</p>
+      <p>We run assigned teams instead. The same people return to your home on a standing schedule, work from the same written checklist, and are managed — trained, supervised, and paid — directly by us.</p>
+      <p>What has stayed the same since {business.founded}: same teams, flat prices shown before booking, checklists on every job, and the 24-hour re-clean guarantee.</p>
+      <p>Our cleaners are hired slowly: background check, reference check, paid in-house training on the checklist, and supervised first cleans. Founded by [Founder Name].</p>
+    </div>
+  </section>
+
+  <section class="band-light" aria-label="Team">
+    <div class="container">
+      <div class="smallcaps">The team</div>
+      <h2>Faces you&#39;ll recognize.</h2>
+      <div class="team-grid" style="margin-top:24px">
+        {[1,2,3,4,5,6].map(() => (
+          <div class="team-card"><div class="team-photo">TM</div><div class="body"><strong>[Team Member]</strong><br /><span style="font-size:14px;color:var(--text2)">Cleaner · [X] yrs with us</span></div></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Hiring and beliefs">
+    <div class="container split-5-7">
+      <div>
+        <div class="smallcaps">How we hire</div>
+        <h2>Slow hiring, thorough training.</h2>
+        <ul>
+          <li>Background check + reference check</li>
+          <li>Paid in-house training on the checklist</li>
+          <li>Supervised first cleans before solo visits</li>
+        </ul>
+        <p>Credentials: insured &amp; bonded · [INSURANCE CARRIER]. Badges: [Badge 1] · [Badge 2].</p>
+      </div>
+      <div>
+        <div class="smallcaps">Four beliefs</div>
+        <h2>What we won&#39;t compromise.</h2>
+        <ul class="check-list">
+          <li><span class="check">✓</span>Same people every time</li>
+          <li><span class="check">✓</span>Price before we start</li>
+          <li><span class="check">✓</span>Train and pay our team properly</li>
+          <li><span class="check">✓</span>Fix it if we miss it — within 24 hours, free</li>
+        </ul>
+        <p style="margin-top:16px"><a class="btn btn-primary" href="/book">Book a Clean →</a> <a href={business.phoneTel} style="font-weight:800;margin-left:12px">{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us →</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

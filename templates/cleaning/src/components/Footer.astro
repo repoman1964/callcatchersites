@@ -1,0 +1,86 @@
+---
+import Icon from './Icon.astro';
+import { biz, telHref, mailHref, categories, areas, categoryHref, areaHref, hours, year } from '../lib/site';
+
+const heading = 'font-body text-[0.6875rem] font-semibold tracking-[0.12em] uppercase text-text-on-dark-muted';
+const link = 'text-[0.9rem] text-text-footer no-underline transition-colors duration-150 hover:text-accent-light';
+const legal = 'text-[0.8125rem] text-text-on-dark-muted no-underline transition-colors duration-150 hover:text-text-footer';
+---
+
+<footer class="bg-dark-surface text-text-on-dark" role="contentinfo">
+  <!-- Main Footer Grid -->
+  <div class="container-site grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.25fr] gap-8 lg:gap-12 py-12 sm:py-16">
+    <!-- Column 1: Brand -->
+    <div>
+      <a href="/" class="inline-flex items-center no-underline mb-5" aria-label={`${biz.name} — Home`}>
+        {biz.logo ? (
+          <img src={biz.logo} alt={`${biz.name} logo`} title={`${biz.name} logo`} width="160" height="72" class="w-[clamp(7rem,_28vw,_10rem)] h-auto max-h-[4.5rem] object-contain" loading="lazy" decoding="async" />
+        ) : (
+          <span class="wordmark wordmark--dark">{biz.name}</span>
+        )}
+      </a>
+      <p class="text-sm text-text-on-dark-muted leading-relaxed max-w-[30ch] mb-5">{biz.description}</p>
+      {biz.facebook && (
+        <div class="flex gap-2">
+          <a href={biz.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="flex items-center justify-center w-9 h-9 bg-surface-footer border border-border-on-dark rounded-md text-text-on-dark-muted no-underline transition-colors duration-150 hover:bg-accent hover:border-accent hover:text-accent-fg">
+            <Icon n="6ce0a3" />
+          </a>
+        </div>
+      )}
+    </div>
+    <!-- Column 2: Services -->
+    <div>
+      <h3 class={`${heading} mb-4`}>Services</h3>
+      <ul role="list" class="list-none m-0 p-0 flex flex-col gap-2">
+        {categories.map((c) => <li><a href={categoryHref(c)} class={link}>{c.name}</a></li>)}
+      </ul>
+    </div>
+    <!-- Column 3: Service Areas -->
+    <div>
+      <h3 class={`${heading} mb-4`}>Service Areas</h3>
+      <ul role="list" class="list-none m-0 p-0 flex flex-col gap-2">
+        {areas.slice(0, 5).map((a) => <li><a href={areaHref(a)} class={link}>{a.name}</a></li>)}
+      </ul>
+    </div>
+    <!-- Column 4: Contact & Hours -->
+    <div>
+      <h3 class={`${heading} mb-4`}>Contact</h3>
+      <address class="not-italic flex flex-col gap-3">
+        <div class="flex items-start gap-[0.625rem] text-sm text-text-footer">
+          <Icon n="b8b01a" />
+          <a href={telHref} class="text-text-footer no-underline transition-colors duration-150 hover:text-accent-light">{biz.phone}</a>
+        </div>
+        {biz.email && (
+          <div class="flex items-start gap-[0.625rem] text-sm text-text-footer">
+            <Icon n="98f8c1" />
+            <a href={mailHref} class="text-text-footer no-underline transition-colors duration-150 hover:text-accent-light">{biz.email}</a>
+          </div>
+        )}
+        <div class="flex items-start gap-[0.625rem] text-sm text-text-footer">
+          <Icon n="5320b5" />
+          <span class="leading-normal">{biz.hq}</span>
+        </div>
+      </address>
+      <h3 class={`${heading} mt-6 mb-4`}>Hours</h3>
+      <dl class="flex flex-col gap-[0.375rem]">
+        {hours.map((h) => (
+          <div class="flex justify-between gap-4 text-sm">
+            <dt class="text-text-on-dark-muted">{h.days}</dt>
+            <dd class="text-text-footer m-0">{h.time}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+  <!-- Bottom Bar -->
+  <div class="border-t border-border-on-dark py-5">
+    <div class="container-site flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-[0.8125rem] text-text-on-dark-muted m-0">© {year} {biz.name}. All rights reserved.</p>
+      <nav aria-label="Legal navigation" class="flex gap-6">
+        <a href="/privacy" class={legal}>Privacy Policy</a>
+        <a href="/terms" class={legal}>Terms</a>
+        <a href="/sitemap-index.xml" class={legal}>Sitemap</a>
+      </nav>
+    </div>
+  </div>
+</footer>

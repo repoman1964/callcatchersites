@@ -1,0 +1,45 @@
+---
+// Dark photo hero with breadcrumb, used by About / Contact.
+import Icon from '../Icon.astro';
+import { site } from '../../lib/site';
+
+interface Props {
+  label: string;
+  title: string;
+  sub?: string;
+  crumb: string;
+  ariaLabel: string;
+  /** Funnel pages use the slimmer chevron and a greener wash. */
+  variant?: 'page' | 'funnel';
+  pad?: string;
+  maxW?: string;
+}
+const { label, title, sub, crumb, ariaLabel, variant = 'page', pad = 'pt-[max(6rem,_clamp(3.5rem,_7vw,_6rem))] pb-[clamp(3.5rem,_7vw,_6rem)]', maxW = 'max-w-[780px]' } = Astro.props;
+const funnel = variant === 'funnel';
+---
+
+<section class={`bg-dark-bg relative overflow-hidden ${pad}`} aria-label={ariaLabel}>
+  <div class:list={['absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-zoom', funnel ? 'opacity-[0.22] [filter:saturate(0.75)]' : 'opacity-[0.24] [filter:saturate(0.8)]']} style={`background-image: url('${site.home.hero.bg}')`} role="presentation"></div>
+  {
+    funnel ? (
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,oklch(10%_0.015_145/0.65)_0%,oklch(10%_0.01_90/0.40)_60%,oklch(10%_0.01_90/0.10)_100%)]" aria-hidden="true"></div>
+    ) : (
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,oklch(from_var(--color-overlay)_l_c_h/0.60)_0%,oklch(from_var(--color-overlay)_l_c_h/0.36)_48%,oklch(from_var(--color-overlay)_l_c_h/0.08)_100%)]" aria-hidden="true"></div>
+    )
+  }
+  <div class="container-site relative z-10">
+    <nav aria-label="Breadcrumb" class:list={['flex items-center text-[0.8125rem] mb-8 hero-fade-up', funnel ? 'gap-x-2' : 'gap-x-2 gap-y-1']} style="animation-delay: 0ms">
+      <a href="/" class:list={['text-text-on-dark-dim hover:text-accent-light transition-colors duration-150 no-underline', !(funnel) && 'shrink-0']}>Home</a>
+      <Icon n={funnel ? 'f9103b' : '40df6f'} />
+      <span aria-current="page" class="text-text-on-dark-muted">{crumb}</span>
+    </nav>
+    <div class={funnel ? 'max-w-[680px]' : maxW}>
+      <span class="section-label section-label-dark hero-fade-up" style="animation-delay: 80ms">{label}</span>
+      <h1 class="text-[clamp(1.875rem,_4.5vw,_3rem)] font-bold text-text-on-dark leading-[1.1] mb-4 hero-fade-up" style="animation-delay: 150ms">
+        <Fragment set:html={title} />
+      </h1>
+      {sub && <p class:list={['text-[1.0625rem] text-text-on-dark leading-[1.65] hero-fade-up', funnel ? 'max-w-[54ch]' : 'max-w-[56ch]']} style="animation-delay: 270ms">{sub}</p>}
+      <slot />
+    </div>
+  </div>
+</section>

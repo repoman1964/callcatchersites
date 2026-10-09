@@ -1,0 +1,93 @@
+---
+import '../styles/global.css';
+import '../styles/themes.css';
+import Header from '../components/Header.astro';
+import MobileNav from '../components/MobileNav.astro';
+import Footer from '../components/Footer.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+import QuoteModal from '../components/QuoteModal.astro';
+import { themes } from '../data/niche';
+import { biz, site, preview, absUrl } from '../lib/site';
+import { localBusiness } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Extra JSON-LD blocks (Service, FAQPage, BreadcrumbList). Nulls are skipped. */
+  schema?: (object | null)[];
+  active?: 'about' | 'contact';
+  noindex?: boolean;
+  /** Used for the decorative logo title inside the quote modal. */
+  heading?: string;
+  /** Render without the site chrome (header, footer, widgets). */
+  bare?: boolean;
+}
+const { title, description, schema = [], active, noindex = false, heading, bare = false } = Astro.props;
+const canonical = absUrl(Astro.url.pathname);
+const ld = [localBusiness(), ...schema].filter(Boolean);
+// One of three themes (styles/themes.css); only that theme's fonts load.
+const fontsHref = `https://fonts.googleapis.com/css2?${themes[site.theme].fonts}&display=swap`;
+---
+
+<!doctype html>
+<html lang="en" data-theme={site.theme}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Primary SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex || preview.enabled ? 'noindex, nofollow' : 'index, follow'} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={biz.og_image} />
+    <meta property="og:site_name" content={biz.name} />
+    <meta property="og:locale" content="en_US" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={biz.og_image} />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- JSON-LD Schema -->
+    {ld.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block)} />)}
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={fontsHref} />
+    <slot name="head" />
+  </head>
+  <body>
+    {
+      bare ? (
+        <slot />
+      ) : (
+        <>
+          <Header active={active} />
+          <MobileNav active={active} />
+          <main id="main-content">
+            <slot />
+          </main>
+          <Footer />
+          <ChatWidget />
+          <QuoteModal imageTitle={heading} />
+        </>
+      )
+    }
+    <script>
+      import '../scripts/site.js';
+      import '../scripts/quote-modal.js';
+      import '../scripts/lead-form.js';
+      import '../scripts/chat-widget.js';
+      import '../scripts/reviews.js';
+    </script>
+  </body>
+</html>

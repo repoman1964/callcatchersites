@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { business } from "../data/site";
+---
+<BaseLayout
+  title="24-Hour Re-Clean Guarantee | Atlanta House Cleaning Pros Now"
+  description="Missed checklist item? Tell us within 24 hours and we return within 2 business days to re-clean that area free. Read full terms here today!!"
+>
+  <div class="hero">
+    <div class="container prose">
+      <span class="eyebrow">Guarantee</span>
+      <h1>Missed something? We come back free.</h1>
+      <p class="lead">If anything on your booked checklist was missed, tell us within 24 hours — text, call, or email with a photo — and we return within 2 business days to re-clean that area free.</p>
+      <p><a href={business.phoneTel} style="font-weight:800">{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us →</a> · {business.email}</p>
+    </div>
+  </div>
+  <section>
+    <div class="container prose">
+      <h2>What&#39;s covered</h2>
+      <p>Anything on the booked checklist that was missed or not completed to standard: surfaces, bathrooms, floors, dusting, trash, beds, and booked add-ons.</p>
+      <h2>What&#39;s not covered</h2>
+      <ul>
+        <li>Tasks that were not booked (e.g. inside oven when only a recurring clean was booked).</li>
+        <li>Permanent stains, damage, or wear that cleaning cannot reverse.</li>
+        <li>Areas we could not access (locked rooms, blocked areas, aggressive pets).</li>
+      </ul>
+      <h2>Breakage</h2>
+      <p>Report breakage within 24 hours with a photo. Claims are covered by our insurance per the <a href="/terms">terms</a>, documented and resolved in writing.</p>
+      <h2>How to make a claim</h2>
+      <ol>
+        <li>Text, call, or email within 24 hours of the visit with a photo of the area.</li>
+        <li>We schedule the re-clean within 2 business days at a time that works for you.</li>
+        <li>The same team returns when possible. No charge for the re-cleaned area.</li>
+      </ol>
+      <p><a class="btn btn-primary" href="/book">Book a Clean →</a></p>
+    </div>
+  </section>
+</BaseLayout>

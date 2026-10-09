@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import Reviews from '../../../components/sections/Reviews.astro';
+import Faq from '../../../components/sections/Faq.astro';
+import FindUs from '../../../components/sections/FindUs.astro';
+import { biz, telHref, categories, areas, areaHref, categoryHref, serviceHref, primaryCity, trustPoints, type Category, type Service, cta } from '../../../lib/site';
+import { service as serviceSchema, faqPage, breadcrumbs } from '../../../lib/schema';
+
+export function getStaticPaths() {
+  return categories.flatMap((cat) => cat.services.map((svc) => ({ params: { category: cat.slug, service: svc.slug }, props: { cat, svc } })));
+}
+const { cat, svc } = Astro.props as { cat: Category; svc: Service };
+const path = serviceHref(cat, svc);
+const heading = `${svc.name} in ${primaryCity}`;
+const siblings = cat.services.filter((s) => s.slug !== svc.slug);
+const schema = [
+  serviceSchema(heading, svc.body.join(' '), path),
+  faqPage(svc.faq),
+  breadcrumbs([{ name: cat.name, path: categoryHref(cat) }, { name: svc.name, path }]),
+];
+---
+
+<BaseLayout title={svc.meta.title} description={svc.meta.description} schema={schema} heading={heading}>
+  <section class="bg-dark-bg relative overflow-hidden pt-[max(6rem,_clamp(3.5rem,_7vw,_6rem))] pb-[clamp(3.5rem,_7vw,_6rem)]" aria-label={`${svc.name} service hero`}>
+    <div class="absolute inset-0 bg-cover bg-center opacity-[0.1] hero-bg-zoom" role="presentation" style={`background-image: url('${svc.hero_image}')`}></div>
+    <div class="container-site relative z-10">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] mb-8 hero-fade-up" style="animation-delay: 0ms">
+        <a href="/" class="text-text-on-dark-dim hover:text-accent-light shrink-0">Home</a>
+        <Icon n="40df6f" />
+        <a href={categoryHref(cat)} class="text-text-on-dark-dim hover:text-accent-light capitalize shrink-0">{cat.name}</a>
+        <Icon n="40df6f" />
+        <span aria-current="page" class="text-text-on-dark-muted capitalize min-w-0 truncate">{svc.name}</span>
+      </nav>
+      <div class="grid grid-cols-1 max-w-[780px]">
+        <div>
+          <span class="section-label section-label-dark hero-fade-up" style="animation-delay: 80ms">{cat.name}</span>
+          <h1 class="text-[clamp(1.875rem,_4.5vw,_3rem)] font-bold text-text-on-dark leading-[1.1] mb-4 hero-fade-up" style="animation-delay: 150ms">
+            <span class="capitalize">{svc.name}</span> in {primaryCity}
+          </h1>
+          <p class="text-[1.0625rem] text-text-on-dark leading-[1.65] max-w-[56ch] mb-7 hero-fade-up" style="animation-delay: 270ms">{svc.summary}</p>
+          <div class="flex flex-col sm:flex-row gap-3 mb-7 hero-fade-up" style="animation-delay: 370ms">
+            <button type="button" data-open-quote-modal class="btn-primary py-3.5 px-7 justify-center">{cta.book}</button>
+            <a href={telHref} class="btn-ghost-light py-3.5 px-6 justify-center">Call {biz.phone}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" aria-labelledby="service-detail-heading">
+    <div class="container-site">
+      <div class="lg:grid lg:grid-cols-[1fr_280px] lg:gap-14 lg:items-start">
+        <!-- Left: main content + link panels -->
+        <div class="min-w-0">
+          <div>
+            <figure class="mb-8 overflow-hidden rounded-xl border border-border bg-surface shadow-md reveal">
+              <img src={svc.image.src} alt={svc.image.alt} title={svc.image.alt} width="900" height="520" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover" />
+            </figure>
+            <h2 id="service-detail-heading" class="text-[clamp(1.75rem,_4vw,_2.5rem)] font-bold mb-2 reveal">
+              Expert <span class="capitalize">{svc.name}</span> in {primaryCity}
+            </h2>
+            <span class="accent-bar reveal" style="transition-delay: 80ms"></span>
+            <div class="mt-6 mb-10 reveal" style="transition-delay: 120ms">
+              {svc.body.map((p) => <p class="text-[1.0625rem] text-text-secondary leading-[1.75]">{p}</p>)}
+            </div>
+            <!-- All benefits -->
+            <div class="reveal" style="transition-delay: 80ms">
+              <h3 class="text-[1.0625rem] font-bold mb-4">What's included</h3>
+              <ul class="list-none m-0 mb-10 p-0 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {svc.benefits.map((b) => <li class="flex items-start gap-[0.625rem] text-[0.9375rem] text-text-secondary leading-[1.45]"><Icon n="b0a944" /> {b}</li>)}
+              </ul>
+            </div>
+            <!-- Trust row -->
+            <div class="flex flex-wrap gap-[0.625rem] reveal" style="transition-delay: 60ms">
+              {trustPoints.map((t) => <div class="badge">{t}</div>)}
+            </div>
+          </div>
+          <!-- Link panels -->
+          <div class="mt-14 pt-10 border-t border-border grid grid-cols-1 sm:grid-cols-2 gap-6 reveal-stagger">
+            <div class="bg-surface-raised border border-border rounded-xl py-6 px-6">
+              <p class="text-left text-[0.6875rem] font-semibold tracking-[0.1em] uppercase text-text-muted mb-4">More {cat.name} Services</p>
+              <ul class="list-none m-0 p-0 flex flex-col gap-[0.25rem]" role="list">
+                {siblings.map((s) => (
+                  <li>
+                    <a href={serviceHref(cat, s)} class="flex items-center gap-2 text-sm font-medium text-text-secondary py-[0.375rem] transition-colors duration-150 no-underline hover:text-accent capitalize">
+                      <Icon n="55b379" /> <span class="min-w-0">{s.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-surface-raised border border-border rounded-xl py-6 px-6">
+              <p class="text-left text-[0.6875rem] font-semibold tracking-[0.1em] uppercase text-text-muted mb-4">Service Areas</p>
+              <ul class="list-none m-0 p-0 flex flex-col gap-[0.25rem]" role="list">
+                {areas.map((a) => (
+                  <li>
+                    <a href={areaHref(a)} class="flex items-center gap-2 text-sm font-medium text-text-secondary py-[0.375rem] transition-colors duration-150 no-underline hover:text-accent">
+                      <Icon n="83355b" /> <span class="min-w-0 capitalize">{a.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Right: sticky CTA sidebar -->
+        <div class="mt-10 lg:mt-0 lg:sticky lg:top-24">
+          <div class="bg-dark-bg border border-border-on-dark rounded-xl p-7 text-text-on-dark shadow-lg flex flex-col gap-6">
+            <div>
+              <p class="text-left text-[0.6875rem] font-semibold tracking-[0.1em] uppercase text-accent-on-dark mb-3">Need this service?</p>
+              <p class="font-heading text-xl font-bold leading-tight">{svc.sidebar_heading || cta.sidebarFallback}</p>
+            </div>
+            <div class="flex flex-col gap-3">
+              <button type="button" data-open-quote-modal class="btn-primary justify-center">{cta.bookShort}</button>
+              <a href={telHref} class="btn-ghost-light justify-center">Call Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Faq faq={svc.faq} />
+  <Reviews />
+  <FindUs />
+</BaseLayout>

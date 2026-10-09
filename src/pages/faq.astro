@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Faq from "../components/Faq.astro";
+import { fullFaq } from "../data/site";
+const all = fullFaq.flatMap((g) => g.items);
+const faqJsonLd = {
+  "@type": "FAQPage",
+  mainEntity: all.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+---
+<BaseLayout
+  title="House Cleaning FAQ Atlanta | Pricing, Booking & Guarantee"
+  description="12 answers on Atlanta house cleaning: flat pricing, discounts, cancellation, entry, pets, supplies, tipping, breakage, guarantee, areas served."
+  jsonLd={faqJsonLd}
+>
+  <div class="hero">
+    <div class="container prose">
+      <span class="eyebrow">FAQ</span>
+      <h1>Twelve questions, straight answers.</h1>
+    </div>
+  </div>
+  <section>
+    <div class="container">
+      {fullFaq.map((g) => (
+        <div style="margin-bottom:40px">
+          <h2 style="font-size:28px">{g.group}</h2>
+          <Faq items={g.items} idPrefix={g.group.replace(/\W+/g, "-").toLowerCase()} />
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TrustBar from "../../components/TrustBar.astro";
+import HeroArt from "../../components/HeroArt.astro";
+import { business, areas } from "../../data/site";
+---
+<BaseLayout
+  title="House Cleaning Across Atlanta | 6 Neighborhoods Served Now"
+  description="House cleaning across Atlanta: Buckhead, Midtown, Sandy Springs, Decatur, Brookhaven, Old Fourth Ward. Flat pricing, same team, 24-hour guarantee."
+>
+  <div class="hero-compact on-dark">
+    <div class="container">
+      <div class="smallcaps">Service areas</div>
+      <h1>House cleaning across Atlanta.</h1>
+      <p class="lead">Six neighborhoods, one accountable team. Also serving nearby Dunwoody, Chamblee, Kirkwood, Virginia-Highland, Smyrna, and Vinings — call or text to confirm.</p>
+      <p style="margin-top:16px"><a class="btn btn-mint" href="/book">Book a Clean →</a> <a href={business.phoneTel} style="color:var(--mint);font-weight:800;margin-left:12px">{business.phoneDisplay}</a> <a href={business.phoneSms} style="color:var(--mint);margin-left:8px">Text us →</a></p>
+    </div>
+  </div>
+  <TrustBar />
+  <section>
+    <div class="container">
+      <div class="grid-3">
+        {areas.map((a) => (
+          <article class="area-tile">
+            <h2 style="font-size:24px;margin-bottom:4px">{a.name}</h2>
+            <p style="color:var(--text2);font-size:15px">{a.housing}</p>
+            <span class="avail">CLEANS MON–SAT</span>
+            <p><a href={`/service-areas/${a.slug}`}>View area page →</a></p>
+          </article>
+        ))}
+      </div>
+      <div style="margin-top:32px"><HeroArt variant="map" label="Coverage map of Metro Atlanta" /></div>
+      <p style="margin-top:16px">Also served — call or text to confirm: Dunwoody, Chamblee, Kirkwood, Virginia-Highland, Smyrna, Vinings. <a href={business.phoneTel}>{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us →</a></p>
+    </div>
+  </section>
+</BaseLayout>

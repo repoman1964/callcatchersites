@@ -1,0 +1,45 @@
+---
+// "Our Story" image + copy block. Home shows the first two paragraphs, About shows them all.
+import Icon from '../Icon.astro';
+import { site } from '../../lib/site';
+
+interface Props {
+  paragraphs: string[];
+  showLink?: boolean;
+}
+const { paragraphs, showLink = false } = Astro.props;
+const { story } = site.home;
+---
+
+<section class="section-pad bg-bg-warm" id="about" aria-labelledby="about-heading">
+  <div class="container-site grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <!-- Image column -->
+    <div class="max-w-[540px] mx-auto w-full md:max-w-none reveal">
+      <div class="relative">
+        <img src={story.image.src} alt={story.image.alt} title={story.image.alt} width="580" height="680" loading="lazy" decoding="async" class="w-full aspect-[4/5] object-cover rounded-xl shadow-xl" />
+        <!-- Accent block decoration -->
+        <div class="absolute -top-6 -left-6 w-[60%] h-[60%] bg-secondary-light rounded-xl z-[-1]" aria-hidden="true"></div>
+      </div>
+    </div>
+    <!-- Content column -->
+    <div class="reveal" style="transition-delay: 120ms;">
+      <span class="section-label">Our Story</span>
+      <h2 id="about-heading" class="text-[clamp(1.875rem,_4vw,_2.5rem)] font-bold text-text mb-2">
+        {story.heading}<br />
+        <em class="italic text-accent">{story.heading_em}</em>
+      </h2>
+      <span class="accent-bar"></span>
+      <div class="mt-6 flex flex-col gap-4">
+        {paragraphs.map((p) => <p class="text-base text-text-secondary leading-[1.7] max-w-[65ch]">{p}</p>)}
+      </div>
+      {
+        showLink && (
+          <a href="/about" class="btn-ghost mt-7">
+            Our Full Story
+            <Icon n="0e52e5" />
+          </a>
+        )
+      }
+    </div>
+  </div>
+</section>

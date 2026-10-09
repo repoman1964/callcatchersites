@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroArt from "../components/HeroArt.astro";
+import { business } from "../data/site";
+---
+<BaseLayout
+  title="Contact Our Atlanta Cleaning Team | Call, Text, Book Today!"
+  description="Call or text [PHONE], book online, or send the contact form. Custom quotes for offices and post-construction. Open Mon-Fri 8-6, Sat 9-2 today!!"
+>
+  <div class="hero">
+    <div class="container hero-split">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h1>Three ways to reach us.</h1>
+        <ul class="check-list">
+          <li><span class="check">✓</span><span><strong>Call or text:</strong> <a href={business.phoneTel}>{business.phoneDisplay}</a> · <a href={business.phoneSms}>Text us →</a></span></li>
+          <li><span class="check">✓</span><span><strong>Book online:</strong> <a href="/book">pick a date →</a></span></li>
+          <li><span class="check">✓</span><span><strong>Email:</strong> {business.email}</span></li>
+        </ul>
+        <p>Need a custom quote? Tell us about the space — offices and post-construction welcome.</p>
+        <p>Office hours: {business.hours}.</p>
+      </div>
+      <div>
+        <form class="form-card" action="/contact" method="get" aria-label="Contact form">
+          <h3>Send a message</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="field"><label for="ct-name">Full name *</label><input id="ct-name" required autocomplete="name" /></div>
+            <div class="field"><label for="ct-phone">Phone *</label><input id="ct-phone" type="tel" required autocomplete="tel" /></div>
+          </div>
+          <div class="field"><label for="ct-email">Email *</label><input id="ct-email" type="email" required autocomplete="email" /></div>
+          <div class="field"><label for="ct-addr">Property address</label><input id="ct-addr" autocomplete="street-address" /></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="field"><label for="ct-service">Service</label><select id="ct-service"><option>Recurring</option><option>Deep</option><option>Move-in / move-out</option><option>Airbnb</option><option>Post-construction</option><option>Office</option></select></div>
+            <div class="field"><label for="ct-size">Home size</label><input id="ct-size" placeholder="e.g. 3 bed / 2 bath" /></div>
+          </div>
+          <div class="field"><label for="ct-msg">Message *</label><textarea id="ct-msg" rows="4" required></textarea></div>
+          <fieldset style="border:1px solid var(--border);border-radius:8px;padding:12px 16px">
+            <legend style="font-weight:700;font-size:14px;padding:0 8px">Preferred contact</legend>
+            <label style="margin-right:16px"><input type="radio" name="pref" checked /> Call</label>
+            <label style="margin-right:16px"><input type="radio" name="pref" /> Text</label>
+            <label><input type="radio" name="pref" /> Email</label>
+          </fieldset>
+          <button class="btn btn-primary" type="submit" style="width:100%;margin-top:16px">Send message →</button>
+          <p class="consent">By submitting, you agree to receive calls and texts about your quote from {business.name}. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="container">
+      <HeroArt variant="map" label="Map of service area in Metro Atlanta" />
+      <p style="margin-top:12px">Serving Buckhead, Midtown, Sandy Springs, Decatur, Brookhaven, Old Fourth Ward, and nearby Metro Atlanta. {business.address}.</p>
+    </div>
+  </section>
+</BaseLayout>

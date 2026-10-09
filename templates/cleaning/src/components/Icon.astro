@@ -1,0 +1,11 @@
+---
+// Inline SVGs lifted verbatim from the source build, keyed by content hash.
+import icons from '../icons.json';
+
+interface Props {
+  n: keyof typeof icons;
+}
+const svg = icons[Astro.props.n];
+---
+
+<Fragment set:html={svg} />
